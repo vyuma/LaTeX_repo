@@ -1,7 +1,7 @@
-* 最強のLaTeX 環境構築 Windows版 付録
+# 最強のLaTeX 環境構築 Windows版 付録
 
 
-* [1] .latexmk 設定用ファイル
+## [1] .latexmk 設定用ファイル
 ```javascript
 # 通常の LaTeX ドキュメントのビルドコマンド
 $latex = 'uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %S';
@@ -40,7 +40,7 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
 ## $pdf_previewer = 'SumatraPDF -reuse-instance';
 ```
 
-* [2] setting.json ソースコード
+## [2] setting.json ソースコード
 ```javascript
 // 日本語文書で単語移動を使うため、助詞や読点、括弧を区切り文字として指定する
     "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
@@ -189,7 +189,7 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
     // 生成ファイルを "out" ディレクトリに吐き出す
     "latex-workshop.latex.outDir": "out",
 ```
-* スニペット設定ファイル
+## スニペット設定ファイル
 ```javascript
 {
     "report":{
@@ -340,7 +340,7 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
     }
 }
 ```
-* 現在の作者のsetting.json
+## 現在の作者のsetting.json
 ```javascript
 {
   
@@ -572,7 +572,7 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
 
 }
 ```
-* LaTeXについて
+## LaTeXの動作確認用コード
 ```LaTeX
 \documentclass{ltjsarticle}
 % ltjsarticle: lualatex 用の 日本語 documentclass
