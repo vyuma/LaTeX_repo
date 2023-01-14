@@ -68,9 +68,13 @@ LaTeX workshop のエラーについての章を追加した.
 setting.json等のコード表を.md ファイルを用いて
 配布する形式に変更した。このために、配布ファイルは2つになる。
 
+\subsection*{免責事項}
+この資料を使ったことによる損害等は製作者は一切の責任を負いません。
+この資料に関する質問などは学術サーバー内でおこなって下さい。
 varsion管理  ver2.0
 \tableofcontents
 
+\part{導入篇}
 \section{\LaTeX　　VSCode とは何か？}
 \subsection{\TeX とは何か？}
 \TeX とは,組版ソフトウェアのことである.これを使うと数式がきれいにかけたり,
@@ -110,13 +114,15 @@ TeXに慣れるという面では、有用である。したがってこの章�
 をクリックする。アカウント登録が完了する。
 マイページから、新規プロジェクトの追加を選んで\LaTeX を書き始めることが
 できる。
-
+\part{環境構築篇}
 \section{ローカル環境構築の基本用語}
 \subsection{\LaTeX 環境設定用IT用語の理解}
 
 \begin{itemize}
-  \item 環境　\LaTeX が機能するための設定やハードソフト等の存在などを
+  \item 環境　\LaTeX が機能するための設定やハードソフト等の存在や設定などを
         合わせて環境という.
+  \item ローカル  オンライン上ではなくパソコンのこと。ローカル環境とは
+        自分のパソコンの環境のこと。
   \item ユーザー　自分が設定した名前　自分のこと
         ユーザーの名前のフォルダーが最上位にあると考えておけばよい.
   \item デフォルト　初期設定のこと。
@@ -171,7 +177,7 @@ TeXに慣れるという面では、有用である。したがってこの章�
 \end{itemize}
 
 
-\section{\LaTeX　VScode 導入篇}
+\section{\LaTeX　VScode 導入実践}
 
 \subsection{\LaTeX 導入}
 \LaTeX は,次のページからダウンロードすると良い.\\
@@ -198,7 +204,7 @@ VSCodeをアイコンから開いて,積み木のようなアイコンExtentions
 Japanese Language Pack for Visual Studio Code
 を選択してインストールする.これで日本語化が完了する.
 これにより,VScode側の基本設定は終了.
-\section{環境構築篇}
+\section{環境構築実践}
 環境構築の手順を順を追って紹介する.
 この手法であれば今の環境下では大丈夫
 \subsection{エクスプローラーの構築}
@@ -258,7 +264,7 @@ setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換
 書く必要量をへらしているために,
 これはneverにしておくことをおすすめする.
 
-
+\part{\LaTeX 解説篇}
 \section{\LaTeX の基本機能の設定}
 \LaTeX の基本精神は,人間は,内容に集中して \LaTeX はデザインに
 集中するという使い方をすること.余計な装飾はできるだけ避けるのが無難.
@@ -359,6 +365,9 @@ packageは最小構成でおこなうべきである。
 なぜなら、lualatex  はかなり最近のものであり、packageがlualatexに
 対応していないということもかなりの可能性としてある。
 そのため、参考になるのは参考文献のサイト
+
+
+\part{VSCode 解説篇}
 \section{VScodeの基本機能}
 \subsection{、。を,.にする<置換機能>}
 VScodeの基本機能として,置換機能がついている.このためマクロを組まずとも
@@ -371,6 +380,28 @@ VScodeの基本機能として,置換機能がついている.このためマク
 さらにプログラム言語によりコメント機能は全く違う.この時に,Ctrl+/ を
 使うことで,どんなプログラム言語にも対応したコメント機能が
 すぐにつけられる
+\subsection{各種コマンド}
+\begin{center}
+  \begin{tabular}{lrr} \hline
+    コマンド            & 機能                  \\ \hline
+    Ctrl+Alt+B          & ビルドを実行する.           \\
+    Ctrl+Alt+V          & pdfviewer を起動する.    \\
+    Ctrl+click          & SyncTeXの利用(pdf側)    \\
+    Ctrl+Alt+J          & SyncTeXの利用(コード側)    \\
+    Ctrl+Hキー            & 置換パレットの表示           \\
+    Crl+Alt+Enter       & 置換の全置換              \\
+    Ctrl+/              & 行のコメントアウト機能(全コード共通) \\
+    Ctrl+@              & VScodeのターミナルの起動     \\
+    Shift+Alt+F         & LaTeXindentを実行する.\\
+    Ctrl+Space          & コード補完を再表示\\
+    Ctrl+Shift+'+ or -' & ズームの程度を調整する.        \\ \hline
+  \end{tabular}
+\end{center}
+ただし、ビルドコマンドはビルドをするのは、Build LaTeX project の最初に
+設定されているコマンドがデフォルトで設定されている。
+
+
+\section{VSCodeの設定について}
 \subsection{SyncTexを使う}
 \subsubsection*{SyncTex とは何か？}
 TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと.
@@ -400,25 +431,6 @@ pdfviewer上で,Ctrl キーを押しながら,マウスでコードをみたい�
 カーソルを示して, Ctrl+Alt+J で飛ぶことができる.
 (コマンドパレットからSyncTeXと入れてコマンドを実行させてもよい.)
 
-\subsection{各種コマンド}
-\begin{center}
-  \begin{tabular}{lrr} \hline
-    コマンド            & 機能                  \\ \hline
-    Ctrl+Alt+B          & ビルドを実行する.           \\
-    Ctrl+Alt+V          & pdfviewer を起動する.    \\
-    Ctrl+click          & SyncTeXの利用(pdf側)    \\
-    Ctrl+Alt+J          & SyncTeXの利用(コード側)    \\
-    Ctrl+Hキー            & 置換パレットの表示           \\
-    Crl+Alt+Enter       & 置換の全置換              \\
-    Ctrl+/              & 行のコメントアウト機能(全コード共通) \\
-    Ctrl+@              & VScodeのターミナルの起動     \\
-    Shift+Alt+F         & LaTeXindentを実行する.\\
-    Ctrl+Space          & コード補完を再表示\\
-    Ctrl+Shift+'+ or -' & ズームの程度を調整する.        \\ \hline
-  \end{tabular}
-\end{center}
-ただし、ビルドコマンドはビルドをするのは、Build LaTeX project の最初に
-設定されているコマンドがデフォルトで設定されている。
 \subsection{スニペット導入}
 \subsubsection*{スニペットとは}
 スニペットとは,コードの中で何回も使うだろうコードを少しの記述
@@ -482,18 +494,19 @@ reportのひな形が出てくるようになる.
 次の行からすぐに書き始めることができる.
 
 
+\part{VSCode 拡張機能篇}
+\section{LaTeX workshop の設定}
+
 \section{VSCodeの拡張機能}
 VSCodeの拡張機能は,できるだけ入れないことが基本.VSCodeの基本機能
 として使える機能があればわざわざ拡張機能を入れるべきではない.
 これは,VSCodeの特徴セある「軽い」という特徴を阻害するからである.
 しかし入れるべき拡張機能はもちろん存在する.
 \begin{itemize}
-\item LaTeX workshop 基本設定で使う。
 \item cloud LaTeX 連携
 \item CaTeX
 \item LaTeX Utilities
 \end{itemize}
-\subsection{\LaTeX workshop の詳細設定}
 
 \subsection{cloud\LaTeX との連携}
 \subsection{CaTeX を導入する.}
@@ -531,7 +544,7 @@ github はgitと連携してネット上にレポジトリを生成すること�
 github は次のサイトから自分のメールアドレスを登録するだけで無制限に使うことができる。
 \url{https://github.com}
 
-\section*{付録}
+\section{付録}
 \subsection*{ショートカットキー一覧}
 \begin{center}
   \begin{tabular}{lrr} \hline
