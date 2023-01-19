@@ -25,8 +25,7 @@
 \end{itemize}
 という目標をもって書いた.同じような人の助けになれば幸いである.
 可能な限り初心者に分かりやすくかつ自分が忘れないように書いたつもりである.
-\LaTeX の世界は広大すぎて分からないがwordよりも数式が美しく書ける.
-それだけではなく,論文は圧倒的に\LaTeX のほうが書きやすいといわれている.
+論文は圧倒的に\LaTeX のほうが書きやすいといわれている.
 この文章は,\LaTeX をVisual Stadio Codeでの環境構築のために自分が
 したことのすべてを書いている.技術的解説もできるだけするように努めた.
 実は\LaTeX の環境構築方法を完全に技術敵側面にも触れてしっかりVScode上
@@ -36,7 +35,7 @@
 から環境構築設定を解説したいと思った.
 
 
-\subsection*{編集方針}
+\subsection{編集方針}
 
 この資料は,すべて\LaTeX によって書いた.見にくい部分もあるかもしれないが
 これは,著者の技術によるところもあるので許してほしい.
@@ -63,17 +62,16 @@ Windows に関する知識,LaTeX workshopに関するさらには,.jsonファイ
 それ以外のことを知りたい場合は,付録の参考文献やlatexworkshop の説明書を
 読むとよい.
 
-\subsection*{追記事項}
+\subsection{追記事項}
 基本編集方針にしたがってセクションの大幅改定をおこない,VSCodeの機能と
 LaTeXの機能,LaTeXworkshop の基本機能の設定方法等についてを系統的に
 配置した.さらに拡張機能についての章を追加した.
 
-\subsection*{免責事項}
+\subsection{免責事項}
 この資料を使ったことによる損害等は製作者は一切の責任を負いません.
 この資料に関する質問などは学術サーバー内でおこなって下さい.
 varsion管理  ver2.0
 \tableofcontents
-
 \part{導入篇}
 \section{\LaTeX　　VSCode とは何か？}
 \subsection{\TeX とは何か？}
@@ -83,6 +81,8 @@ varsion管理  ver2.0
 ここで,\TeX と\LaTeX は全く違うものであることは記憶に値する.
 この資料では,VSCode とLaTeX で組版を行うが,LaTeX works editer やcloud LaTeX 
 というものもあり,最初はそちらを使うとVScodeの威力がわかると思う.
+\subsubsection*{\TeX の完全性}
+\TeX はそれ自体でチューリング完全であるから、実はほかのプログラミング用語等と同様に理論上どんなことでもできる。さらに、マクロの中でもチューリング完全であることが分かっている。\TeX の可能性は無限大である、
 \subsection{VSCode とは何か？}
 VSCodeとは,Visual Stadio Code の略でマイクロソフト社が提供する
 統合開発環境である.そしてエディタとしても高性能である.
@@ -114,6 +114,8 @@ TeXに慣れるという面では,有用である.したがってこの章では
 をクリックする.アカウント登録が完了する.
 マイページから,新規プロジェクトの追加を選んで\LaTeX を書き始めることが
 できる.
+cloudlatex はVSCode と同等の機能があるので最初に使うにはとてもいい教材である。データはすべてcloudlatexのサーバ上に保存されるのでデータが消える心配がほとんどない。また、共同作業も可能である。
+しかし、共同作業をより効率的に行いたい場合は、overleaf のほうが優れている可能性もある。overleaf はGit と連携することができるために論文執筆の際に有効になる。どちらがいいかは個人によるが、すぐに始めるならばcloud LaTeX をお勧めする。
 \part{環境構築篇}
 \section{ローカル環境構築の基本用語}
 \subsection{\LaTeX 環境設定用IT用語の理解}
@@ -175,8 +177,6 @@ TeXに慣れるという面では,有用である.したがってこの章では
   \item プリアンブル　\verb|\documentclass|から\verb|\begin{document}|までの中にある設定のこと.
   \item コーディング　コードを各作業のこと.
 \end{itemize}
-
-
 \section{\LaTeX　VScode 導入実践}
 
 \subsection{\LaTeX 導入}
@@ -522,7 +522,22 @@ VSCodeの拡張機能は,できるだけ入れないことが基本.VSCodeの基
 
 \subsection{cloud\LaTeX との連携}
 cloud\LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しなくとも
-\LaTeX を使うことができる.cloud \LaTeX は
+\LaTeX を使うことができる.cloud \LaTeX はcloudlatex と同一のサーバー内とローカルのこのVSCodeと連携することが可能であり、それにより、ローカルとサーバーで同期ができるために非常に便利なものとなっている。
+\subsubsection*{利点}
+\begin{itemize}
+  \item データがサーバ上で保存するためにデータが消える心配がない。
+  \item コンパイルがサーバ上でおこなわれるために自分のパソコンに負荷がかからないそのために自分のパソコンではできないautobluid が可能。
+  \item cloudlatexのシステムやインストールされたパッケージを簡単に使うことができる。
+\end{itemize}
+\subsubsection*{欠点}
+\begin{itemize}
+  \item VSCOde からサーバーを立ち上げることができないために、最初にcloudklatex の方に入る必要がある。
+  \item 定期的な対応の更新をしなければならない。
+  \item ローカル上ではコンパイルできないためにオフライン状態でコンパイルできない。
+\end{itemize}
+等が挙げられる。
+\subsubsection{導入の設定}
+導入の設定は、md形式のファイルに添付されているものをsetting.jsonに入れればよい。cloud latex 参照
 \subsection{CaTeX を導入する.}
 CaTeX1(軽鳥/怪鳥)とは,Hiromi ISHII が作った,LaTeX workshop とともに使うことを
 想定した,VSCode上での拡張機能です.
@@ -766,8 +781,8 @@ github は次のサイトから自分のメールアドレスを登録するだ�
   home\\
   \url{https://github.com/James-Yu/LaTeX-Workshop/wiki}
   \bibitem{latexworkshop シンタックスハイライト}
-  James-Yu\\
-  FAQ and common issues\\
+  \verb|James-Yu|
+  FAQ and common issues
   \url{https://github.com/James-Yu/LaTeX-Workshop/wiki/FAQ#syntax-highlighting-does-not-work-for-most-elements}
   \bibitem{wordwrap}
   かわさきしんじ\\

@@ -593,5 +593,25 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
 \LaTeX + VSCode は最強の組み合わせ。
 \end{document}
 ```
-* setting.json LaTeX workshop のデフォルト設定
+## cloud latex 用設定
+workspace 設定に以下の内容を組み込む。
+```java script
+// Workspace: settings.json
+{
+    "[latex]": {
+      "editor.formatOnSave": false,
+    },
+  // LaTeX Workshop
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.outDir": "./.workspace",
+    "latex-workshop.latex.recipes": [],
+  // Cloud LaTeX Extension for VSCode
+    "cloudlatex.enabled": true,
+    "cloudlatex.supressIcon": false,
+    "cloudlatex.projectId": 20210101,
+    "cloudlatex.outDir": "./.workspace",
+    "cloudlatex.autoCompile": false,
+}
+```
+
 
