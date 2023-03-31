@@ -2,7 +2,7 @@
 
 
 ## [1] .latexmk 設定用ファイル
-```javascript
+```java script
 # 通常の LaTeX ドキュメントのビルドコマンド
 $latex = 'uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %S';
 # pdfLaTeX のビルドコマンド
@@ -41,7 +41,7 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
 ```
 
 ## [2] setting.json ソースコード
-```javascript
+```json
 // 日本語文書で単語移動を使うため、助詞や読点、括弧を区切り文字として指定する
     "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
 
@@ -190,7 +190,7 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
     "latex-workshop.latex.outDir": "out",
 ```
 ## スニペット設定ファイル
-```javascript
+```json
 {
     "report":{
         "prefix": "report",
@@ -341,7 +341,7 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
 }
 ```
 ## 現在の作者のsetting.json
-```javascript
+```json
 {
   
         "files.autoSave": "afterDelay",
@@ -595,7 +595,7 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
 ```
 ## cloud latex 用設定
 workspace 設定に以下の内容を組み込む。
-```java script
+```json
 // Workspace: settings.json
 {
     "[latex]": {
@@ -613,5 +613,31 @@ workspace 設定に以下の内容を組み込む。
     "cloudlatex.autoCompile": false,
 }
 ```
+## Ultra math preview の設定
+```json
+"umath.preview.renderer": "mathjax",
+"umath.preview.macros": [
+		"\\require{physics}",
+		"\\require{HTML}",
+		"\\require{mathtools}",
+		"\\require{mhchem}",
+		"\\require{empheq}",
+		"\\def\\l{\\left}",
+		"\\def\\r{\\right}",
+		"\\newcommand{\\drac}[2]{\\mathchoice{\\displaystyle\\frac{\\, #1\\, }{\\, #2 \\,}}{\\displaystyle\\frac{\\, #1\\, }{\\, #2 \\, }}{\\scriptstyle\\frac{#1}{#2}}{\\scriptscriptstyle\\frac{#1}{#2}}}",
+		"\\newcommand{\\tdv}[3][]{\\drac{\\Delta^{#1} {#2}}{\\Delta {#3}^{#1}}}",
+		"\\newcommand{\\bm}[1]{\\boldsymbol{#1}}",
+		"\\newcommand{\\divisionsymbol}{÷}",
+		"\\def\\div{\\vnabla\\vdot}",
+		"\\newcommand{\\divi}{\\divisionsymbol}",
+		"\\newcommand{\\si}[1]{\\mathrm{#1}}",
+		"\\newcommand{\\e}{e}",
+        "\\scriptsize{}",
+	],
+	"umath.preview.position": "top",
+	"umath.preview.customCSS": [
+		"background-color: rgba(0, 0, 0, 0.5);",
+	],
+  ```
 
 
