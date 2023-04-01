@@ -40,9 +40,9 @@
 この資料は、すべて\LaTeX によって書いた。見にくい部分もあるかもしれないが
 これは、著者の技術によるところもあるので許してほしい。
 VS CodeとLateXを同時に使うためには、LaTeXの書き方の知識、VS Codeの知識、
-Windows に関する知識、LaTeX workshopに関するさらには、。jsonファイル
+Windows に関する知識、LaTeX workshopに関するさらには、.jsonファイル
 についての知識が必要になる。
-このsetting。json をいじるためには、Java script の基本的な書き方の規則を
+このsetting.json をいじるためには、Java script の基本的な書き方の規則を
 知らなければならない。ゆえに初心者には環境構築は難し過ぎる。
 しかしそれを解決するための資料にしたいという編集の基本方針にする。
 
@@ -71,7 +71,7 @@ LaTeXの機能、LaTeXworkshop の基本機能の設定方法等についてを�
 \subsection{免責事項}
 この資料を使ったことによる損害等は、製作者は一切の責任を負いません。
 この資料に関する質問などは学術サーバー内でおこなっ。
-varsion管理  ver2。0
+varsion管理  ver2.0
 \tableofcontents
 \part{導入篇}
 \section{\LaTeX　　VS　Code とは何か？}
@@ -109,14 +109,15 @@ cloud \LaTeX は、オンライン上で\LaTeX を扱うことが
 使い方について簡単に説明して\TeX に慣れてもらいたい。
 \subsection{cloud \LaTeX の利用}
 初めに
-\url{https://cloudlatex。io/ja}
+\url{https://cloudlatex.io/ja}
 のサイトに行きユーザー名やメールアドレスと任意のパスワードを設定する。
 すると設定したメールアドレスにメールが来るので、メールアドレスの受信確認
 をクリックする。アカウント登録が完了する。
 マイページから、新規プロジェクトの追加を選んで\LaTeX を書き始めることが
 できる。
 cloudlatex はVS Code と同等の機能があるので最初に使うにはとてもいい教材である。データはすべてcloudlatexのサーバ上に保存されるのでデータが消える心配はほとんどない。また、共同作業も可能である。
-しかし、共同作業をより効率的に行いたい場合は、overleaf のほうが優れている可能性もある。overleaf はGit と連携することができるために論文執筆の際に有効となる。どちらがいいかは個人によるが、すぐに始めるならばcloud LaTeX をオススメする。
+しかし、共同作業をより効率的に行いたい場合は、overleaf のほうが優れている可能性もある。
+overleaf はGit と連携することができるために論文執筆の際に有効となる。どちらがいいかは個人によるが、すぐに始めるならばcloud LaTeX をオススメする。
 \part{環境構築篇}
 \section{ローカル環境構築の基本用語}
 \subsection{\LaTeX 環境設定用IT用語の理解}
@@ -130,7 +131,7 @@ cloudlatex はVS Code と同等の機能があるので最初に使うにはと�
         ユーザーの名前のフォルダーが最上位にあると考えておけばよい。
   \item デフォルト　初期設定のこと。
   \item 隠しファイル　エクスプローラー（よくファイルを使う場所）
-        からは見えないファイル。たとえば、。latex 等の。の前に
+        からは見えないファイル。たとえば、.latex 等の.の前に
         何もついていないファイルのこと。
         開き方　エクスプローラーを開いて上にある表示タブ
         を開いて表示タブにする。表示タブから隠しファイルを開いて、
@@ -182,20 +183,20 @@ cloudlatex はVS Code と同等の機能があるので最初に使うにはと�
 
 \subsection{\LaTeX 導入}
 \LaTeX は、次のページからダウンロードすると良い。\\
-\url{https://www。tug。org/texlive/acquire-netinstall。html}\\
-をクリックして、ページ上のリンク install-tl-windows。exeをクリックする。この時、
+\url{https://www.tug.org/texlive/acquire-netinstall.html}\\
+をクリックして、ページ上のリンク install-tl-windows.exeをクリックする。この時、
 警告が出るが無視して大丈夫。
 そしてNextを押し続けてinstallを押す。これで、\LaTeX packageのほとんどすべてを
 ダウンロードすることが可能。
 \subsubsection*{正常なインストール完了を確認する。}
 インストール完了後、コマンドプロンプトを起動して、latex と打ち込む。
-この時に、正式なversion情報が出てこれば正常に完了している。Versionは、$3。141592653$
+この時に、正式なversion情報が出てこれば正常に完了している.Versionは、$3.141592653$
 のように円周率に近づいている。\\
 （補足　これは、\TeX 製作者Donald E。 Knuth教授の意向で
 version up ごとに円周率$\pi$へ近づいて行く。）
 \subsection{Visual Stadio Code 導入}
 Visual Studio Code は次のページからダウンロードするとよい。\\
-\url{https://code。visualstudio。com/download}\\
+\url{https://code.visualstudio.com/download}\\
 をクリックしてそのあとの画面の中から今回の場合は、
 Windows を選択してダウンロードする。
 ファイルを開き、追加タスクの変更は触らないようにしてNextを押し続ければ
@@ -215,23 +216,23 @@ Japanese Language Pack for Visual Studio Code
 チェックマークをつける。これにより、
 今まで見えなかったファイルが見えるようになる。
 
-\subsection{。latexmkの構築} % （fold）
+\subsection{.latexmkの構築} % （fold）
 
-\label{sub:。latexmkの構築}
-% subsection 。latexmkの構築 （end）。latexmkの構築
+\label{sub:.latexmkの構築}
+% subsection .latexmkの構築 （end）.latexmkの構築
 隠しファイルを開いてディレクトリをユーザーディレクトリの直下におく。
 このファイルはメモ帳でおこなってもよいし、VS Code上でおこなってもよい。
 ない場合は新たに作ること。エクスプローラーのWindowsフォルダーの
 中のユーザーフォルダーの中に自分の名前が入っているフォルダーがある。
-ここに次のコードを制作した名前が。latekmkという名前のファイルを
+ここに次のコードを制作した名前が.latekmkという名前のファイルを
 保存する。つまりルートフォルダーにこのファイルを保存するということ。
 latexmkとは、各種latexのビルドコマンドの実行を適切な順序で
 適切な回数おこなうためのツールである。
 
 
 この作業が終わったら、次はVS Codeを起動する。
-\subsection{setting。jsonを開く}
-setting。json を開くためには2通りある。\\
+\subsection{setting.jsonを開く}
+setting.json を開くためには2通りある。\\
 1つ目\\
 VS Code左下の設定マーク（歯車マーク）から一番上のタブのコマンドパレット
 から、Preferences:Open User Setting と打ちこむ方法\\
@@ -241,9 +242,9 @@ VS Code左下の設定マーク（歯車マーク）から一番上のタブの�
 と打ち込む方法\\
 の2つの方法があり熟練したら2番目の方法の方が効率良い。
 \subsection{setting.jsonの設定}
-。json はジェイソンと呼ぶ。
-。json はJavaScript に対応している。
-setting。json を開いたら、そこに何か書き込まれていた場合それには触らずに、
+.json はジェイソンと呼ぶ。
+.json はJavaScript に対応している。
+setting.json を開いたら、そこに何か書き込まれていた場合それには触らずに、
 \verb|{}|
 がかならずあるので、その中に次のコードをコピーして張り付ける。
 
@@ -252,12 +253,12 @@ platexのコンパイルについて
 platexに関する設定だけは、うまくいかないので下のように書き換える。
 platex のところの
 recipe tools の変更をおこなう。
-setting。jsonのlatex-workshop。latex。toolsのところに次のように書き換える。
+setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換える。
 
 と書き換えれば良い。
-\subsection{setting。json の各種機能}
+\subsection{setting.json の各種機能}
 \begin{verbatim}
-  "latex-workshop。latex。autoBuild。run": "never"、
+  "latex-workshop.latex.autoBuild.run": "never"、
 \end{verbatim}
 は、自動コンパイル機能である。しかし、自動コンパイルは、
 このファイルのように大きすぎると非常に重くなってしまう。
@@ -299,7 +300,7 @@ Ctrl+Shift+M のショートカットキーで表示される。
 \subsection{Recipe terminated with error。 Retry building the project。}
 このエラーというよりかは警告なのだがこれも本質的に意味がない。
 \subsection{意味のあるエラーメッセージ}
-意味のあるエラーメッセージは、出力される'問題'のログかまたは、"*。log"
+意味のあるエラーメッセージは、出力される'問題'のログかまたは、"*.log"
 というLaTeXのコンパイルの際に使われる中間生成物のファイルである。
 今回のデフォルト設定では、このファイルは削除されるため出てこないが、
 エラーが特定しやすくするためには、残しておいた方が良いときもある。
@@ -307,21 +308,21 @@ Ctrl+Shift+M のショートカットキーで表示される。
 \section{新規packageの導入}
 新規パッケージつまり、インターネット上や、
 自分で作ったスタイルファイル等を使いたいときに、めんどくさいことになる。
-パッケージファイルの拡張子は “。sty” であり、
+パッケージファイルの拡張子は “.sty” であり、
 このパッケージを適切な場所に配置しなければならない。
-しかし、"。sty"が入っていない場合がある。これに対処するためには次セクション
-\subsection{"。sty"ファイルが入っていない場合}
-"。ins"ファイルが重要になる。
-このファイル形式は、パッケージ本体と"。ins"ファイルが入っている。dtxを
-LaTeXで。dtx ファイルを実行する必要がある。\\
-たとえばtools。ins というファイルがあった場合には、。dtx ファイルを
+しかし、".sty"が入っていない場合がある。これに対処するためには次セクション
+\subsection{".sty"ファイルが入っていない場合}
+".ins"ファイルが重要になる。
+このファイル形式は、パッケージ本体と".ins"ファイルが入っている.dtxを
+LaTeXで.dtx ファイルを実行する必要がある。\\
+たとえばtools.ins というファイルがあった場合には、.dtx ファイルを
 同じディレクトリに保存する。次に
 コマンドプロンプトを起動して、以下のように、入力する。
 \begin{verbatim}
-  latex tools。ins
+  latex tools.ins
 \end{verbatim}
-すると、同じフォルダー内に。sty ファイルが生成される。
-この。styファイルの保存場所は、次セクション参照。
+すると、同じフォルダー内に.sty ファイルが生成される。
+この.styファイルの保存場所は、次セクション参照。
 \subsection{TeX Directory Structure とは何か？}
 texのパッケージなどは、TDS（TeX Directory Structure）にしたがって各
 ディレクトリに配置されている。
@@ -345,15 +346,15 @@ latexフォルダーの中に各パッケージのフォルダーがあり、
     font      & フォントにかかわるフォルダー。                  \\ \hline
   \end{tabular}
 \end{center}
-であり、このことから、。styファイルの保存場所は、
+であり、このことから、.styファイルの保存場所は、
 \begin{verbatim}
   C:\texlive\2022\texmf-dist\tex\latex
 \end{verbatim}
 よりも下のファイルに加えれば良いことがわかった。
 フォントファイルについては、以下参照。
-\url{https://texwiki。texjp。org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90}
+\url{https://texwiki.texjp.org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90}
 \subsection{パッケージを使うための一覧表の更新}
-texlive環境では、上のように。styファイルを保存しても動かない。これは、
+texlive環境では、上のように.styファイルを保存しても動かない。これは、
 ls-Rというファイルが存在していてこれが、TeXが必要なパッケージを探すための
 パスを与えている。そのために、この一覧表を更新しなければならない。
 このためには、コマンドプロンプトを開き、次のように命令するだけでいい。
@@ -363,7 +364,7 @@ ls-Rというファイルが存在していてこれが、TeXが必要なパッ�
 と入力することで一覧表を更新することができる。
 \subsection{使用するべきpackage}
 packageは最小構成でおこなうべきである。
-なぜなら。lualatex  はかなり最近のものであり、packageがlualatexに
+なぜなら.lualatex  はかなり最近のものであり、packageがlualatexに
 対応していないということもかなりの可能性としてある。
 そのため、参考になるのは参考文献のサイト
 
@@ -406,7 +407,7 @@ Ctrl+Alt+J            & SyncTeXの利用（コード側）    \\
 
 \section{VS Codeの設定について}
 \subsection{VS Code の設定について}
-VS Codeの設定は、setting。jsonというすべてに適応される設定と、workspace設定という、workspaceと呼ばれるファイルを何個か入れた空間について設定ができる。さらにファイルごとにも設定ができる。この優先順位は、setting。json 、work space 設定、ファイル設定の順に高い。これの設定のおかげで、さまざまな設定がおこなえるようになる。ワークスペースが1つのアプリケーションのように使うことができる。
+VS Codeの設定は、setting.jsonというすべてに適応される設定と、workspace設定という、workspaceと呼ばれるファイルを何個か入れた空間について設定ができる。さらにファイルごとにも設定ができる。この優先順位は、setting.json 、work space 設定、ファイル設定の順に高い。これの設定のおかげで、さまざまな設定がおこなえるようになる。ワークスペースが1つのアプリケーションのように使うことができる。
 \subsection{wordwrap}
 wordwrapとは、このエディターの中で入力している中でpdfview等にしているときに文章が見えている間で改行を自動で行ってくれる設定である。この設定は最初、自動改行しない設定になっている。この時には、書いている行が右にシフトしてしまい、マウス又は、エンドキー等で次の行にしなければならない。また見るときも水平スクロールをしなければならない。しかしこの機能を有効にすることで、自動で改行し、文章の視認性が高くなる。
 したがってこの設定は、プログラミング以外ではonにしておいた方がいいだろう。
@@ -418,17 +419,17 @@ TeX のソースファイルと PDF でカーソルの位置を同期する機�
 \subsubsection*{SyncTeXの設定}
 SyncTeXとは、ビルドするときに形成されるファイル
 によって動かすことができる。つまりファイルが必要になる。
-そのファイルの名前は、'。synctex。gz'である。
-しかし、今のsetting。jsonでは、
+そのファイルの名前は、'.synctex.gz'である。
+しかし、今のsetting.jsonでは、
 このファイルは消去される設定になっている。
 ゆえに、このファイルを消去しないようにしなければならない。
-したがって、setting。jsonから
+したがって、setting.jsonから
 \begin{verbatim}
-  "latex-workshop。latex。clean。fileTypes":
+  "latex-workshop.latex.clean.fileTypes":
 \end{verbatim}
 の記述の中から、
 \begin{verbatim}
-  "*。synctex。gz"、
+  "*.synctex.gz"、
 \end{verbatim}
 の記述を消去すればよい。これにより、VS Codeのpdfvierにおいて、
 SyncTeXが利用できるようになる。
@@ -446,9 +447,9 @@ pdfviewer上でCtrl キーを押しながらマウスでコードをみたい場
 短い単語のことである。
 \subsubsection*{スニペットの導入}
 まずスニペットを導入する。左下の歯車から「ユーザースニペットの構成」を
-選択する。検索窓が出てくるので、latexと入力して latex。json を開く。
-latex。json にも、\verb|{}|があるので、その中に次のコードをコピーする。
-スニペットの導入は、setting。jsonとは異なるため環境を破壊することはない。
+選択する。検索窓が出てくるので、latexと入力して latex.json を開く。
+latex.json にも、\verb|{}|があるので、その中に次のコードをコピーする。
+スニペットの導入は、setting.jsonとは異なるため環境を破壊することはない。
 
 
 
@@ -458,16 +459,16 @@ reportのひな形が出てくるようになる。
 を簡単に早く書くことができるようになる。
 \subsection{スニペットの書き方}
 スニペットの自作フォーマットは次のように書く。
-スニペットもsetting。jsonと同じように、'、'で各設定を区切る。
-\begin{verbatim}[caption=latex。json、]
+スニペットもsetting.jsonと同じように、','で各設定を区切る。
+\begin{verbatim}[caption=latex.json]
 	{
   "[ スニペットの名前 ]": {
-    "prefix": "[ 呼び出すときのショートカット]"、
+    "prefix": "[ 呼び出すときのショートカット]",
     "body":[
-      "[ 出力されるコードの1行目]"、
-      "[ 出力されるコードの2行目]"、
-      "。。。"、
-    ]、
+      "[ 出力されるコードの1行目]",
+      "[ 出力されるコードの2行目]",
+      "...",
+    ],
     "description": "[ スニペットの説明文]"
   }
   }
@@ -479,17 +480,17 @@ reportのひな形が出てくるようになる。
 次にどこにいけば良いかを入力するための引数である。
 たとえば、次の例では、プログラミングを載せるための環境をスニペットにより
 定義している。
-\begin{verbatim}[caption=latex。json、]
+\begin{verbatim}[caption=latex.json]
 	{
   "[ スニペットの名前 ]": {
-    "prefix": "[ 呼び出すときのショートカット]"、
+    "prefix": "[ 呼び出すときのショートカット]",
     "body":[
-      "[ 出力されるコードの1行目 $1]"、
-      "[ 出力されるコードの2行目 $2]"、
-      "。。。"、
+      "[ 出力されるコードの1行目 $1]",
+      "[ 出力されるコードの2行目 $2]",
+      "。。。",
       "$1"
-      ""、
-    ]、
+      "",
+    ],
     "description": "[ スニペットの説明文 ]"
   }
   }
@@ -543,7 +544,7 @@ cloud\LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しな�
 \end{itemize}
 等が挙げられる。
 \subsubsection{導入の設定}
-導入の設定は、md形式のファイルに添付されているものをsetting。jsonに入れればよい。cloud latex 参照
+導入の設定は、md形式のファイルに添付されているものをsetting.jsonに入れればよい.cloud latex 参照
 \subsection{Ultra Math Previewの設定}
 Ultra Math Preview はmarkdown とtex の数式をLaTeX Workshop の数式Previewよりもより早くプレビューを導入してくれる。さらにユーザー定義のmathPreview を導入することができるためにLaTeXWorkshop 標準のプレビューよりもより利便性が高いものになっている。標準は対応していないパッケージをPreview することができる。
 \subsection{CaTeX を導入する。}
@@ -582,7 +583,7 @@ Git のソフトウェアをGit のホームページからダウンロードす
 \subsection{GitHub の導入}
 GitHub はgitと連携してネット上にレポジトリを生成することできる。
 GitHub は次のサイトから自分のメールアドレスを登録するだけで無制限に使うことができる。
-\url{https://github。com}
+\url{https://github.com}
 
 \part{markdownk解説篇}
 \section{markdownとは何か？}
@@ -596,7 +597,7 @@ GitHub は次のサイトから自分のメールアドレスを登録するだ�
   \item それでいて、対応アプリを使えば快適に読み書きできること
 \end{itemize}
 
-などがある。Markdownはジョン・グルーバー（John Gruber）によって2004年に開発され、最初は \url{http://daringfireball。net/projects/markdown/} で公開された。その後、多くの開発者の手を経ながら発展した。
+などがある.Markdownはジョン・グルーバー（John Gruber）によって2004年に開発され、最初は \url{http://daringfireball.net/projects/markdown/} で公開された。その後、多くの開発者の手を経ながら発展した。
 \section{markdownとtexファイルの変換}
 
 \section{付録}
@@ -637,83 +638,83 @@ GitHub は次のサイトから自分のメールアドレスを登録するだ�
   \bibitem {完全導入ガイド}
   @passive-radio\\
   【大学生向け】LaTeX完全導入ガイド Windows編 （2022年）\\
-  \url{https://qiita。com/passive-radio/items/623c9a35e86b6666b89e#4-snippet-%E3%81%AE%E3%82%B9%E3%82%B9%E3%83%A1%E6%96%87%E7%AB%A0%E4%BD%9C%E6%88%90%E3%81%AE%E3%82%82%E3%81%A3%E3%81%A8%E5%8A%B9%E7%8E%87%E5%8C%96}
+  \url{https://qiita.com/passive-radio/items/623c9a35e86b6666b89e#4-snippet-%E3%81%AE%E3%82%B9%E3%82%B9%E3%83%A1%E6%96%87%E7%AB%A0%E4%BD%9C%E6%88%90%E3%81%AE%E3%82%82%E3%81%A3%E3%81%A8%E5%8A%B9%E7%8E%87%E5%8C%96}
   \bibitem{最高の環境latex}
   @rainbartown\\
   VS Code で最高の LaTeX 環境を作る（2020）
-  \url{https://qiita。com/rainbartown/items/d7718f12d71e688f3573}
+  \url{https://qiita.com/rainbartown/items/d7718f12d71e688f3573}
   \bibitem{platex}
   日記\\
   【Windows】VS Code+pLaTeX（+LuaLaTeX）環境を構築した\\
-  \url{https://everykalax。hateblo。jp/entry/2022/12/15/144238}
+  \url{https://everykalax.hateblo.jp/entry/2022/12/15/144238}
   \bibitem{スニペット1}
   Web備忘録\\
   VS Code でスニペットを自作する方法（2019）\\
-  \url{https://webbibouroku。com/Blog/Article/VS Code-snippets}
+  \url{https://webbibouroku.com/Blog/Article/VS Code-snippets}
   \bibitem{スニペット2}
   @michawo\\
   VS Codeで自作のスニペットを登録する\\
-  \url{https://qiita。com/michawo/items/051da6ce6d9daf9784fb}
+  \url{https://qiita.com/michawo/items/051da6ce6d9daf9784fb}
   \bibitem{スニペット完全解説}
   Web業界で働く人を少しだけ手助けするメディア\\
   Visual Studio Code ユーザースニペットの使い方まとめ\\
-  \url{https://web-guided。com/620/#:~:text=%E3%82%B9%E3%83%8B%E3%83%9A%E3%83%83%E3%83%88%E3%82%92%E5%B1%95%E9%96%8B%E3%81%97%E3%81%9F%E6%99%82%E3%81%AB%E3%80%81%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%82%92%E4%BB%BB%E6%84%8F%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E5%87%BA%E6%9D%A5%E3%81%BE%E3%81%99%E3%80%82%20%241%20%E3%82%92%E8%A8%98%E8%BF%B0%E3%81%97%E3%81%9F%E7%AE%87%E6%89%80%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%81%8C%E5%87%BA%E7%8F%BE%E3%81%97%E3%80%81%20%242%20%E3%80%81%20%243%20%E3%81%A8%E8%A8%98%E8%BF%B0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88%E3%81%AF%E3%80%81%20%EF%BC%BB、%EF%BC%BD%20%E3%82%AD%E3%83%BC%E3%82%92%E6%8A%BC%E3%81%99%E3%81%93%E3%81%A8%E3%81%A7%E3%80%81%E3%81%9D%E3%82%8C%E3%82%89%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%81%8C%E7%A7%BB%E5%8B%95%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%20%22body%22%3A%20%5B%20%22console。log%20%28%27%241%27%29%3B%22%2C%20%22%242%22%20%5D}
+  \url{https://web-guided.com/620/#:~:text=%E3%82%B9%E3%83%8B%E3%83%9A%E3%83%83%E3%83%88%E3%82%92%E5%B1%95%E9%96%8B%E3%81%97%E3%81%9F%E6%99%82%E3%81%AB%E3%80%81%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%82%92%E4%BB%BB%E6%84%8F%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E5%87%BA%E6%9D%A5%E3%81%BE%E3%81%99%E3%80%82%20%241%20%E3%82%92%E8%A8%98%E8%BF%B0%E3%81%97%E3%81%9F%E7%AE%87%E6%89%80%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%81%8C%E5%87%BA%E7%8F%BE%E3%81%97%E3%80%81%20%242%20%E3%80%81%20%243%20%E3%81%A8%E8%A8%98%E8%BF%B0%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%97%E3%81%9F%E5%A0%B4%E5%90%88%E3%81%AF%E3%80%81%20%EF%BC%BB、%EF%BC%BD%20%E3%82%AD%E3%83%BC%E3%82%92%E6%8A%BC%E3%81%99%E3%81%93%E3%81%A8%E3%81%A7%E3%80%81%E3%81%9D%E3%82%8C%E3%82%89%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%81%AB%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%81%8C%E7%A7%BB%E5%8B%95%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%20%22body%22%3A%20%5B%20%22console.log%20%28%27%241%27%29%3B%22%2C%20%22%242%22%20%5D}
   \bibitem{ルートディレクトリ解説}
   大橋\\
   ルートディレクトリって結局どこ？\\
-  https://codor。co。jp/django/root-directry
+  https://codor.co.jp/django/root-directry
   \bibitem{TDS}
   TeX Wiki\\
   TeX のディレクトリ構成 （TDS） \\
-  \url{https://texwiki。texjp。org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90}
+  \url{https://texwiki.texjp.org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90}
   \bibitem{コマンドライン}
   Django Girls のチュートリアル\\
   コマンドライン（コマンドプロンプト）とその関連について学べるサイト\\
-  \url{https://tutorial。djangogirls。org/ja/}
+  \url{https://tutorial.djangogirls.org/ja/}
   \bibitem{コマンドプロンプト}
   HP社\\
   Windows 10 のコマンドプロンプトとは？その起動方法と使用例を紹介\\
-  https://jp。ext。hp。com/techdevice/windows10sc/27/
+  https://jp.ext.hp.com/techdevice/windows10sc/27/
   \bibitem{ビルド}
   IT用語辞典\\
   ビルド【build】\\
-  \url{https://e-words。jp/w/%E3%83%93%E3%83%AB%E3%83%89。html}
+  \url{https://e-words.jp/w/%E3%83%93%E3%83%AB%E3%83%89.html}
   \bibitem{ソースコード貼り付け}
   \verb|@ta_b0_|\\
   LaTeXにソースコードを【美しく】貼る方法\\
-  \url{https://qiita。com/ta_b0_/items/2619d5927492edbb5b03}
+  \url{https://qiita.com/ta_b0_/items/2619d5927492edbb5b03}
   \bibitem{lualatexハイパーリンク}
   LuaLaTeX Lab\\
   【基本】LuaLaTeXのPDFを便利にしよう　～hyperrefパッケージほか～\\
-  \url{https://lualatexlab。blog。fc2。com/blog-entry-43。html}
+  \url{https://lualatexlab.blog.fc2.com/blog-entry-43.html}
   \bibitem{各種コマンド}
   KERI's Lab\\
   VS Code で TeX を書こう\\
-  \url{https://www。kerislab。jp/posts/2019-01-14-VS Code-latex/#:~:text=SyncTex%20%E3%81%A8%E3%81%AF%E3%80%81TeX%20%E3%81%AE%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%20PDF%20%E3%81%A7%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%82%92%E5%90%8C%E6%9C%9F%E3%81%99%E3%82%8B%E6%A9%9F%E8%83%BD%E3%81%A7%E3%81%99%E3%80%82%20VS Code%20%E3%81%AE、PDF%20%E3%83%93%E3%83%A5%E3%83%BC%E3%83%AF%E3%81%AF%20SyncTex%20%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%A7%E3%80%81TeX%20%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%20PDF%20%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%A9%B2%E5%BD%93%E7%AE%87%E6%89%80%E3%82%92%E8%A1%8C%E3%81%8D%E6%9D%A5%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82}
+  \url{https://www.kerislab.jp/posts/2019-01-14-VS Code-latex/#:~:text=SyncTex%20%E3%81%A8%E3%81%AF%E3%80%81TeX%20%E3%81%AE%E3%82%BD%E3%83%BC%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%20PDF%20%E3%81%A7%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%82%92%E5%90%8C%E6%9C%9F%E3%81%99%E3%82%8B%E6%A9%9F%E8%83%BD%E3%81%A7%E3%81%99%E3%80%82%20VS Code%20%E3%81%AE、PDF%20%E3%83%93%E3%83%A5%E3%83%BC%E3%83%AF%E3%81%AF%20SyncTex%20%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%A7%E3%80%81TeX%20%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8%20PDF%20%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E8%A9%B2%E5%BD%93%E7%AE%87%E6%89%80%E3%82%92%E8%A1%8C%E3%81%8D%E6%9D%A5%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%E3%80%82}
   \bibitem{SyncTeX}
   TeX Wiki\\
   SyncTeX\\
-  \url{https://texwiki。texjp。org/?SyncTeX}
+  \url{https://texwiki.texjp.org/?SyncTeX}
   \bibitem{LaTeX+VS Code wiki}
   TeX Wiki\\
   Visual Studio Code/LaTeX\\
-  \url{https://texwiki。texjp。org/?Visual%20Studio%20Code%2FLaTeX#he95e080}
+  \url{https://texwiki.texjp.org/?Visual%20Studio%20Code%2FLaTeX#he95e080}
   \bibitem{SyncTeX VS Code}
   TeXフォーラム\\
   VS CodeでSyncTeXが使えない\\
-  \url{https://okumuralab。org/tex/mod/forum/discuss。php?d=3075&parent=18242}
+  \url{https://okumuralab.org/tex/mod/forum/discuss.php?d=3075&parent=18242}
   \bibitem{SyncTeX+各種設定}
   \verb|@t_kemmochi|\\
   uplatexでSyncTeXするための最低限のVS Code設定\\
-  \url{https://qiita。com/t_kemmochi/items/dd38bbf2b823c770d1ec}
+  \url{https://qiita.com/t_kemmochi/items/dd38bbf2b823c770d1ec}
   \bibitem{絶対パス設定ミス例}
   @yt1114\\
   SyncTex で2時間消費…VS Code で SyncTex を適用するときの注意点\\
-  \url{https://qiita。com/yt1114/items/a50c97dafb4d193c0198}
+  \url{https://qiita.com/yt1114/items/a50c97dafb4d193c0198}
   \bibitem{SyncTeX TeXwork}
   情報科学屋さんを目指す人のメモ\\
   PDFをクリックして対応するLaTeXソースにジャンプする方法（TeXworks+SyncTeX）\\
-  \url{https://did2memo。net/2015/03/05/latex-pdf-source-jump/}
+  \url{https://did2memo.net/2015/03/05/latex-pdf-source-jump/}
 
   \bibitem{一週間基礎}
   明松真司（2022）\\
@@ -724,108 +725,108 @@ GitHub は次のサイトから自分のメールアドレスを登録するだ�
   \bibitem{エラーをしながら}
   @hikozaru1202\\
   エラーしながら学ぶVS CodeにLatexを導入1、2、3\\
-  \url{https://qiita。com/hikozaru1202/items/4189bfc52a99b7c32968}\\
-  \url{https://qiita。com/hikozaru1202/items/befa7ddb6ea1b8920c92}\\
-  \url{https://qiita。com/hikozaru1202/items/ce4c916f8d763b4006a9#latexmkrc%E3%81%AE%E4%BD%9C%E6%88%90}
+  \url{https://qiita.com/hikozaru1202/items/4189bfc52a99b7c32968}\\
+  \url{https://qiita.com/hikozaru1202/items/befa7ddb6ea1b8920c92}\\
+  \url{https://qiita.com/hikozaru1202/items/ce4c916f8d763b4006a9#latexmkrc%E3%81%AE%E4%BD%9C%E6%88%90}
   \bibitem{エラーの読み方}
   \verb|@Yarakashi_Kikohshi|\\
   エラーと警告を読むゾ\\
-  \url{https://qiita。com/Yarakashi_Kikohshi/items/4ede21b06d094ad3b89e#-%E6%AD%A3%E3%81%97%E3%81%8F%E3%83%AD%E3%82%B0%E3%82%92-latex-workshop-%E3%81%AB%E5%BC%95%E3%81%8D%E6%B8%A1%E3%81%99}
+  \url{https://qiita.com/Yarakashi_Kikohshi/items/4ede21b06d094ad3b89e#-%E6%AD%A3%E3%81%97%E3%81%8F%E3%83%AD%E3%82%B0%E3%82%92-latex-workshop-%E3%81%AB%E5%BC%95%E3%81%8D%E6%B8%A1%E3%81%99}
   \bibitem{雑多な話題}
   \verb|@t_kemmochi|\\
   イマドキのLaTeXの書き方入門\\
-  \url{https://qiita。com/t_kemmochi/items/78064daaa3903b7925ab#%E4%BB%98%E9%8C%B2-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89}
+  \url{https://qiita.com/t_kemmochi/items/78064daaa3903b7925ab#%E4%BB%98%E9%8C%B2-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89}
   \bibitem{警告メッセージ}
   TeX Wiki\\
   LaTeX の警告メッセージ\\
-  \url{https://texwiki。texjp。org/?LaTeX%20%E3%81%AE%E8%AD%A6%E5%91%8A%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8}
+  \url{https://texwiki.texjp.org/?LaTeX%20%E3%81%AE%E8%AD%A6%E5%91%8A%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8}
   \bibitem{エラーメッセージ}
   TeX Wiki\\
   LaTeX のエラーメッセージ\\
-  \url{https://texwiki。texjp。org/?LaTeX%20%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8}
+  \url{https://texwiki.texjp.org/?LaTeX%20%E3%81%AE%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8}
   \bibitem{CaTeX}
-  san。com\\
+  san.com\\
   CaTeX（軽鳥／怪鳥）で快適 LaTeX ライフ in VS Code\\
-  \url{https://konn-san。com/articles/2018-11-26-happy-latex-with-catex。html}
+  \url{https://konn-san.com/articles/2018-11-26-happy-latex-with-catex.html}
   \bibitem{ChkTeX}
   @skikkh\\
   VS Codeで快適LaTeX環境を構築する方法\\
-  \url{https://qiita。com/skikkh/items/707e8a5def368a69e9a6}
+  \url{https://qiita.com/skikkh/items/707e8a5def368a69e9a6}
   \bibitem{LaTeX Utilities}
   TsubasaTakeda\\
   LaTeXをVS Codeで書く（初心者のレポート向け）\\
-  \url{https://qiita。com/TsubasaTakeda/items/bed2856c6bd427268144#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%82%92%E8%BF%BD%E5%8A%A0}
+  \url{https://qiita.com/TsubasaTakeda/items/bed2856c6bd427268144#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD%E3%82%92%E8%BF%BD%E5%8A%A0}
   \bibitem{VS Code 便利機能　マルチカーソル}
   @TomK\\
   VS Codeのマルチカーソル練習帳\\
-  \url{https://qiita。com/TomK/items/3b1f5be07d708d7bd6c5}
+  \url{https://qiita.com/TomK/items/3b1f5be07d708d7bd6c5}
   \bibitem{VS Codeショートカットキー}
   12345\\
   VS Code の便利なショートカットキー\\
-  \url{https://qiita。com/12345/items/64f4372fbca041e949d0}
+  \url{https://qiita.com/12345/items/64f4372fbca041e949d0}
   \bibitem{package}
   \verb|Yarakashi_Kikohshi|\\
   LaTeX でいろんなパッケージを usepackage する\\
-  \url{https://qiita。com/Yarakashi_Kikohshi/items/97f9f920fb23974e0011}
+  \url{https://qiita.com/Yarakashi_Kikohshi/items/97f9f920fb23974e0011}
   \bibitem{LaTeX workshop1}
   \verb|Yarakashi_Kikohshi|\\
   LaTeX Workshop を使いこなす\\
-  \url{https://qiita。com/Yarakashi_Kikohshi/items/a9357dd469320ffb65a0}
+  \url{https://qiita.com/Yarakashi_Kikohshi/items/a9357dd469320ffb65a0}
   \bibitem{LaTeX Workshop2}
   \verb|Yarakashi_Kikohshi|\\
   LaTeX Workshop をもう少し使いこなす\\
-  \url{https://qiita。com/Yarakashi_Kikohshi/items/1a275f2046b002e398b3}
+  \url{https://qiita.com/Yarakashi_Kikohshi/items/1a275f2046b002e398b3}
   \bibitem{LaTeX Workshop3}
   \verb|Yarakashi_Kikohshi|\\
   LaTeX Workshop をもっと使いこなす\\
-  \url{https://qiita。com/Yarakashi_Kikohshi/items/1f2225c7e28aad498998}
+  \url{https://qiita.com/Yarakashi_Kikohshi/items/1f2225c7e28aad498998}
   \bibitem{LaTeX Workshop4}
   \verb|Yarakashi_Kikohshi|\\
   Zotero と LaTeX Workshop で bib ファイルを扱いこなす\\
-  \url{https://qiita。com/Yarakashi_Kikohshi/items/8f720643543ba175f7cc}
+  \url{https://qiita.com/Yarakashi_Kikohshi/items/8f720643543ba175f7cc}
   \bibitem{数式プレビュー}
   \verb|Yarakashi_Kikohshi|\\
   LaTeX Workshop の数式プレビューを使いこなす\\
-  \url{https://qiita。com/Yarakashi_Kikohshi/items/4570bba51787e47a03c6}
+  \url{https://qiita.com/Yarakashi_Kikohshi/items/4570bba51787e47a03c6}
   \bibitem{cloud LaTeX 連携}
   \verb|mtk_birdman's blog|\\
-  【Windows】Visual Studio Code で Cloud LaTeX の実行環境を構築する（2022。02。16）\\
-  \url{https://mtkbirdman。com/windows-visual-studio-code-cloud-latex-install}
+  【Windows】Visual Studio Code で Cloud LaTeX の実行環境を構築する（2022.02.16）\\
+  \url{https://mtkbirdman.com/windows-visual-studio-code-cloud-latex-install}
   \bibitem{cloudlatex 利点と欠点}
   Yarakashi-Kikohshi\\
   VS Code で編集してCloud LaTeX でタイプセットする\\
-  \url{https://gist。github。com/Yarakashi-Kikohshi/e554045b77d35bd132eb976034625023}
+  \url{https://gist.github.com/Yarakashi-Kikohshi/e554045b77d35bd132eb976034625023}
   \bibitem{デフォルト設定}
   Yarakashi-Kikohshi\\
   なるべくデフォルトのまま使いたい人へ\\
-  \url{https://qiita。com/Yarakashi_Kikohshi/items/e9270af54569640fe80f}
+  \url{https://qiita.com/Yarakashi_Kikohshi/items/e9270af54569640fe80f}
   \bibitem{シンタックスハイライト設定}
   Yarakashi-Kikohshi\\
   Customize Syntax Highlight for LaTeX Workshop\\
-  \url{https://gist。github。com/Yarakashi-Kikohshi/948720cb69d0baafe71e62ec6cb2cb54}
+  \url{https://gist.github.com/Yarakashi-Kikohshi/948720cb69d0baafe71e62ec6cb2cb54}
   \bibitem{latexworkshop wiki}
   James-Yu\\
   home\\
-  \url{https://github。com/James-Yu/LaTeX-Workshop/wiki}
+  \url{https://github.com/James-Yu/LaTeX-Workshop/wiki}
   \bibitem{latexworkshop シンタックスハイライト}
   \verb|James-Yu|
   FAQ and common issues
-  \url{https://github。com/James-Yu/LaTeX-Workshop/wiki/FAQ#syntax-highlighting-does-not-work-for-most-elements}
+  \url{https://github.com/James-Yu/LaTeX-Workshop/wiki/FAQ#syntax-highlighting-does-not-work-for-most-elements}
   \bibitem{wordwrap}
   かわさきしんじ\\
   VS Codeでテキストの折り返しを設定するには\\
-  \url{https://atmarkit。itmedia。co。jp/ait/articles/1807/27/news035。html}
+  \url{https://atmarkit.itmedia.co.jp/ait/articles/1807/27/news035.html}
   \bibitem{cloudlatex}
   \verb|アカリク|\\
   Cloud LaTeX Extension for Visual Studio Code
-  \url{https://github。com/cloudlatex-team/cloudlatex-VS Code-extension/blob/main/docs/README_ja。md}
+  \url{https://github.com/cloudlatex-team/cloudlatex-VS Code-extension/blob/main/docs/README_ja.md}
   \bibitem{Ultra Math Preview}
   migawariw\\
   【LaTeX】Ultra Math Previewで数式プレビューを超強化\\
-  \url{https://qiita。com/migawariw/items/1d3ab752f1ef261d6bcb}
+  \url{https://qiita.com/migawariw/items/1d3ab752f1ef261d6bcb}
   \bibitem{markdownとは}
   日本markdown ユーザー会\\
-  \url{https://qiita。com/migawariw/items/1d3ab752f1ef261d6bcb}
+  \url{https://qiita.com/migawariw/items/1d3ab752f1ef261d6bcb}
 \end{thebibliography}
 
 \end{document}
