@@ -1,37 +1,30 @@
-\documentclass{beamer}                 % デフォルト
-%\documentclass[dvipdfmx,handout:1]{beamer}       % 印刷用オプション
-%\documentclass[dvipdfmx,notes=only]{beamer}      % \note{} の中身だけ出力
-%\documentclass[dvipdfmx,hyperref={bookmarks=false}]{beamer} % ブックマークを作成しない
-\usetheme{CambridgeUS}     % テーマの選択
-% \usepackage{pxjahyper} % しおりの文字化け阻止
-%\logo{lucas}               % ロゴ
-\usepackage{graphicx}% 各種画像の張り込み
-\usepackage{amsmath,amssymb}%標準数式表現を拡大する
-\usepackage{luatexja}% 日本語したい
-\usepackage[ipaex]{luatexja-preset}% IPAexフォントしたい
-% \DeclareFontShape{JY2}{mc}{m}{it}{<->ssub*mc/m/n}{}%フォントの警告を消す
-% \DeclareFontShape{JT2}{mc}{m}{it}{<->ssub*mc/m/n}{}%フォントの警告を消す
-%\setbeamertemplate{some beamer element}[square] % ナビゲーションバー
+\documentclass{beamer}
+\usetheme{CambridgeUS}       % テーマの選択
+\usepackage{graphicx}        % 各種画像の張り込み
+\usepackage{amsmath,amssymb} % 標準数式表現を拡大する
+\usepackage{luatexja}        % 日本語対応
+\usepackage[ipaex]{luatexja-preset} % IPAexフォントしたい
+
 \setbeamertemplate{navigation symbols}{}      % ナビゲーションバー非表示
 
-\setbeamertemplate{theorems}[numbered]
-\addtobeamertemplate{theorem begin}{\normalfont}{}
-\uselanguage{japanese}
-\languagepath{japanese}
-\deftranslation[to=japanese]{Theorem}{定理}
-\deftranslation[to=japanese]{Corollary}{系}
-\deftranslation[to=japanese]{Lemma}{補題}
-\newtheorem{proposition}[theorem]{命題}
-\deftranslation[to=japanese]{Proposition}{命題}
-\deftranslation[to=japanese]{Example}{例}
-\deftranslation[to=japanese]{Examples}{例}
-\deftranslation[to=japanese]{Definition}{定義}
-\deftranslation[to=japanese]{Definitions}{定義}
-\deftranslation[to=japanese]{Problem}{問題}
-\deftranslation[to=japanese]{Solution}{解}
-\deftranslation[to=japanese]{Fact}{事実}
-\deftranslation[to=japanese]{Proof}{証明}
-\def\proofname{証明}
+% \setbeamertemplate{theorems}[numbered]
+% \addtobeamertemplate{theorem begin}{\normalfont}{}
+% \uselanguage{japanese}
+% \languagepath{japanese}
+% \deftranslation[to=japanese]{Theorem}{定理}
+% \deftranslation[to=japanese]{Corollary}{系}
+% \deftranslation[to=japanese]{Lemma}{補題}
+% \newtheorem{proposition}[theorem]{命題}
+% \deftranslation[to=japanese]{Proposition}{命題}
+% \deftranslation[to=japanese]{Example}{例}
+% \deftranslation[to=japanese]{Examples}{例}
+% \deftranslation[to=japanese]{Definition}{定義}
+% \deftranslation[to=japanese]{Definitions}{定義}
+% \deftranslation[to=japanese]{Problem}{問題}
+% \deftranslation[to=japanese]{Solution}{解}
+% \deftranslation[to=japanese]{Fact}{事実}
+% \deftranslation[to=japanese]{Proof}{証明}
+% \def\proofname{証明}
 
 \title{\LaTeX 入門}
 \author{高柳海斗}
@@ -61,8 +54,5 @@
   \frametitle{なぜ\LaTeX を使うのか}
   %wordとの比較を交えつつ論文執筆のデファクトスタンダードとなっていること、数式の組版処理が優れていること、修正、再利用が容易なことなどを話す
 \end{frame}
-
-
-
 
 \end{document}
