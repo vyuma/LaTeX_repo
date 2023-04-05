@@ -3,45 +3,45 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: LaTeX_environment.aux
 The style file: jplain.bst
 Database file #1: refernce.bib
-You've used 51 entries,
+You've used 52 entries,
             2620 wiz_defined-function locations,
-            799 strings with 13564 characters,
-and the built_in function-call counts, 12849 in all, are:
-= -- 967
-> -- 357
+            803 strings with 13610 characters,
+and the built_in function-call counts, 13112 in all, are:
+= -- 986
+> -- 364
 < -- 0
-+ -- 153
-- -- 102
-* -- 260
-:= -- 1806
-add.period$ -- 152
-call.type$ -- 51
-change.case$ -- 200
++ -- 156
+- -- 104
+* -- 266
+:= -- 1845
+add.period$ -- 155
+call.type$ -- 52
+change.case$ -- 203
 chr.to.int$ -- 0
-cite$ -- 51
-duplicate$ -- 681
-empty$ -- 1480
-format.name$ -- 153
-if$ -- 2963
+cite$ -- 52
+duplicate$ -- 700
+empty$ -- 1509
+format.name$ -- 156
+if$ -- 3023
 int.to.chr$ -- 0
-int.to.str$ -- 51
-missing$ -- 6
-newline$ -- 257
-num.names$ -- 102
-pop$ -- 658
+int.to.str$ -- 52
+missing$ -- 8
+newline$ -- 262
+num.names$ -- 104
+pop$ -- 671
 preamble$ -- 1
-purify$ -- 153
+purify$ -- 156
 quote$ -- 0
-skip$ -- 767
+skip$ -- 781
 stack$ -- 0
-substring$ -- 255
+substring$ -- 260
 swap$ -- 48
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 198
+type$ -- 200
 warning$ -- 0
-while$ -- 102
-width$ -- 53
-write$ -- 462
-is.kanji.str$ -- 360
+while$ -- 104
+width$ -- 54
+write$ -- 472
+is.kanji.str$ -- 368
