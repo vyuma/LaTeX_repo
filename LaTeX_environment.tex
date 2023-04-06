@@ -241,18 +241,27 @@ OverleafはGitと連携することができるために論文執筆の際に有
 \section{\LaTeX VS Code 導入実践}
 
 \subsection{\LaTeX 導入}
-\LaTeX は、次のページからダウンロードすると良い。\\
+\LaTeX は、次のページからダウンロードすると良い。
+\footnote{
+  \LaTeX はたくさんのソフトウェアからなるシステムであるため、
+  配布用に必要なソフトウェア群をパッケージしたディストリビューションの形でインストールする。
+  今回インストールするのはTeX Liveというディストリビューションである。
+}
+\\
 \url{https://www.tug.org/texlive/acquire-netinstall.html}\\
 をクリックして、ページ上のリンク install-tl-windows.exeをクリックする。この時、
 警告が出るが無視して大丈夫。
 そしてNextを押し続けてinstallを押す。これで、\LaTeX packageのほとんどすべてを
 ダウンロードすることが可能。
-\subsubsection*{正常なインストール完了を確認する。}
+
+\subsubsection*{インストールが正常に行われたことを確認する}
 インストール完了後、コマンドプロンプトを起動して、\verb|latex -v|と打ち込む。
-この時に、正式なversion情報が出てこれば正常に完了している。Versionは、$3.141592653$
-のように円周率に近づいている。\\
-（補足 これは、\TeX 製作者Donald E.Knuth教授の意向で
-version up ごとに円周率$\pi$へ近づいて行く。）
+この時に、$3.141592653$のようなversion情報が出てこれば正常に完了している。
+\footnote{
+  これは、\TeX 製作者Donald E.Knuth教授の意向で
+  version up ごとに円周率$\pi$へ近づいて行く。
+}
+
 \subsection{Visual Stadio Code 導入}
 Visual Studio Code は次のページからダウンロードするとよい。\\
 \url{https://code.visualstudio.com/download}\\
