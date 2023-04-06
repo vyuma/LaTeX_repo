@@ -132,7 +132,7 @@ VS Codeは、
 \end{itemize}
 という特徴がある。
 
-\section{\TeX に慣れる。}
+\section{\TeX に慣れる}
 美文書作成入門\cite{美文書本}や一週間で\LaTeX の基礎が学べる本
 \cite{一週間基礎}等を用いて、\LaTeX にふれることで
 この後の流れが少し分かりやすくなるかもしれない。
@@ -307,30 +307,35 @@ Japanese Language Pack for Visual Studio Code
   PC>ローカルディスク>ユーザー>ユーザー名、と辿れるディレクトリのこと
 }
 直下に\verb|.latexmkrc|というテキストファイルを作成し、テキストエディタで開く。
-markdownに記載された設定をコピーして貼り付け、保存する。
+markdownファイルに記載された設定をコピーして貼り付け、保存する。
 
 % つまりルートフォルダーにこのファイルを保存するということ。
-% // ホームディレクトリは C:/Users/ユーザー名/
-% // ルートディレクトリは C:/
-% // のことを指し、両者は異なります。
+% --> ホームディレクトリは C:/Users/ユーザー名/
+% --> ルートディレクトリは C:/
+% --> のことを指し、両者は異なります。
 
 この作業が終わったら、次はVS Codeを起動する。
-\subsection{setting.jsonを開く}
-setting.json を開くためには2通りある。\\
-1つ目\\
-VS Code左下の設定マーク（歯車マーク）から一番上のタブのコマンドパレット
-から、Preferences:Open User Setting と打ちこむ方法\\
-2つ目\\
-キーボードのショートカットキーを用いて、ctrl+shift+P と入力することで、
-コマンドパレットを出現させてそこにPreferences:Open User Setting
-と打ち込む方法\\
-の2つの方法があり熟練したら2番目の方法の方が効率良い。
-\subsection{setting.jsonの設定}
-.json はジェイソンと呼ぶ。
-.json はJavaScript に対応している。
-setting.json を開いたら、そこに何か書き込まれていた場合それには触らずに、
-\verb|{}|
-がかならずあるので、その中に次のコードをコピーして張り付ける。
+\subsection{VS Codeの設定}
+VS Codeの設定は、setting.json
+\footnote{.jsonはジェイソンと読む}
+というファイルに記載されている。
+setting.json を開く方法はいくつかある。
+\begin{description}
+  \item[1つ目] ~\\
+    VS Code左下の設定マーク（歯車マーク）をクリックして、「設定」を選択する。
+    右上端にあるファイルに矢印がついたアイコンをクリックする。
+  \item[2つ目] ~\\
+    キーボードのショートカットキーを用いて、ctrl+shift+P と入力することで、
+    コマンドパレットを出現させてそこにPreferences:Open User Setting
+    と打ち込む。
+\end{description}
+% の2つの方法があり熟練したら2番目の方法の方が効率良い。
+% --> そう頻繁に編集するものではないので、1つ目の方法でいいと思います。
+
+% .json はJavaScript に対応している。
+% --> JavaScript に触れる必要はないのでは？
+setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載された設定をコピーして書き加え、保存する。
+もし開いた時点で何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
 
 \subsection{\pLaTeX のコンパイルについて}
 \pLaTeX のコンパイルについて
@@ -338,8 +343,9 @@ setting.json を開いたら、そこに何か書き込まれていた場合そ�
 \pLaTeX  のところの
 recipe tools の変更をおこなう。
 setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換える。
-
 と書き換えれば良い。
+% どこを指しているか分かりませんでした...
+
 \subsection{setting.json の各種機能}
 \begin{verbatim}
   "latex-workshop.latex.autoBuild.run": "never"、
@@ -347,7 +353,8 @@ setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換
 は、自動コンパイル機能である。しかし、自動コンパイルは、
 このファイルのように大きすぎると非常に重くなってしまう。
 \LaTeX は、コンパイルと、書くことを分離することで、
-書く必要量をへらしているために
+高度なレイアウトの自動生成を可能にしている。
+% 書く必要量をへらしているために
 これはneverにしておくことをオススメする。
 
 \part{\LaTeX 解説篇}
