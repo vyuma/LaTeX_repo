@@ -361,6 +361,7 @@ setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換
 \section{\LaTeX の基本機能の設定}
 \LaTeX の基本精神は、人間は、内容に集中して \LaTeX はデザインに
 集中するという使い方をすること。余計な装飾はできるだけ避けるのが無難。
+
 \subsection{コンパイル}
 \begin{itemize}
   \item ctrl+Alt+Bのショートカットキーでおこなう。
@@ -368,28 +369,33 @@ setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換
   \item 左のタブのBuild LaTeX project の中のRecipe:からおこなう。
 \end{itemize}
 ただし、今回の設定では、上の2つの方法でコンパイルすると\LuaLaTeX
-で出力される。このために、\upLaTeX などを使いたい場合は、
+で出力される。このために、\pLaTeX などを使いたい場合は、
 左のタブからおこなう必要がある。
+
 \subsection{latexindent}
-\LaTeX のソースを自動で成形してくれるツールこれは、ソースに自動で空白等を
+\LaTeX のソースを自動で成形してくれるツール。これは、ソースに自動で空白等を
 入れてくれる環境がTeXliveにデフォルトで入っている。
 latexindent はVS Code上で、shift+Alt+Fをするとできる。
 これはitemize環境等に空白を入れて見やすくする機能がある。
+
 \subsection{\LaTeX で書いてみる。}
-次の\LaTeX の文章を入力する。これは、\LuaLaTeX で書くとよい。
+次の\LaTeX の文章を入力する。これは、\LuaLaTeX でコンパイルするとよい。
 
 
 \section{エラーメッセージを読む}
 LaTeX workshop ではエラーがメッセージで表示されるがそれを
 初心者はなかなかうまく使いこなせない。
 そこでエラーの読み方と対応策を考える。
+
 \subsection{Recipe terminated with error}
 おそらくLaTeX Workshop を使ってはじめて見るだろうエラー。
 このエラーは、\LaTeX 側のエラーではない。\LaTeX のエラーは、
 Ctrl+Shift+M のショートカットキーで表示される。
 これは、注意が出ている時にも使うことができる。
+
 \subsection{Recipe terminated with error。 Retry building the project。}
 このエラーというよりかは警告なのだがこれも本質的に意味がない。
+
 \subsection{意味のあるエラーメッセージ}
 意味のあるエラーメッセージは、出力される'問題'のログかまたは、"*.log"
 という\LaTeX のコンパイルの際に使われる中間生成物のファイルである。
@@ -402,6 +408,7 @@ Ctrl+Shift+M のショートカットキーで表示される。
 パッケージファイルの拡張子は “.sty” であり、
 このパッケージを適切な場所に配置しなければならない。
 しかし、".sty"が入っていない場合がある。これに対処するためには次セクション
+
 \subsection{".sty"ファイルが入っていない場合}
 ".ins"ファイルが重要になる。
 このファイル形式は、パッケージ本体と".ins"ファイルが入っている.dtxを
@@ -414,10 +421,11 @@ Ctrl+Shift+M のショートカットキーで表示される。
 \end{verbatim}
 すると、同じフォルダー内に.sty ファイルが生成される。
 この.styファイルの保存場所は、次セクション参照。
+
 \subsection{TeX Directory Structure とは何か？}
-texのパッケージなどは、TDS（TeX Directory Structure）にしたがって各
+\LaTeX のパッケージなどは、TDS（TeX Directory Structure）にしたがって各
 ディレクトリに配置されている。
-今回はtexliveなので、エクスプローラーからwindowsフォルダーの中の
+今回はTeXLiveなので、エクスプローラーからwindowsフォルダーの中の
 texlive フォルダーの中の2022年フォルダーの中のtexmf-distの中のtexの中の
 latexフォルダーの中に各パッケージのフォルダーがあり、
 その中に各スタイルファイルフォルダーが保存されている。といった構成に
@@ -427,14 +435,17 @@ latexフォルダーの中に各パッケージのフォルダーがあり、
   C:\texlive\2022\texmf-dist\tex\latex
 \end{verbatim}
 のように書くと簡便になる。
-そしてこれがWindowsのディレクトの記述の仕方である。
+そしてこれがWindowsのディレクトリの記述の仕方である。
 この中のtexフォルダーにはたくさんのフォルダーがあるが、
 最初に覚えておくべきは2つで、
 \begin{center}
-  \begin{tabular}{lrr} \hline
-    folder名  & 意味                                \\ \hline
-    tex       & TeXの操作に関するフォルダーで、latex フォルダーがある。  \\
-    font      & フォントにかかわるフォルダー。                  \\ \hline
+  \begin{tabular}{ll} 
+    \hline
+    folder名  & 意味                                \\ 
+    \hline
+    tex       & TeXの操作に関するフォルダーで、latex フォルダーがある。\\
+    font      & フォントにかかわるフォルダー。                  \\ 
+    \hline
   \end{tabular}
 \end{center}
 であり、このことから、.styファイルの保存場所は、
@@ -444,6 +455,7 @@ latexフォルダーの中に各パッケージのフォルダーがあり、
 よりも下のファイルに加えれば良いことがわかった。
 フォントファイルについては、以下参照。
 \url{https://texwiki.texjp.org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90}
+
 \subsection{パッケージを使うための一覧表の更新}
 texlive環境では、上のように.styファイルを保存しても動かない。これは、
 ls-Rというファイルが存在していてこれが、TeXが必要なパッケージを探すための
@@ -453,6 +465,7 @@ ls-Rというファイルが存在していてこれが、TeXが必要なパッ�
   mktexlsr
 \end{verbatim}
 と入力することで一覧表を更新することができる。
+
 \subsection{使用するべきpackage}
 packageは最小構成でおこなうべきである。
 なぜなら、\LuaLaTeX はかなり最近のものであり、packageが\LuaLaTeX に
@@ -460,61 +473,68 @@ packageは最小構成でおこなうべきである。
 そのため、参考になるのは参考文献のサイト
 
 \section{\TeX Live の更新について}
+% 執筆中？ 
 
 \part{VS Code 解説篇}
 \section{VS Codeの基本機能}
 デフォルトで使えるVS Codeの基本機能を解説する。
-\subsection{、。を、。にする<置換機能>}
+\subsection{、。を, . にする<置換機能>}
 VS Codeの基本機能として、置換機能がついている。このためマクロを組まずとも
-、を、に変えることができる。
+、を, に変えることができる。
 コマンドは、Ctrl+Hキーを押すと検索と置換が出てきて、Enter キーを押すと
 ひとつづつ置換、Crl+Alt+Enter キーを押すとすべてが置換される。
 また置換を閉じるのはEsc キーである。
+
 \subsection{コメント機能}
 \LaTeX のコメントは％である。しかしこれをいちいち書くのは面倒くさい。
 さらにプログラム言語によりコメント機能はまったく違う。この時に、Ctrl+/ を
 使うことで、どんなプログラム言語にも対応したコメント機能が
 すぐにつけられる
+
 \subsection{各種コマンド}
 \begin{center}
-  \begin{tabular}{lrr} \hline
-  コマンド            & 機能                  \\ \hline
-  Ctrl+Alt+B          & ビルドを実行する。           \\
-  Ctrl+Alt+V          & pdfviewer を起動する。    \\
-  Ctrl+click          & SyncTeXの利用（pdf側）    \\
-Ctrl+Alt+J            & SyncTeXの利用（コード側）    \\
-  Ctrl+Hキー          & 置換パレットの表示           \\
-    Crl+Alt+Enter     & 置換の全置換              \\
-    Ctrl+/            & 行のコメントアウト機能（全コード共通） \\
-    Ctrl+@            & VS Codeのターミナルの起動     \\
-    Shift+Alt+F       & latexindentを実行する。\\
-    Ctrl+Space        & コード補完を再表示\\
-    Ctrl+Shift+'+ or -' & ズームの程度を調整する。        \\ \hline
+  \begin{tabular}{ll} 
+    \hline
+    コマンド            & 機能                      \\ 
+    \hline
+    Ctrl+Alt+B          & ビルドを実行する。        \\
+    Ctrl+Alt+V          & pdfviewer を起動する。    \\
+    Ctrl+click          & SyncTeXの利用（pdf側）    \\
+    Ctrl+Alt+J          & SyncTeXの利用（コード側） \\
+    Ctrl+Hキー          & 置換パレットの表示        \\
+    Crl+Alt+Enter       & 置換の全置換              \\
+    Ctrl+/              & 行のコメントアウト機能（全言語共通） \\
+    Ctrl+@              & VS Codeのターミナルの起動 \\
+    Shift+Alt+F         & latexindentを実行する。   \\
+    Ctrl+Space          & コード補完を再表示        \\
+    Ctrl+Shift+'+ or -' & ズームの程度を調整する。  \\ 
+    \hline
   \end{tabular}
 \end{center}
 ただし、ビルドコマンドはビルドをするのは、Build LaTeX project の最初に
 設定されているコマンドがデフォルトで設定されている。
 
-
 \section{VS Codeの設定について}
 \subsection{VS Code の設定について}
 VS Codeの設定は、setting.jsonというすべてに適応される設定と、workspace設定という、workspaceと呼ばれるファイルを何個か入れた空間について設定ができる。さらにファイルごとにも設定ができる。この優先順位は、setting.json 、work space 設定、ファイル設定の順に高い。これの設定のおかげで、さまざまな設定がおこなえるようになる。ワークスペースが1つのアプリケーションのように使うことができる。
+
 \subsection{wordwrap}
 wordwrapとは、このエディターの中で入力している中でpdfview等にしているときに文章が見えている間で改行を自動で行ってくれる設定である。この設定は最初、自動改行しない設定になっている。この時には、書いている行が右にシフトしてしまい、マウス又は、エンドキー等で次の行にしなければならない。また見るときも水平スクロールをしなければならない。しかしこの機能を有効にすることで、自動で改行し、文章の視認性が高くなる。
 したがってこの設定は、プログラミング以外ではonにしておいた方がいいだろう。
+% プログラミングするときも、onにしておくことをおすすめしたい。
+
 \subsection{SyncTexを使う}
 \subsubsection*{SyncTex とは何か？}
 TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと。
 これを使えば、pdf上の表示がどのソースに関係しているかということが
 すぐにわかる。
+
 \subsubsection*{SyncTeXの設定}
-SyncTeXとは、ビルドするときに形成されるファイル
-によって動かすことができる。つまりファイルが必要になる。
-そのファイルの名前は、'.synctex.gz'である。
-しかし、今のsetting.jsonでは、
-このファイルは消去される設定になっている。
-ゆえに、このファイルを消去しないようにしなければならない。
-したがって、setting.jsonから
+SyncTeXは、ビルドするときに形成されるファイル
+\verb'*.synctex.gz'を使って動作する。
+今の設定では、このファイルは消去されるようになっているため、
+SyncTeXを使いたい場合にはこの設定を無効化する必要がある。
+具体的には、setting.jsonの
 \begin{verbatim}
   "latex-workshop.latex.clean.fileTypes":
 \end{verbatim}
@@ -524,11 +544,12 @@ SyncTeXとは、ビルドするときに形成されるファイル
 \end{verbatim}
 の記述を消去すればよい。これにより、VS Codeのpdfvierにおいて、
 SyncTeXが利用できるようになる。
+
 \subsubsection*{SyncTeXの具体的な利用の仕方}
 pdfviewer上でCtrl キーを押しながらマウスでコードをみたい場所におき、
 左クリックすることでそのコードの位置に飛ぶことができる。
 逆にコードからpdfに飛びたいときは、選択範囲をマウスで示して、または
-カーソルを示して、 Ctrl+Alt+J で飛ぶことができる。
+カーソルをおいて、 Ctrl+Alt+J で飛ぶことができる。
 （コマンドパレットからSyncTeXと入れてコマンドを実行させてもよい。）
 
 \subsection{スニペット導入}
@@ -536,18 +557,19 @@ pdfviewer上でCtrl キーを押しながらマウスでコードをみたい場
 スニペットとは、コードの中で何回も使うだろうコードを少しの記述
 でそれを呼び出す一連の動作のことをいう。スニペットの語源は、
 短い単語のことである。
+
 \subsubsection*{スニペットの導入}
 まずスニペットを導入する。左下の歯車から「ユーザースニペットの構成」を
 選択する。検索窓が出てくるので、latexと入力して latex.json を開く。
 latex.json にも、\verb|{}|があるので、その中に次のコードをコピーする。
 スニペットの導入は、setting.jsonとは異なるため環境を破壊することはない。
-
-
+% 参照すべきコードが示されていません
 
 と書く。たとえば、report とlatexで打つと、
 reportのひな形が出てくるようになる。
 このように、スニペットはプリアンブル部等
 を簡単に早く書くことができるようになる。
+
 \subsection{スニペットの書き方}
 スニペットの自作フォーマットは次のように書く。
 スニペットもsetting.jsonと同じように、','で各設定を区切る。
@@ -571,6 +593,7 @@ reportのひな形が出てくるようになる。
 次にどこにいけば良いかを入力するための引数である。
 たとえば、次の例では、プログラミングを載せるための環境をスニペットにより
 定義している。
+% 例が前と同じなので、別の例を書き忘れていませんか
 \begin{verbatim}[caption=latex.json]
 	{
   "[ スニペットの名前 ]": {
@@ -599,7 +622,7 @@ reportのひな形が出てくるようになる。
 \section{LaTeX workshop の設定}
 \subsection{シンタックスハイライト}
 シンタックスハイライトとは、\LaTeX の文章などを編集するためのコマンドに色を
-つけることでその対応やコードの視認性を高める効果がある。
+つけることでその対応やコードの可読性を高める効果がある。
 しかしながら、LaTeX workshopはそれに対応しているのだが
 VS CodeのカラーテーマをVisual Studio Dark または Visual Studio Light
 にしているとうまく機能してくれない。したがってダークテーマで
@@ -615,18 +638,19 @@ VS Codeの拡張機能は、できるだけ入れないことが基本。VS Code
 \item cloud LaTeX 連携
 \item Ultra Math Preview
 \item CaTeX
-\item 
 \end{itemize}
 
 \subsection{cloud LaTeX との連携}
 cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しなくとも
 \LaTeX を使うことができる。cloud  LaTeX は cloud LaTeX と同一のサーバー内とローカルのこのVS Codeと連携することが可能であり、それにより、ローカルとサーバーで同期ができるために非常に便利なものとなっている。
+
 \subsubsection*{利点}
 \begin{itemize}
   \item データがサーバ上で保存するためにデータが消える心配はない。
   \item コンパイルがサーバ上でおこなわれるために自分のパソコンに負荷がかからないそのために自分のパソコンではできないautobluid が可能。
   \item cloud LaTeXのシステムやインストールされたパッケージを簡単に使うことができる。
 \end{itemize}
+
 \subsubsection*{欠点}
 \begin{itemize}
   \item VS Code からサーバーを立ち上げることができないために、最初にcloud LaTeX の方に入る必要がある。
@@ -634,10 +658,13 @@ cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しな�
   \item ローカル上ではコンパイルできないためにオフライン状態でコンパイルできない。
 \end{itemize}
 等が挙げられる。
-\subsubsection{導入の設定}
+
+\subsubsection{cloud LaTeX との連携をするための設定}
 導入の設定は、md形式のファイルに添付されているものをsetting.jsonに入れればよい。cloud LaTeX 参照
+
 \subsection{Ultra Math Previewの設定}
 Ultra Math Preview はmarkdown とtex の数式をLaTeX Workshop の数式Previewよりもより早くプレビューを導入してくれる。さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。標準は対応していないパッケージをPreview することができる。
+
 \subsection{CaTeX を導入する。}
 CaTeX（軽鳥/怪鳥）とは、Hiromi ISHII が作った、LaTeX workshop とともに使うことを
 想定した、VS Code上での拡張機能である。
@@ -647,17 +674,16 @@ CaTeXを追加するとCtrl+C のコマンドが使えなくなるというこ�
 これは、CaTeX が勝手にショートカットキーを作るためにコピーがうまく使えなくなる。
 これを解決するためには、keyショートカットキーを変更しなければならない。
 その方法の説明はほかの章に譲る。
+
 \subsection{テキスト校閲くん}
 テキスト校閲くんは、texファイルやmdファイル等の日本語文章を校閲することができる。これはインストールするだけでできる。
 
 \section{キーボードショートカットの変更方法}
 
 \section{Git 連携}
-VS Code にはGit というバージョン管理システムがあり、
-これを用いることで巨大な文書制作でのバージョン管理が効率化するという
-利点がある。
-そしてGit はVS Code上で開くことができる。
-これはローカル環境にバージョン管理のためのレポジトリを生成できる。
+VS Code はGitというバージョン管理システムと容易に連携させることができるようになっており、巨大な文書制作でのバージョン管理が行える。
+そしてGit はVS Code上のボタン操作で直感的に操作することができる。
+これはローカル環境にバージョン管理のためのリポジトリを生成できる。
 これによりバージョン管理が非常に簡単になりさらにどこを変更したのかということが
 非常に簡単にわかる。
 したがって今までCtrl+z で前の状態に戻っていたと思うが、
@@ -667,19 +693,21 @@ VS Code にはGit というバージョン管理システムがあり、
 として共同作業をオンラインですることができたり、また全世界に公開して
 共同作業ができたりする。
 このように複数人でおこなう文書やプログラミング制作で大いに役立つ機能である。
+
 \subsection{Git の導入}
 git はVS Codeの3つ目のタブにある丸が3つつながっているようなタブを
 クリックするとGitの導入を促すようなものがあるのでそれをクリックして
 Git のソフトウェアをGit のホームページからダウンロードする。
+
 \subsection{GitHub の導入}
-GitHub はgitと連携してネット上にレポジトリを生成することできる。
+GitHub はgitと連携してネット上にリポジトリを生成することできる。
 GitHub は次のサイトから自分のメールアドレスを登録するだけで無制限に使うことができる。
+\footnote{ついでに言うと学生であればProプランが無料である。ぜひ有効活用しよう。}
 \url{https://github.com}
 
 \part{markdownk解説篇}
 \section{markdownとは何か？}
 この資料の付録は、markdown記法により書いている。markdownとは、TeXと同様のマークアップ言語である。この言語はhtml記法と同じような性質を持つが記法をマスターするために必要な覚えるべきコマンドが非常に少ない。
-、
 
 \begin{itemize}
   \item 手軽に文章構造を明示できること
@@ -689,32 +717,34 @@ GitHub は次のサイトから自分のメールアドレスを登録するだ�
 \end{itemize}
 
 などがある.Markdownはジョン・グルーバー（John Gruber）によって2004年に開発され、最初は \url{http://daringfireball.net/projects/markdown/} で公開された。その後、多くの開発者の手を経ながら発展した。
+
 \section{markdownとtexファイルの変換}
 
 \appendix
 \section{ショートカットキー一覧}
 \begin{center}
-  \begin{tabular}{lrr} \hline
-    コマンド            & 機能                  \\ \hline
-    Alt+Z               & wordwrapの変更        \\
+  \begin{tabular}{ll} \hline
+    コマンド            & 機能                     \\ 
+    \hline
+    Alt+Z               & wordwrapの変更           \\
     Ctrl+Alt+B          & ビルドを実行する。       \\
-    Ctrl+Alt+V          & pdfviewer を起動する。    \\
-    Ctrl+click          & SyncTeXの利用（pdf側）    \\
-    Ctrl+Alt+J          & SyncTeXの利用（コード側）    \\
-    Ctrl+Hキー          & 置換パレットの表示           \\
-    Crl+Alt+Enter       & 置換の全置換              \\
-    Ctrl+/              & 行のコメントアウト機能（全コード共通） \\
-    Ctrl+@              & VS Codeのターミナルの起動     \\
-    Shift+Alt+F         & latexindentを実行する。\\
-    Ctrl+Space          & コード補完を再表示\\
-    Ctrl+Shift+M        & \LaTeX のエラーメッセージを表示する\\
+    Ctrl+Alt+V          & pdfviewer を起動する。   \\
+    Ctrl+click          & SyncTeXの利用（pdf側）   \\
+    Ctrl+Alt+J          & SyncTeXの利用（コード側）\\
+    Ctrl+Hキー          & 置換パレットの表示       \\
+    Crl+Alt+Enter       & 置換の全置換             \\
+    Ctrl+/              & 行のコメントアウト機能（全言語共通）  \\
+    Ctrl+@              & VS Codeのターミナルの起動\\
+    Shift+Alt+F         & latexindentを実行する。  \\
+    Ctrl+Space          & コード補完を再表示       \\
+    Ctrl+Shift+M        & \LaTeX のエラーメッセージを表示する   \\
     Ctrl+shift+M        & 数式環境で数式のプレビューを表示する。\\ 
-    Ctrl+B              & サイドバーの表示の設定\\
-    Ctrl+Shift+'+ or -' & ズームの程度を調整する。        \\
-    Ctrl+K F            & ワークスペースを閉じる。\\ \hline
+    Ctrl+B              & サイドバーの表示の設定   \\
+    Ctrl+Shift+'+ or -' & ズームの程度を調整する。 \\
+    Ctrl+K F            & ワークスペースを閉じる。 \\ 
+    \hline
   \end{tabular}
 \end{center}
-
 
 次の参考文献は、
 この資料を書き上げるために用いた資料一覧である。
