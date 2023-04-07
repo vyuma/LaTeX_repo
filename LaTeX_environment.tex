@@ -67,10 +67,10 @@ OSに関する知識、LaTeX workshopに関するさらには、.jsonファイ�
 \subsubsection{設定用コード等について}
 設定用コードは、コピー＆ペーストの利便性も考えてVS Code で使えるmarkdown形式のファイルにした。これはこの資料とともに使われることを想定したものである。
 
-% \subsection{追記事項}
-% 基本編集方針にしたがってセクションの大幅改定をおこない、VS Codeの機能と
-% \LaTeX の機能、LaTeX workshop の基本機能の設定方法等についてを系統的に
-% 配置した。さらに拡張機能についてをより詳しくした。
+\subsection{追記事項}
+基本編集方針にしたがってセクションの大幅改定をおこない、VS Codeの機能と
+\LaTeX の機能、LaTeX workshop の基本機能の設定方法等についてを系統的に
+配置した。さらに拡張機能についてをより詳しくした。
 
 \subsection{この資料の読み方}
 この資料は、細かな説明などは意図せずに省かれている可能性があるため、製作者のもとでこの資料を使う形式を想定している。したがってそれ以外の場合での利用は自分で参考文献等を読まれることを強くオススメする。資料制作者の立ち合いのもとでの教授のあと使用するという形式でも十分使える資料になっている。
@@ -305,7 +305,7 @@ Japanese Language Pack for Visual Studio Code
 環境構築の手順を順を追って紹介する。
 この手法であれば今の環境下では大丈夫
 
-\subsection{エクスプローラーの設定}
+\subsection{エクスプローラーの構築}
 % 拡張子を見えるようにする設定は済み？
 隠しファイルが見えるようにする。
 \begin{description}
@@ -320,7 +320,7 @@ Japanese Language Pack for Visual Studio Code
 \end{description}
 これにより、今まで見えなかったファイルが見えるようになる。
 
-\subsection{latexmkの導入} % （fold）
+\subsection{.latexmkrcの構築} % （fold）
 \label{sub:.latexmkの構築}
 % subsection .latexmkの構築 （end）.latexmkの構築
 
@@ -341,7 +341,7 @@ markdownファイルに記載された設定をコピーして貼り付け、保
 % --> のことを指し、両者は異なります。
 
 この作業が終わったら、次はVS Codeを起動する。
-\subsection{VS Codeの設定}
+\subsection{setting.jsonの設定}
 VS Codeの設定は、setting.json
 \footnote{.jsonはジェイソンと読む}
 というファイルに記載されている。
@@ -419,7 +419,7 @@ LaTeX workshop ではエラーがメッセージで表示されるがそれを
 Ctrl+Shift+M のショートカットキーで表示される。
 これは、注意が出ている時にも使うことができる。
 
-\subsection{Recipe terminated with error。 Retry building the project。}
+\subsection{Recipe terminated with error. Retry building the project.}
 このエラーというよりかは警告なのだがこれも本質的に意味がない。
 
 \subsection{意味のあるエラーメッセージ}
@@ -691,7 +691,7 @@ cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しな�
 \subsection{Ultra Math Previewの設定}
 Ultra Math Preview はmarkdown とtex の数式をLaTeX Workshop の数式Previewよりもより早くプレビューを導入してくれる。さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。標準は対応していないパッケージをPreview することができる。
 
-\subsection{CaTeX を導入する。}
+\subsection{CaTeX を導入する}
 CaTeX（軽鳥/怪鳥）とは、Hiromi ISHII が作った、LaTeX workshop とともに使うことを
 想定した、VS Code上での拡張機能である。
 イメージ補完などが使える。
