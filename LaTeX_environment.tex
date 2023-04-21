@@ -31,7 +31,7 @@
 
 この文章は、\LaTeX をVisual Stadio Code (以下VS Code)での環境構築のために自分が
 したことのすべてを書いている。技術的解説もできるだけするように努めた。
-実は\LaTeX の環境構築方法を完全に技術敵側面にも触れてしっかりVS Code上
+実は\LaTeX の環境構築方法を完全に技術的側面にも触れてしっかりVS Code上
 に入れるための方法を体系的にまとめた資料はネットには
 存在しない可能性がある。もちろん分かりやすくまとめたサイトはたくさんあるが
 玉石混交である。そのために、VS Code 設定と、\LaTeX 設定の両面のアプローチ
@@ -133,7 +133,7 @@ cloud LaTeX は、オンライン上で\LaTeX を扱うことができる。
 できる。
 cloud LaTeX はVS Code と同等の機能があるので最初に使うにはとてもいい教材である。データはすべてcloud LaTeXのサーバ上に保存されるのでデータが消える心配はほとんどない。また、共同作業も可能である。
 しかし、共同作業をより効率的に行いたい場合は、Overleaf のほうが優れている可能性もある。
-OverleafはGitと連携することができるために論文執筆の際に有効となる。
+OverleafはGitHubと連携することができるために論文執筆の際に有効となる。
 どちらがいいかは個人によるが、すぐに始めるならばcloud LaTeX をオススメする。
 
 \part{環境構築}
@@ -255,11 +255,31 @@ OverleafはGitと連携することができるために論文執筆の際に有
   \item [プリアンブル] ~\\
     \verb|\documentclass|から\verb|\begin{document}|までの中にある設定のこと。
 \end{description}
+\section{エクスプローラーの設定}
+拡張子と隠しファイルを表示するように設定する。
+\begin{enumerate}
+  \item エクスプローラーを起動する。
+  \item 拡張子を表示したいフォルダを開き、メニューの「表示」タブをクリックする。
+  \item さらに[表示]を選択し、「ファイル名拡張子」「隠しファイル」にチェックを入れる。
+\end{enumerate}
+ファイル名の後ろに.txt等のファイルの種類を示す文字列が表示されるようになり、今まで見えなかったファイルが見えるようになる。
 
-\section{\LaTeX VS Code インストール}
+% \begin{description}
+%   \item[windows 10] ~\\ 
+%     エクスプローラーを開いて上にある表示タブ
+%     を開いて表示タブにする。表示タブから隠しファイルを開いて、
+%     チェックマークをつける。
+%   \item[windows 11] ~\\
+%     エクスプローラーの上部にある三点リーダーのアイコン(…)をクリックする。
+%     オプションを選択してフォルダーオプションを開く。
+%     タブから表示を選択して、「隠しファイルと隠しフォルダー、および隠しドライブを表示する」を選択する。OKを押す。
+% \end{description}
+% win10での動作確認ができないためwin11の説明としました。
+\section{TeX Live導入}
 
-\subsection{\LaTeX インストール}
-\LaTeX は、次のページからダウンロードすると良い。
+\subsection{TeX Live インストール}
+TeX Live は、次のページからダウンロードすると良い。
+% 最小構成インストールのやり方
 \footnote{
   \LaTeX はたくさんのソフトウェアからなるシステムであるため、
   配布用に必要なソフトウェア群をパッケージしたディストリビューションの形でインストールする。
@@ -280,46 +300,25 @@ OverleafはGitと連携することができるために論文執筆の際に有
   version up ごとに円周率$\pi$へ近づいて行く。
 }
 
-\subsection{Visual Stadio Code インストール}
+\section{Visual Stadio Code の導入}
+\subsection{Visual Stadio Code のインストール}
 Visual Studio Code は次のページからダウンロードするとよい。\\
 \url{https://code.visualstudio.com/download}\\
 をクリックしてそのあとの画面の中から今回の場合は、
-Windows を選択してダウンロードする。
+自分の環境に合わせて (Windows か Mac の) ファイルをダウンロードする。
 ファイルを開き、追加タスクの変更は触らないようにしてNextを押し続ければ
-installできる。
-VS Codeをアイコンから開いて、積み木のようなアイコンExtentions（拡張機能）
+インストールできる。
+\subsection{VS codeの日本語化}
+VS Codeをショートカットから開いて、積み木のようなアイコンExtentions（拡張機能）
 をクリック。検索窓にJapaneseと打って、
 Japanese Language Pack for Visual Studio Code
 を選択してインストールする。これで日本語化が完了する。
-これにより、VS Code側の基本設定は終了。
 
-\section{環境構築実践}
-環境構築の手順を順を追って紹介する。
-この手法であれば今の環境下では大丈夫
-
-\subsection{エクスプローラーの構築}
-% 拡張子を見えるようにする設定は済み？
-隠しファイルが見えるようにする。
-\begin{description}
-  \item[windows 10] ~\\ 
-    エクスプローラーを開いて上にある表示タブ
-    を開いて表示タブにする。表示タブから隠しファイルを開いて、
-    チェックマークをつける。
-  \item[windws 11] ~\\
-    エクスプローラーの上部にある三点リーダーのアイコン(…)をクリックする。
-    オプションを選択してフォルダーオプションを開く。
-    タブから表示を選択して、「隠しファイルと隠しフォルダー、および隠しドライブを表示する」を選択する。OKを押す。
-\end{description}
-これにより、今まで見えなかったファイルが見えるようになる。
-
-\subsection{.latexmkrcの構築} % （fold）
-\label{sub:.latexmkの構築}
-% subsection .latexmkの構築 （end）.latexmkの構築
-
-\subsubsection*{latexmkとは}
+\section{latexmkの導入} 
+\subsection{latexmkとは}
 \LaTeX 文書を手動でコンパイルしようとすると複数種類のコマンドを適切な順番で複数回実行しなければならない。latexmkとは、各種\LaTeX のビルドコマンドを自動で一括で実行してくれるツールである。
 
-\subsubsection*{latexmkの設定}
+\subsection{latexmkの設定}
 ホームディレクトリ
 \footnote{
   PC>ローカルディスク>ユーザー>ユーザー名、と辿れるディレクトリのこと
@@ -327,13 +326,13 @@ Japanese Language Pack for Visual Studio Code
 直下に\verb|.latexmkrc|というテキストファイルを作成し、テキストエディタで開く。
 markdownファイルに記載された設定をコピーして貼り付け、保存する。
 
+% jlistingsで設定ファイルを貼り付け
 % つまりルートフォルダーにこのファイルを保存するということ。
 % // ホームディレクトリは C:/Users/ユーザー名/
 % // ルートディレクトリは C:/
 % // のことを指し、両者は異なります。
 
-この作業が終わったら、次はVS Codeを起動する。
-\subsection{setting.jsonの設定}
+\section{LaTeX workshopの設定}
 VS Codeの設定は、setting.json
 \footnote{.jsonはジェイソンと読む}
 というファイルに記載されている。
@@ -346,14 +345,17 @@ setting.json を開く方法はいくつかある。
     キーボードのショートカットキーを用いて、ctrl+shift+P と入力することで、
     コマンドパレットを出現させてそこにPreferences:Open User Setting
     と打ち込む。
+  \item[3つ目]~\\
+    Ctrl+ , で設定画面を開く。さらに右上端にあるファイルに矢印がついたアイコンをクリックする。
 \end{description}
-% の2つの方法があり熟練したら2番目の方法の方が効率良い。
+の2つの方法があり熟練したら2番目の方法の方が効率が良い。
 % // そう頻繁に編集するものではないので、1つ目の方法でいいと思います。
 
 % .json はJavaScript に対応している。
 % // JavaScript に触れる必要はないのでは？
 setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載された設定をコピーして書き加え、保存する。
-もし開いた時点で何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
+% jlistingsで設定ファイルを貼り付け
+もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
 
 \subsection{\pLaTeX のコンパイルについて}
 \pLaTeX のコンパイルについて
@@ -361,12 +363,13 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 \pLaTeX  のところの
 recipe tools の変更をおこなう。
 setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換える。
+
 と書き換えれば良い。
 % どこを指しているか分かりませんでした...
 
-\subsection{setting.json の各種機能}
+\subsection{自動ビルド機能の設定}
 \begin{verbatim}
-  "latex-workshop.latex.autoBuild.run": "never"、
+  "latex-workshop.latex.autoBuild.run": "never",
 \end{verbatim}
 は、自動ビルド機能である。しかし、自動ビルドは、
 このファイルのように大きすぎると非常に重くなってしまう。
@@ -374,6 +377,7 @@ setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換
 高度なレイアウトの最適化を可能にしている。
 % 書く必要量をへらしているために
 これはneverにしておくことをオススメする。
+% 自動保存機能とともに紹介すると納得しやすいかもしれない。
 
 \part{\LaTeX 解説}
 \section{\LaTeX の基本機能の設定}
