@@ -2,7 +2,7 @@
 
 
 ## [1] .latexmk 設定用ファイル
-```java script
+```perl
 # 通常の LaTeX ドキュメントのビルドコマンド
 $latex = 'uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %S';
 # pdfLaTeX のビルドコマンド
@@ -32,7 +32,11 @@ $ps2pdf = 'ps2pdf.exe %O %S %D';
 $pdf_mode = 4;
 
 # PDF viewer の設定
-$pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存のソフトウェアで表示する。
+if ($^O eq 'MSWin32') {
+  $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存のソフトウェアで表示する。
+} else {
+  $pdf_previewer = "open %S";
+}
 
 ## Windows では SyncTeX(PDF をビューアーで開いたまま中身の更新が可能で更新がビューアーで反映される機能) が利用できる SumatraPDF 等が便利。
 ## ぜひ SyncTeX 機能のあるビューアーをインストールしよう。
@@ -584,13 +588,14 @@ $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存�
 \author{Meidai}
 \maketitle
 \section{はじめての\LaTeX Lua\LaTeX }
-%\section{はじめての\LaTeXLua\TeX}
+%\section{はじめての\LaTeX Lua\TeX}
 
 
 \subsection{小見出し！}
-名大入学おめでとう！\\
+Hello world!
 今日は\LaTeX を覚えていってください。
 \LaTeX + VSCode は最強の組み合わせ。
+
 \end{document}
 ```
 ## cloud latex 用設定
