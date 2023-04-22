@@ -588,13 +588,14 @@ if ($^O eq 'MSWin32') {
 \author{Meidai}
 \maketitle
 \section{はじめての\LaTeX Lua\LaTeX }
-%\section{はじめての\LaTeXLua\TeX}
+%\section{はじめての\LaTeX Lua\TeX}
 
 
 \subsection{小見出し！}
-名大入学おめでとう！\\
+Hello world!
 今日は\LaTeX を覚えていってください。
 \LaTeX + VSCode は最強の組み合わせ。
+
 \end{document}
 ```
 ## cloud latex 用設定

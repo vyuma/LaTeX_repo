@@ -20,13 +20,25 @@
 - ctrl shift L マルチカーソル
 
 # 用語の使い分け
-- 導入
-  - インストール
+- 導入:section
+  - インストール:subsection
+    - より詳細な項目はsubsubsectionに
   - 設定
+  - 設定の説明
+  - ...
 - 構築 実践
   - 使わないように
 # 用語解説
 - ディストリビューション
 
 # ソースコードの貼り付け
-- jlistingを使う
+- jlistingか
+- jvlistingを使う
+- ゆうまさん環境で実行できる方
+
+# WIP
+- latexworkshopの設定
+  - autoSaveも含めた解説
+- latexindent
+
+# エラーメッセージの読み方を追記
