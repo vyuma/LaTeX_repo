@@ -42,3 +42,10 @@
 - latexindent
 
 # エラーメッセージの読み方を追記
+
+
+# ToDo
+- 索引の追加
+- 禅モードの追加
+- LaTeX Work shop の解説
+    - Word count についての解説
