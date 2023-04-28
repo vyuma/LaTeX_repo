@@ -2,6 +2,30 @@
 % ltjsarticle: lualatex 用の 日本語 documentclass
 % 他のタイプセットエンジンを使ってビルドする場合は、
 %  \documentclass[dvipdfmx]{jsarticle} などとする。
+\usepackage{xcolor}
+\usepackage{listings,jvlisting} %日本語のコメントアウトをする場合jvlisting（もしくはjlisting）が必要
+%ここからソースコードの表示に関する設定
+\lstset{
+	stringstyle={\ttfamily},
+	commentstyle={\ttfamily},
+	basicstyle={\ttfamily},
+	columns=fixed,
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+	numbers=left,%行数を表示したければonにする
+	numberstyle={\scriptsize},
+  xrightmargin=0em,
+  xleftmargin=3em,
+  stepnumber=1,
+  numbersep=1em,
+	tabsize=2,
+  lineskip=-0.5ex,
+  backgroundcolor=\color{white}
+}
+\renewcommand{\lstlistingname}{ソースコード}
+%ここまでソースコードの表示に関する設定
+
 
 \usepackage{url}
 \usepackage{bxtexlogo} % platex, lualatexのロゴを使うために必要
@@ -53,7 +77,7 @@
 読むとよい。
 
 \subsubsection{設定用コード等について}
-設定用コードは、コピー＆ペーストの利便性も考えてVS Code で使えるmarkdown形式のファイルにした。これはこの資料とともに使われることを想定したものである。
+設定ファイルの内容等、必要なソースコードはこの資料中に記載するとともに、コピー＆ペーストの利便性も考えてmarkdownファイルでも提供する。
 
 
 \subsection{この資料の読み方}
@@ -324,7 +348,54 @@ Japanese Language Pack for Visual Studio Code
   PC>ローカルディスク>ユーザー>ユーザー名、と辿れるディレクトリのこと
 }
 直下に\verb|.latexmkrc|というテキストファイルを作成し、テキストエディタで開く。
-markdownファイルに記載された設定をコピーして貼り付け、保存する。
+markdownファイルに記載されたlatexmkの設定をコピーして貼り付け、保存する。
+同じ内容をソースコード\ref{code:latexmk}に示す。
+
+\begin{lstlisting}[caption=latexmkの設定,label=code:latexmk]
+  # 通常の LaTeX ドキュメントのビルドコマンド
+  $latex = 'uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %S';
+  # pdfLaTeX のビルドコマンド
+  $pdflatex = 'pdflatex %O -synctex=1 -interaction=nonstopmode %S';
+  # LuaLaTeX のビルドコマンド
+  $lualatex = 'lualatex %O -synctex=1 -interaction=nonstopmode %S';
+  # XeLaTeX のビルドコマンド
+  $xelatex = 'xelatex %O -no-pdf -synctex=1 -shell-escape -interaction=nonstopmode %S';
+  # Biber, BibTeX のビルドコマンド
+  $biber = 'biber %O --bblencoding=utf8 -u -U --output_safechars %B';
+  $bibtex = 'pbibtex %O %B';
+  # makeindex のビルドコマンド
+  $makeindex = 'upmendex %O -o %D %S';
+  # dvipdf のビルドコマンド
+  $dvipdf = 'dvipdfmx %O -o %D %S';
+  # dvipd のビルドコマンド
+  $dvips = 'dvips %O -z -f %S | convbkmk -u > %D';
+  $ps2pdf = 'ps2pdf.exe %O %S %D';
+  
+  # PDF の作成方法を指定するオプション
+  ## $pdf_mode = 0; PDF を作成しない。
+  ## $pdf_mode = 1; $pdflatex を利用して PDF を作成。
+  ## $pdf_mode = 2; $ps2pdf を利用して .ps ファイルから PDF を作成。
+  ## pdf_mode = 3; $dvipdf を利用して .dvi ファイルから PDF を作成。
+  ## $pdf_mode = 4; $lualatex を利用して .dvi ファイルから PDF を作成。
+  ## $pdf_mode = 5; xdvipdfmx を利用して .xdv ファイルから PDF を作成。
+  $pdf_mode = 4;
+  
+  # PDF viewer の設定
+  if ($^O eq 'MSWin32') {
+    $pdf_previewer = "start %S";  # "start %S": .pdf に関連付けられた既存のソフトウェアで表示する。
+  } else {
+    $pdf_previewer = "open %S";
+  }
+  
+  ## Windows では SyncTeX(PDF をビューアーで開いたまま中身の更新が可能で更新がビューアーで反映される機能) が利用できる SumatraPDF 等が便利。
+  ## ぜひ SyncTeX 機能のあるビューアーをインストールしよう。
+  ## SumatraPDF: https://www.sumatrapdfreader.org/free-pdf-reader.html
+  ## $pdf_previewer = 'SumatraPDF -reuse-instance';
+  \end{lstlisting}
+
+
+
+
 
 % jlistingsで設定ファイルを貼り付け
 % つまりルートフォルダーにこのファイルを保存するということ。
@@ -355,12 +426,215 @@ setting.json を開く方法はいくつかある。
 
 % .json はJavaScript に対応している。
 % // JavaScript に触れる必要はないのでは？
-setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載された設定をコピーして書き加え、保存する。
+setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
+同じ内容をソースコード\ref{code:latexworkshop}に示す。
 % jlistingsで設定ファイルを貼り付け
 % なお、platexの設定についてはすでに書き換えられたものを提示する
-
 もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
-\subsection*{LaTeX workshopの設定の説明}
+\begin{lstlisting}[caption={LaTeX workshopの設定},label=code:latexworkshop]
+  {
+  //  LaTeXの設定
+  "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
+
+  // 設定: LaTeX Workshop
+
+  // LaTeX Workshop ではビルド設定を「Tool」と「Recipe」という2つで考える
+  //   Tool: 実行される1つのコマンド。コマンド (command) と引数 (args) で構成される
+  //   Recipe: Tool の組み合わわせを定義する。Tool の組み合わせ (tools) で構成される。
+  //   tools の中で利用される Tool は "latex-workshop.latex.tools" で定義されている必要がある。
+  
+  // latex-workshop.latex.tools: Tool の定義
+  "latex-workshop.latex.tools": [
+    // latexmk を利用した lualatex によるビルドコマンド
+    {
+      "name": "Latexmk (LuaLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f", "-gg", "-lualatex", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"
+      ]
+    },
+    // latexmk を利用した xelatex によるビルドコマンド
+    {
+      "name": "Latexmk (XeLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f", "-gg", "-xelatex", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"
+      ]
+    },
+    // latexmk を利用した uplatex によるビルドコマンド
+    {
+      "name": "Latexmk (upLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f", "-gg", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"
+      ]
+    },
+    // latexmk を利用した platex によるビルドコマンド
+    // 古い LaTeX のテンプレートを使いまわしている (ドキュメントクラスが jreport や jsreport ) 場合のため
+    {
+      "name": "Latexmk (pLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-f", "-gg", "-pv", "-latex='platex'", "-latexoption='-kanji=utf8 -no-guess-input-env'", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"
+      ]
+    },
+
+    {
+      "name": "pLaTeX",
+      "command": "platex",
+      "args": [
+        "%DOC%","-file-line-error","-interaction=nonstopmode","-halt-on-error"
+      ],
+      "env": {}
+    },
+    {
+      "name": "dvipdfmx",
+      "command": "dvipdfmx",
+      "args": [
+        "-V 4",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "Biber",
+      "command": "biber",
+      "args": [
+        "%DOCFILE%"
+      ]
+    },
+],
+
+  // latex-workshop.latex.recipes: Recipe の定義
+"latex-workshop.latex.recipes": [
+      // LuaLaTeX で書かれた文書のビルドレシピ
+      {
+        "name": "LuaLaTeX",
+        "tools": [
+          "Latexmk (LuaLaTeX)"
+        ]
+      },
+      // XeLaTeX で書かれた文書のビルドレシピ
+      {
+        
+        "name": "XeLaTeX",
+        "tools": [
+          "Latexmk (XeLaTeX)"
+        ]
+      },
+      // LaTeX(upLaTeX) で書かれた文書のビルドレシピ
+      {
+        "name": "upLaTeX",
+        "tools": [
+          "Latexmk (upLaTeX)"
+        ]
+      },
+      // LaTeX(pLaTeX) で書かれた文書のビルドレシピ
+      {
+        "name": "pLaTeX + dvipdfmx",
+        "tools": [
+          "pLaTeX", // 相互参照のために2回コンパイルする
+          "pLaTeX",
+          "dvipdfmx"
+        ]
+      },
+      {
+        "name": "pLaTeX + Biber + dvipdfmx",
+        "tools": [
+          "pLaTeX",
+          "Biber",
+          "pLaTeX",
+          "pLaTeX",
+          "dvipdfmx"
+        ]
+      },
+  ],
+
+  // latex-workshop.latex.magic.args: マジックコメント付きの LaTeX ドキュメントをビルドする設定
+  // '%!TEX' で始まる行はマジックコメントと呼ばれ、LaTeX のビルド時にビルドプログラムに解釈され、
+  // プログラムの挙動を制御する事ができる。
+  // 参考リンク: https://blog.miz-ar.info/2016/11/magic-comments-in-tex/
+  "latex-workshop.latex.magic.args": [
+    "-f", "-gg", "-pv", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"
+  ],
+
+  // latex-workshop.latex.clean.fileTypes: クリーンアップ時に削除されるファイルの拡張子
+  // LaTeX 文書はビルド時に一時ファイルとしていくつかのファイルを生成するが、最終的に必要となるのは
+  // PDF ファイルのみである場合などが多い。また、LaTeX のビルド時に失敗した場合、失敗時に生成された
+  // 一時ファイルの影響で、修正後のビルドに失敗してしまう事がよくある。そのため、一時的なファイルを
+  // 削除する機能 (クリーンアップ) が LaTeX Workshop には備わっている。
+  "latex-workshop.latex.clean.fileTypes": [
+      "*.aux", "*.bbl", "*.blg", "*.idx", "*.ind", "*.lof", "*.lot", "*.out", "*.toc",
+       "*.acn", "*.acr", "*.alg", "*.glg", "*.glo", "*.gls", "*.ist", "*.fls", "*.log",
+        "*.fdb_latexmk", 
+      // for Beamer files
+      "_minted*", "*.nav", "*.snm", "*.vrb",
+  ],
+
+  // latex-workshop.latex.autoClean.run: ビルド失敗時に一時ファイルのクリーンアップを行うかどうか
+  // 上記説明にもあったように、ビルド失敗時に生成された一時ファイルが悪影響を及ぼす事があるため、自動で
+  // クリーンアップがかかるようにしておく。
+
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+
+  // latex-workshop.view.pdf.viewer: PDF ビューアの開き方
+  // VSCode 自体には PDF ファイルを閲覧する機能が備わっていないが、
+  // LaTeX Workshop にはその機能が備わっている。
+  // "tab" オプションを指定すると、今開いているエディタを左右に分割し、右側に生成されたPDFを表示するようにしてくれる
+  // この PDF ビュアーは LaTeX のビルドによって更新されると同期して内容を更新してくれる。
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  // latex-workshop.latex.autoBuild.run: .tex ファイルの保存時に自動的にビルドを行うかどうか
+  // LaTeX ファイルは .tex ファイルを変更後にビルドしないと、PDF ファイル上に変更結果が反映されないため、
+  // .tex ファイルの保存と同時に自動的にビルドを実行する設定があるが、文書が大きくなるに連れてビルドにも
+  // 時間がかかってしまい、ビルドプログラムの負荷がエディタに影響するため、無効化しておく。
+  "latex-workshop.latex.autoBuild.run": "never",
+
+  "[tex]": {
+      // スニペット補完中にも補完を使えるようにする
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      // インデント幅を2にする
+      "editor.tabSize": 2
+  },
+
+  "[latex]": {
+      // スニペット補完中にも補完を使えるようにする
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      // インデント幅を2にする
+      "editor.tabSize": 2
+      
+  }, 
+
+
+  "[bibtex]": {
+      // インデント幅を2にする
+      "editor.tabSize": 2
+  },
+  
+
+
+  // ---------- LaTeX Workshop ----------
+
+  // 使用パッケージのコマンドや環境の補完を有効にする
+  "latex-workshop.intellisense.package.enabled": true,
+  "window.zoomLevel": -1,
+  "catex.greek-completion": {
+  
+    "name": "CaTeX Greek Completion",
+    "languages": [
+      "latex"
+    ],
+    "triggers": [
+      ":"
+    ],
+    "dictionary": "$GIM/defaults/greeks.json",
+    "renderMode": "latex"
+  },
+
+  // 、を,に変えることができる設定latexindent.yamlを用いて設定。
+
+}  
+\end{lstlisting}
+% \subsection*{LaTeX workshopの設定の説明}
 
 % \subsection{\pLaTeX のコンパイルについて}
 % \pLaTeX のコンパイルについて
@@ -369,7 +643,7 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 % recipe tools の変更をおこなう。
 % setting.jsonのlatex-workshop.latex.toolsのところに次のように書き換える。
 
-と書き換えれば良い。
+
 % どこを指しているか分かりませんでした...
 
 \subsection{自動ビルド機能の設定}
@@ -387,9 +661,31 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 % 自動保存機能とともに紹介すると納得しやすいかもしれない。
 
 \section{ローカル環境でビルドする}
-次の\LaTeX の文章を入力する。これは\LuaLaTeX 用のソースコードである。
+ここまでの内容が行えていれば、十分に高機能な環境構築ができているはずである。
+ローカル環境でビルドできることを確認してみよう。
+ソースコード\ref{code:helloWorld}の内容の.texファイルを作成し、VScode上でビルドする。
 % jvlistingでコードを貼り付ける
+\begin{lstlisting}[caption={\LuaLaTeX のソースコード},label=code:helloWorld]
+\documentclass{ltjsarticle}
+% ltjsarticle: lualatex 用の 日本語 documentclass
+% LuaLaTeX以外のタイプセットエンジンを使ってビルドする場合は、 \documentclass[dvipdfmx]{jsarticle} などのように適当に書き換える。
 
+\begin{document}
+
+\title{はじめての\LaTeX }
+\author{Meidai}
+\maketitle
+\section{はじめての\LaTeX Lua\LaTeX }
+%\section{はじめての\LaTeX Lua\TeX}
+
+
+\subsection{小見出し！}
+Hello world!
+今日は\LaTeX を覚えていってください。
+\LaTeX + VSCode は最強の組み合わせ。
+
+\end{document}  
+\end{lstlisting}
 
 \part{\LaTeX 解説}
 \section{\LaTeX の基本機能の設定}
@@ -606,6 +902,7 @@ latex.json にも、\verb|{}|があるので、その中に次のコードをコ
 スニペットの導入は、setting.jsonとは異なるため環境を破壊することはない。
 % 参照すべきコードが示されていません
 
+
 と書く。たとえば、report とlatexで打つと、
 reportのひな形が出てくるようになる。
 このように、スニペットはプリアンブル部等
@@ -614,7 +911,8 @@ reportのひな形が出てくるようになる。
 \subsection{スニペットの書き方}
 スニペットの自作フォーマットは次のように書く。
 スニペットもsetting.jsonと同じように、','で各設定を区切る。
-\begin{verbatim}[caption=latex.json]
+\begin{lstlisting}[caption=latex.json]
+
 	{
   "[ スニペットの名前 ]": {
     "prefix": "[ 呼び出すときのショートカット]",
@@ -626,7 +924,8 @@ reportのひな形が出てくるようになる。
     "description": "[ スニペットの説明文]"
   }
   }
-\end{verbatim}
+
+\end{lstlisting}
 のように書く。
 \subsubsection*{入力値の補足}
 入力値の中のコマンドに\verb|$n|というのがあるがこれは、スニペットを
@@ -635,31 +934,63 @@ reportのひな形が出てくるようになる。
 たとえば、次の例では、プログラムを載せるための環境をスニペットにより
 定義している。
 % 例が前と同じなので、別の例を書き忘れていませんか
-\begin{verbatim}[caption=latex.json]
-	{
-  "[ スニペットの名前 ]": {
-    "prefix": "[ 呼び出すときのショートカット]",
-    "body":[
-      "[ 出力されるコードの1行目 $1]",
-      "[ 出力されるコードの2行目 $2]",
-      "...",
-      "$1"
-      "",
-    ],
-    "description": "[ スニペットの説明文 ]"
+
+\begin{lstlisting}
+  {
+    "report":{
+        "prefix": "report",
+        "body": [
+            "\\documentclass[a4paper,11pt]{ltjsarticle}",
+            "",
+            "",
+            "% 数式",
+            "\\usepackage{amsmath,amsfonts}",
+            "\\usepackage{bm}",
+            "% 画像",
+            "\\usepackage{graphics}",
+            "\\usepackage{graphicx}",
+            "\\usepackage{here} %画像の表示位置調整用",
+            "\\usepackage{type1cm}",
+
+            "",
+            "%A4: 21.0 x 29.7cm",
+            "${4}",
+            "",
+            "\\begin{document}",
+            "",
+            "\\title{${5}}",
+            "\\author{${6}}",
+            "\\date{${7:\\today}}",
+            "\\maketitle",
+            "",
+            "",
+            "$0",
+            "",
+            "",
+            "\\end{document}"
+        ],
+        "description": "授業レポート用テンプレート"
+    }
   }
-  }
-\end{verbatim}
+  \end{lstlisting}
 
 このように書いたときに、カーソルが\verb|$1|を記述した後にTabキーを押すと
 \verb|$2|にカーソルが移動するように書くことができる。
-また、さらに、\verb|$1|が2つあるが、これらは同じことを記述したい場合には
-たとえば参照をタイトルと同じにしたい場合、両方一度に入力することができる。
-さらに、bodyの末尾に\verb|""|を入れておけば、入力終了後に
+また、さらに、
+\verb |$1|
+が2つあるが
+、これらは同じことを記述したい場合には
+たとえば参照をタイトルと同じにしたい場合、
+両方一度に入力することができる。
+さらに、bodyの末尾に
+\verb|$0|を入れておけば、入力終了後に
 次の行からすぐに書き始めることができる。
 
+\subsection{禅モード} 
+禅モードはCtrl+K Z  を用いると使うことができるモードでこのモードでは下のステータスバー等がなくなりコーディング作業に集中できるモードになっている。この禅モードから抜け出すためにはEscキーを押すことで抜け出すことができる。この間にはGUIによる操作はできないがCUIによる操作のみ可能なためにショートカットキーを覚えていれば困ることはほとんどない為コーディング作業をするときには必要である。
 
-\part{VS Code 拡張機能}
+% 禅モードに関する解説。
+\part{VS Code 外部ツール}
 \section{LaTeX workshop の設定}
 \subsection{シンタックスハイライト}
 シンタックスハイライトとは、\LaTeX の文章などを編集するためのコマンドに色を
@@ -691,14 +1022,16 @@ cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しな�
 
 \subsubsection*{cloud LaTeX との連携をするための設定}
 導入の設定は、md形式のファイルに添付されているものをsetting.jsonに入れればよい。cloud LaTeX 参照
+\section{cloudlatex}
 
-\subsection{Ultra Math Previewの設定}
+
+\section{Ultra Math Previewの設定}
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
 パッケージで定義されたコマンドもPreview することができる。
 さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。
 
 
-\subsection{テキスト校正くん}
+\section{テキスト校正くん}
 テキスト校正くんは、texファイルやmdファイル等の日本語文章を校閲することができる。これはインストールするだけで利用できる。
 
 \section{キーボードショートカットの変更方法}
@@ -776,6 +1109,7 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
     Ctrl+Shift+\verb|+| or \verb|-| & ズームの程度を調整する    \\
     Ctrl+K F            & ワークスペースを閉じる   \\ 
     Ctrl+shift+L        &マルチカーソル(同じ文字)   \\
+    Ctrl+K Z            &禅モード(Escで取り消し)   \\   
     \hline
   \end{tabular}
 \end{center}
