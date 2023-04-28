@@ -23,6 +23,7 @@
   lineskip=-0.5ex,
   backgroundcolor=\color{white}
 }
+\renewcommand{\lstlistingname}{ソースコード}
 %ここまでソースコードの表示に関する設定
 
 
@@ -76,7 +77,7 @@
 読むとよい。
 
 \subsubsection{設定用コード等について}
-設定用コードは、コピー＆ペーストの利便性も考えてVS Code で使えるmarkdown形式のファイルにした。これはこの資料とともに使われることを想定したものである。
+設定ファイルの内容等、必要なソースコードはこの資料中に記載するとともに、コピー＆ペーストの利便性も考えてmarkdownファイルでも提供する。
 
 
 \subsection{この資料の読み方}
@@ -347,9 +348,10 @@ Japanese Language Pack for Visual Studio Code
   PC>ローカルディスク>ユーザー>ユーザー名、と辿れるディレクトリのこと
 }
 直下に\verb|.latexmkrc|というテキストファイルを作成し、テキストエディタで開く。
-markdownファイルに記載された設定をコピーして貼り付け、保存する。
+markdownファイルに記載されたlatexmkの設定をコピーして貼り付け、保存する。
+同じ内容をソースコード\ref{code:latexmk}に示す。
 
-\begin{lstlisting}[caption=latexmkの設定perl,label=latexmk]
+\begin{lstlisting}[caption=latexmkの設定,label=code:latexmk]
   # 通常の LaTeX ドキュメントのビルドコマンド
   $latex = 'uplatex %O -kanji=utf8 -no-guess-input-enc -synctex=1 -interaction=nonstopmode %S';
   # pdfLaTeX のビルドコマンド
@@ -424,12 +426,12 @@ setting.json を開く方法はいくつかある。
 
 % .json はJavaScript に対応している。
 % // JavaScript に触れる必要はないのでは？
-setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載された設定をコピーして書き加え、保存する。
+setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
+同じ内容をソースコード\ref{code:latexworkshop}に示す。
 % jlistingsで設定ファイルを貼り付け
 % なお、platexの設定についてはすでに書き換えられたものを提示する
-
 もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
-\begin{lstlisting}[caption={Setting.json}\label{Setting.json}]
+\begin{lstlisting}[caption={LaTeX workshopの設定},label=code:latexworkshop]
   {
   //  LaTeXの設定
   "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
@@ -630,11 +632,8 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 
   // 、を,に変えることができる設定latexindent.yamlを用いて設定。
 
-}
-
-  
+}  
 \end{lstlisting}
-と書き換えれば良い。
 % \subsection*{LaTeX workshopの設定の説明}
 
 % \subsection{\pLaTeX のコンパイルについて}
@@ -662,12 +661,14 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 % 自動保存機能とともに紹介すると納得しやすいかもしれない。
 
 \section{ローカル環境でビルドする}
-次の\LaTeX の文章を入力する。これは\LuaLaTeX 用のソースコードである。
+ここまでの内容が行えていれば、十分に高機能な環境構築ができているはずである。
+ローカル環境でビルドできることを確認してみよう。
+ソースコード\ref{code:helloWorld}の内容の.texファイルを作成し、VScode上でビルドする。
 % jvlistingでコードを貼り付ける
-\begin{lstlisting}
-  \documentclass{ltjsarticle}
+\begin{lstlisting}[caption={\LuaLaTeX のソースコード},label=code:helloWorld]
+\documentclass{ltjsarticle}
 % ltjsarticle: lualatex 用の 日本語 documentclass
-% 他のタイプセットエンジンを使ってビルドする場合は、 \documentclass[dvipdfmx]{jsarticle} などとする。
+% LuaLaTeX以外のタイプセットエンジンを使ってビルドする場合は、 \documentclass[dvipdfmx]{jsarticle} などのように適当に書き換える。
 
 \begin{document}
 
@@ -683,8 +684,7 @@ Hello world!
 今日は\LaTeX を覚えていってください。
 \LaTeX + VSCode は最強の組み合わせ。
 
-\end{document}
-  
+\end{document}  
 \end{lstlisting}
 
 \part{\LaTeX 解説}
@@ -983,7 +983,7 @@ reportのひな形が出てくるようになる。
 たとえば参照をタイトルと同じにしたい場合、
 両方一度に入力することができる。
 さらに、bodyの末尾に
-\verb|""|を入れておけば、入力終了後に
+\verb|$0|を入れておけば、入力終了後に
 次の行からすぐに書き始めることができる。
 
 \subsection{禅モード} 
