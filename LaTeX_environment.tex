@@ -870,13 +870,18 @@ wordwrapとは、このエディターの中で入力している中でpdfview�
 % プログラミングするときも、onにしておくことをおすすめしたい。
 
 
-\subsection{スニペット導入}
-\subsubsection*{スニペットとは\index{スニペット}}
-スニペットとは、コードの中で何回も使うだろうコードを少しの記述
+\subsection{スニペット}
+\subsubsection*{スニペットとインテリセンス}
+スニペット\index{スニペット}とは、コードの中で何回も使うだろうコードを少しの記述
 でそれを呼び出す一連の動作のことをいう。スニペットの語源は、
 短い単語のことである。
 
-\subsubsection*{スニペットの導入}
+インテリセンス\index{インテリセンス}とはVSCode の中で引数や入力を補完する自動補完システムのことであり各言語ごとに必要な引数リストを補完する機能がある。これは、VSCodeの基本的な機能の一つである。これは特に設定の必要はない。入力者はサジェスト\footnote{サジェスト\index{サジェスト}は``suggest''に由来し、予測変換の意味がある。}に表示された提案の中から、Tabキーやspaceキーで補完することができる。
+
+スニペットは非常に長いコードをも格納することができ非常に短いコードでそのコードを呼び出すことができる点で有用である。
+
+
+\subsubsection{自作スニペットの導入}
 まずスニペットを導入する。左下の歯車から「ユーザースニペットの構成」を
 選択する。検索窓が出てくるので、latexと入力して latex.json を開く。
 latex.json にも、\verb|{}|があるので、その中に次のコードをコピーする。
@@ -1009,7 +1014,10 @@ reportのひな形が出てくるようになる。
 
 % 禅モードに関する解説。
 \part{VS Code 外部ツール}
-\section{LaTeX workshop の設定}
+\section{LaTeX workshop}
+\subsection{snippet View\index{snippet View}}
+LaTeX Workshop から提供されているスニペットには一覧パネルがある。この一覧パネルはよく使う数学記号についてのスニペットに対応している。アクティビティバーのTeXのパネルから使うことがあるのである。これはGUIで使うことができるのでLaTeXでWhat you see is what you get \index{What you see is what you get}が可能になる。
+このバーはドラッグすることでコントロールパネルや、Secondary Side Barに移動することができる。
 
 \subsection{SyncTexを使う}
 \subsubsection*{SyncTex とは何か？\index{SyncTex}}
