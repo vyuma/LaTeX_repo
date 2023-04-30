@@ -2,6 +2,8 @@
 % ltjsarticle: lualatex 用の 日本語 documentclass
 % 他のタイプセットエンジンを使ってビルドする場合は、
 %  \documentclass[dvipdfmx]{jsarticle} などとする。
+\usepackage{makeidx}
+\makeindex
 \usepackage{xcolor}
 \usepackage{listings,jvlisting} %日本語のコメントアウトをする場合jvlisting（もしくはjlisting）が必要
 %ここからソースコードの表示に関する設定
@@ -39,8 +41,8 @@
 \section{序文}
 \subsection{編集方針}
 
-曖昧さを排除したできるだけ再現性の高い\LaTeX 
-\footnote{日本では「ラテフ」と読むことが多い。たまに「レイテック」「ラテック」派がいる。}
+曖昧さを排除したできるだけ再現性の高い\LaTeX \index{\LaTeX}
+\footnote{日本では「ラテフ」と読むことが多い。たまに「レイテック」「ラテック」派がいる。また\LaTeX に関しては「テックス」とよんでもよいと言われている。ただし\TeX は確実に「テフ」と読むこと。これは「テックス」ではない\TeX のXは英語のXではなく\(\chi\)のように発音する為である。これは\cite{TeXの発音について}を参照。}
 環境構築に対する処方箋を書きたいという思いでこの資料を書いた。
 しかし環境構築後にも難関が待ち受けている。
 そのために環境構築後の設定の変更等にも配慮して資料を工夫した。
@@ -53,7 +55,7 @@
 \end{itemize}
 そこで初心者に\LaTeX を使えるように、さらには自分好みにカスタマイズできるようになってもらうための資料とすることを編集の基本方針としたい。
 
-この文章は、\LaTeX をVisual Stadio Code (以下VS Code)での環境構築のために自分が
+この文章は、\LaTeX をVisual Stadio Code\index{Visual Stadio Code} (以下VS Code)での環境構築のために自分が
 したことのすべてを書いている。技術的解説もできるだけするように努めた。
 実は\LaTeX の環境構築方法を完全に技術的側面にも触れてしっかりVS Code上
 に入れるための方法を体系的にまとめた資料はネットには
@@ -115,7 +117,7 @@ VS Codeの機能を使ってテンプレートを作っておけば簡単に体�
 数式交じりのレポートを作成するときなど、大学生1年生でも恩恵を受ける場面は多いはずである。
 
 \LaTeX と関わりの深い言葉として\TeX があるが、この2つはまったく違うものであることを注意しておこう。
-\footnote{\TeX はプログラム言語であり、\LaTeX は\TeX を用いて記述されたソフトウェアの集合体である。\LaTeX は数多くのソフトウェアが組み合わさって一つの文書を出力する。}
+\footnote{\TeX \index{\TeX}はプログラム言語であり、\LaTeX は\TeX を用いて記述されたソフトウェアの集合体である。\LaTeX は数多くのソフトウェアが組み合わさって一つの文書を出力する。}
 たまに口頭でテフということもあるが、ユーザーが見える範囲で\TeX があらわれることはほとんどなく、大方\LaTeX のことを指していると考えてよい。
 このあたりの話は美文書書作成入門\cite{美文書本}に詳しい。
 
@@ -165,16 +167,19 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 \subsection{\LaTeX 環境設定用IT用語の理解}
 
 \begin{description}
-  \item [環境] ~\\
+  \item [環境\index{かんきょう@環境}] ~\\
     \LaTeX が機能するための設定やハードソフト等の存在や設定などを
     合わせて環境という。
-  \item [ローカル] ~\\
+  \item [ローカル\index{ローカル}] ~\\
     オンライン上ではなくパソコンのこと。ローカル環境とは
     自分のパソコンの環境のこと。
     % ローカル：手元にある(ネットワークを介していない)
-    % リモート：(ネットワークを介して接続できる)離れたところにある
-    % ローカルの対義語はオンラインではなくリモートになります
-  \item [ユーザー] ~\\
+    
+   
+  \item[リモート\index{リモート}] ~\\
+    (ネットワークを介して接続できる)離れたところにある 
+    ローカルの対義語はオンラインではなくリモートになる
+  \item [ユーザー\index{ユーザー}] ~\\
     自分が設定した名前 自分のこと
     ユーザーの名前のフォルダーが最上位にあると考えておけばよい。
     % Windowsはユーザーアカウントを用いて、PCを使用するユーザー(利用者)を識別しています。また、ユーザーごとにホームディレクトリが割り当てられているため、ユーザーごとの設定に利用されることがあります。
@@ -183,11 +188,11 @@ OverleafはGitHubと連携することができるために論文執筆の際に
     %  ルートディレクトリは C:/
     %  のことを指し、最上位にあるのはルートディレクトリです。
 
-  \item [デフォルト] ~\\
+  \item [デフォルト\index{デフォルト}] ~\\
     初期設定のこと。
-  \item[拡張子] ~\\
+  \item[拡張子\index{かくちょうし@拡張子}] ~\\
     ファイルの種別を示す。
-  \item [隠しファイル] ~\\
+  \item [隠しファイル\index{かくしふぁいる@隠しファイル}] ~\\
     エクスプローラー（よくファイルを使う場所）
     からは見えないファイル。たとえば、.latexrc 等の.の前に
     何もついていないファイルのこと。
@@ -201,11 +206,11 @@ OverleafはGitHubと連携することができるために論文執筆の際に
     % .から始まる名前のファイルのことをいう。
     % .から始めるものはlinuxだとオプションを明示しない限り表示されない(ユーザーが関与しないファイルをおく)
 
-  \item [ディレクトリ] ~\\
+  \item [ディレクトリ\index{ディレクトリ}] ~\\
     ファイルが入っている階層を指し示す言葉。
     階層のことであり、
     日本語の意味では住所録の意味。ドライブ直下に置くとは、
-    最上部のフォルダーの中に入れることを意味する。
+    最上部のフォルダー\index{フォルダー}の中に入れることを意味する。
     ファイルの現在位置を指し示す言葉で、ルートディレクトリとは、
     フォルダーの階層の最上位のフォルダーを意味する。
     % ディレクトリとフォルダはほぼ同じ意味です。
@@ -224,20 +229,20 @@ OverleafはGitHubと連携することができるために論文執筆の際に
     % とはいえエラーを避けるためにも、半角英数字でファイル名、ディレクトリ名をつけることをおすすめします。
     % 英語表記する、スペースはアンダースコア(_)あるいはハイフン(-)に置き換える、などの方法があります。
 
-  \item [パス] ~\\
+  \item [パス\index{パス}] ~\\
     ディレクトリでそのファイルの住所位置を
     指定するもの。
-  \item [プロジェクトルート] ~\\
+  \item [プロジェクトルート\index{プロジェクトルート}] ~\\
     ディレクトリの一番初めに存在する
     それより上のファイルが存在しない領域
     % プロジェクトルートは、アプリケーションによって様々な意味で使われます。
     % ディレクトリの一番初めは、ルートディレクトリという呼び方が一般的です
-  \item [グローバル] ~\\
+  \item [グローバル\index{グローバル}] ~\\
     すべてのユーザーやそのアプリケーション内ですべてに設定
     されるような設定のこと。
     % グローバルとは、全体的な、すべての、という意味です。
     % 説明の内容がユーザー設定などと対比したときのグローバル設定の説明になっているので、「グローバル」の説明としては不適切かと思います。
-  \item [コマンドプロンプト] ~\\
+  \item [コマンドプロンプト\index{コマンドプロンプト}] ~\\
     Windowsの操作をコマンドでおこなうためのシステム。
     \begin{description}
       \item[開き方1] ~\\
@@ -253,7 +258,7 @@ OverleafはGitHubと連携することができるために論文執筆の際に
     % このようにして開いた場合、カレントディレクトリは"cmd"の入力前にエクスプローラーのパスの入力欄に表示されていたディレクトリになります。
     % そのためカレントディレクトリを移動する手間が減ります
 
-  \item [リポジトリ] ~\\
+  \item [リポジトリ\index{リポジトリ}] ~\\
     プロジェクトを構成するプログラムのソースコードやドキュメント、
     関連する各種のデータやファイルなどを一元的に管理する格納場所のこと
     % ほぼgitでしか使わない用語なので、gitの説明に移動したほうがよいかと思います。
@@ -262,7 +267,7 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 
 \subsection{\LaTeX 用語の理解}
 \begin{description}
-  \item [ビルド] ~\\
+  \item [ビルド\index{ビルド}] ~\\
     \LaTeX では、記述したソースコードに問題がない
     かどうかの解析を行い、問題がなければ実行可能なファイルに変換すること。
     % LaTeXはあらかじめソースコードの解析を行っているわけではなく、
@@ -270,16 +275,16 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 
     % またビルドという言葉は一般には(C言語などの文脈では)実行可能なファイルに変換することという意味で使われますが、LaTeXはLaTeXソースコードから文書ファイルを出力すること、という若干特殊な意味で使われます。
     % pdfファイルは実行可能なファイルではありません。
-  \item [コンパイラ] ~\\
+  \item [コンパイラ\index{コンパイラ}] ~\\
     コンパイラとは機械が読み取れる言語に移すことのできるソフトウェア等のこと。
-  \item [コンパイル] ~\\
+  \item [コンパイル\index{コンパイル}] ~\\
     ソースコードを機械が翻訳できる言語に移すことで、ビルドの中の一連の作業に入っている。
     % コンパイラ、コンパイルもC言語などとLaTeXでは意味が異なります。
     % この説明はC言語などで使われる意味の説明になっているため、LaTeX用語の説明としては不適切かと思います。
-  \item [プリアンブル] ~\\
+  \item [プリアンブル\index{プリアンブル}] ~\\
     \verb|\documentclass|から\verb|\begin{document}|までの中にある設定のこと。
 \end{description}
-\section{エクスプローラーの設定}
+\section{エクスプローラーの設定\index{エクスプローラー}}
 拡張子と隠しファイルを表示するように設定する。
 \begin{enumerate}
   \item エクスプローラーを起動する。
@@ -299,7 +304,7 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 %     タブから表示を選択して、「隠しファイルと隠しフォルダー、および隠しドライブを表示する」を選択する。OKを押す。
 % \end{description}
 % win10での動作確認ができないためwin11の説明としました。
-\section{TeX Live導入}
+\section{TeX Live導入\index{TeX Live}}
 
 \subsection{TeX Live インストール}
 TeX Live は、次のページからダウンロードすると良い。
@@ -320,7 +325,7 @@ TeX Live は、次のページからダウンロードすると良い。
 インストール完了後、コマンドプロンプトを起動して、\verb|latex -v|と打ち込む。
 この時に、$3.141592653$のようなversion情報が出てこれば正常に完了している。
 \footnote{
-  これは、\TeX 製作者Donald E.Knuth教授の意向で
+  これは、\TeX 製作者Donald E.Knuth教授\index{Donald E.Knuth}の意向で
   version up ごとに円周率$\pi$へ近づいて行く。
 }
 
@@ -333,12 +338,13 @@ Visual Studio Code は次のページからダウンロードするとよい。\
 ファイルを開き、追加タスクの変更は触らないようにしてNextを押し続ければ
 インストールできる。
 \subsection{VS codeの日本語化}
-VS Codeをショートカットから開いて、積み木のようなアイコンExtentions（拡張機能）
+VS Codeをショートカットから開いて、積み木のようなアイコンExtentions（拡張機能）\index{Extentions（拡張機能）}
 をクリック。検索窓にJapaneseと打って、
 Japanese Language Pack for Visual Studio Code
 を選択してインストールする。これで日本語化が完了する。
+このように拡張機能を入れることでVS Codeの機能をより使いやすいものにすることができる。
 
-\section{latexmkの導入} 
+\section{latexmk\index{latexmk}の導入} 
 \subsection{latexmkとは}
 \LaTeX 文書を手動でコンパイルしようとすると複数種類のコマンドを適切な順番で複数回実行しなければならない。latexmkとは、各種\LaTeX のビルドコマンドを自動で一括で実行してくれるツールである。
 
@@ -405,8 +411,8 @@ markdownファイルに記載されたlatexmkの設定をコピーして貼り�
 \subsection{latexmkの設定の解説}
 % wip
 
-\section{LaTeX workshopの設定}
-VS Codeの設定は、setting.json
+\section{LaTeX workshop\index{LaTeX workshop}の設定}
+VS Codeの設定は、setting.json\index{setting.json}
 \footnote{.jsonはジェイソンと読む}
 というファイルに記載されている。
 setting.json を開く方法はいくつかある。
@@ -646,7 +652,7 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 
 % どこを指しているか分かりませんでした...
 
-\subsection{自動ビルド機能の設定}
+\subsection{自動ビルド機能の設定\index{じどうびるどきのう@自動ビルド機能}}
 \begin{verbatim}
 	"files.autoSave": "afterDelay", 
   "latex-workshop.latex.autoBuild.run": "never",
@@ -663,7 +669,7 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 \section{ローカル環境でビルドする}
 ここまでの内容が行えていれば、十分に高機能な環境構築ができているはずである。
 ローカル環境でビルドできることを確認してみよう。
-ソースコード\ref{code:helloWorld}の内容の.texファイルを作成し、VScode上でビルドする。
+ソースコード\ref{code:helloWorld}の内容の.texファイルを作成し、VScode上でビルドする。このコードはモダン\LaTeX である\LuaLaTeX でコンパイルされる。
 % jvlistingでコードを貼り付ける
 \begin{lstlisting}[caption={\LuaLaTeX のソースコード},label=code:helloWorld]
 \documentclass{ltjsarticle}
@@ -711,18 +717,18 @@ Hello world!
 で出力される。このために、\pLaTeX などを使いたい場合は、
 左のタブからおこなう必要がある。
 
-\section{エラーメッセージを読む}
+\section{エラーメッセージ\index{エラーメッセージ}を読む}
 LaTeX workshop ではエラーがメッセージで表示されるがそれを
 初心者はなかなかうまく使いこなせない。
 そこでエラーの読み方と対応策を考える。
 
-\subsection{Recipe terminated with error}
+\subsection{Recipe terminated with error\index{Recipe terminated with error}}
 おそらくLaTeX Workshop を使ってはじめて見るだろうエラー。
 このエラーは、\LaTeX 側のエラーではない。\LaTeX のエラーは、
 Ctrl+Shift+M のショートカットキーで表示される。
 これは、注意が出ている時にも使うことができる。
 
-\subsection{Recipe terminated with error. Retry building the project.}
+\subsection{Recipe terminated with error. Retry building the project.\index{Recipe terminated with error. Retry building the project.}}
 このエラーというよりかは警告なのだがこれも本質的に意味がない。
 
 \subsection{意味のあるエラーメッセージ}
@@ -738,8 +744,8 @@ Ctrl+Shift+M のショートカットキーで表示される。
 % みたいな感じの部分を探し、エラーメッセージの部分(この場合"Undefined control sequence.")をググると、大体は偉大な先人が残してくれた解決策が見つかる。
 
 \section{新規packageの導入}
-新規パッケージつまり、インターネット上や、
-自分で作ったスタイルファイル等を使いたいときに、めんどくさいことになる。
+新規パッケージ\index{パッケージ}つまり、インターネット上や、
+自分で作ったスタイルファイル\index{スタイルファイル}等を使いたいときに、めんどくさいことになる。
 パッケージファイルの拡張子は``.sty''であり、
 このパッケージを適切な場所に配置しなければならない。
 しかし、``.sty''が入っていない場合がある。これに対処するためには次セクション
@@ -758,7 +764,7 @@ Ctrl+Shift+M のショートカットキーで表示される。
 この.styファイルの保存場所は、次セクション参照。
 
 \subsection{TeX Directory Structure とは何か？}
-\LaTeX のパッケージなどは、TDS（TeX Directory Structure）にしたがって各
+\LaTeX のパッケージなどは、TDS（TeX Directory Structure）\index{TDS（TeX Directory Structure）}にしたがって各
 ディレクトリに配置されている。
 今回はTeX Liveなので、エクスプローラーからwindowsフォルダーの中の
 texlive フォルダーの中の2022年フォルダーの中のtexmf-distの中のtexの中の
@@ -799,6 +805,7 @@ ls-Rというファイルが存在していてこれが、TeXが必要なパッ�
 \begin{verbatim}
   mktexlsr
 \end{verbatim}
+\index{mktexlsr}
 と入力することで一覧表を更新することができる。
 
 \subsection{使用するべきpackage}
@@ -814,14 +821,14 @@ packageは最小構成でおこなうべきである。
 \part{VS Code 解説}
 \section{VS Codeの基本機能}
 デフォルトで使えるVS Codeの基本機能を解説する。
-\subsection{、。を, . にする<置換機能>}
+\subsection{、。を, . にする<置換機能>}\index{ちかんきのう@置換機能}
 VS Codeの基本機能として、置換機能がついている。このためマクロを組まずとも
 、を, に変えることができる。
 コマンドは、Ctrl+Hキーを押すと検索と置換が出てきて、Enter キーを押すと
 ひとつづつ置換、Crl+Alt+Enter キーを押すとすべてが置換される。
 また置換を閉じるのはEsc キーである。
 
-\subsection{コメントアウト}
+\subsection{コメントアウト機能}\index{コメントアウト機能}
 \LaTeX は\verb|%|から行末までをコメントと認識する。しかしこれをいちいち書くのは面倒くさい。
 さらにプログラム言語によりコメント機能はまったく違う。この時に、Ctrl+/ を
 使うことで、その時に編集しているプログラム言語に応じて適切な構文でコメントアウトすることができる。
@@ -856,12 +863,12 @@ VS Codeの設定は、setting.jsonというすべてに適応される設定と�
 % ユーザー設定もワークスペース設定も(ディレクトリの異なる)setting.jsonに設定を記述するため、ユーザー設定をsetting.jsonと呼ぶのは誤解の恐れがあります。
 % ワークスペースの説明が必要
 
-\subsection{wordwrap}
+\subsection{wordwrap\index{wordwrap}}
 wordwrapとは、このエディターの中で入力している中でpdfview等にしているときに文章が見えている間で改行を自動で行ってくれる設定である。この設定は最初、自動改行しない設定になっている。この時には、書いている行が右にシフトしてしまい、マウス又は、エンドキー等で次の行にしなければならない。また見るときも水平スクロールをしなければならない。しかしこの機能を有効にすることで、自動で改行し、文章の視認性が高くなる。
 % プログラミングするときも、onにしておくことをおすすめしたい。
 
 \subsection{SyncTexを使う}
-\subsubsection*{SyncTex とは何か？}
+\subsubsection*{SyncTex とは何か？\index{SyncTex}}
 TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと。
 これを使えば、pdf上の表示がどのソースに関係しているかということが
 すぐにわかる。
@@ -890,7 +897,7 @@ pdfviewer上でCtrl キーを押しながらマウスでコードをみたい場
 （コマンドパレットからSyncTeXと入れてコマンドを実行させてもよい。）
 
 \subsection{スニペット導入}
-\subsubsection*{スニペットとは}
+\subsubsection*{スニペットとは\index{スニペット}}
 スニペットとは、コードの中で何回も使うだろうコードを少しの記述
 でそれを呼び出す一連の動作のことをいう。スニペットの語源は、
 短い単語のことである。
@@ -986,13 +993,13 @@ reportのひな形が出てくるようになる。
 \verb|$0|を入れておけば、入力終了後に
 次の行からすぐに書き始めることができる。
 
-\subsection{禅モード} 
+\subsection{禅モード\index{ぜんもーど@禅モード}} 
 禅モードはCtrl+K Z  を用いると使うことができるモードでこのモードでは下のステータスバー等がなくなりコーディング作業に集中できるモードになっている。この禅モードから抜け出すためにはEscキーを押すことで抜け出すことができる。この間にはGUIによる操作はできないがCUIによる操作のみ可能なためにショートカットキーを覚えていれば困ることはほとんどない為コーディング作業をするときには必要である。
 
 % 禅モードに関する解説。
 \part{VS Code 外部ツール}
 \section{LaTeX workshop の設定}
-\subsection{シンタックスハイライト}
+\subsection{シンタックスハイライト\index{シンタックスハイライト}}
 シンタックスハイライトとは、\LaTeX の文章などを編集するためのコマンドに色を
 つけることでその対応やコードの可読性を高めることができるVS Codeの機能である。
 しかしながら、LaTeX workshopはそれに対応しているのだが
@@ -1001,7 +1008,7 @@ VS CodeのカラーテーマをVisual Studio Dark または Visual Studio Light
 シンタックスハイライトを使いたい場合は、デフォルト設定の
 Dark+ を使用するとよい。又はほかのカラーテーマならば良い。
 
-\subsection{cloud LaTeX との連携}
+\subsection{cloud LaTeX との連携\index{cloud LaTeX}}
 cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しなくとも
 \LaTeX を使うことができる。cloud  LaTeX は cloud LaTeX と同一のサーバー内とローカルのこのVS Codeと連携することが可能であり、それにより、ローカルとサーバーで同期ができるために非常に便利なものとなっている。
 
@@ -1045,7 +1052,7 @@ cloudlatexとは、株式会社アカリクが運営している\LaTeX のコン
 この機能によってVSCodeの強力な編集機能をフルに使うことができる。
 
 
-\section{Ultra Math Preview}
+\section{Ultra Math Preview\index{Ultra Math Preview}}
 \subsection{Ultra Math Previewとは何か}
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
 パッケージで定義されたコマンドもPreview することができる。
@@ -1077,12 +1084,12 @@ setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応�
 		"background-color: rgba(0, 0, 0, 0.5);",
 	],
 \end{lstlisting}
-\section{Table Generator}
+\section{Table Generator\index{Table Generator}}
 \LaTeX での表を書く際に非常に有用なサイトである。このサイトではwordとほとんど同等の環境のGUIを用いることで\LaTeX 記法での表に変換してくれるサイトである。
 \url{https://www.tablesgenerator.com/}で書くことができる。さらにこれはhtml等にも対応しているなどさまざまなマークアップ言語に対応している。
 
 
-\section{テキスト校正くん}
+\section{テキスト校正くん\index{テキスト校正くん}}
 テキスト校正くんは、texファイルやmdファイル等の日本語文章を校閲することができる。これはインストールするだけで利用できる。
 
 \section{キーボードショートカットの変更方法}
@@ -1172,6 +1179,7 @@ setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応�
 きっとこれらのサイトも読むことができるだろう。
 さらに便利な使い方や、自分なりの設定をすることもできるだろう。
 良い\LaTeX ライフを
+\printindex
 \nocite{*}
 \bibliographystyle{junsrt}
 \bibliography{refernce}

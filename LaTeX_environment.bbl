@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{TeXの発音について}
+{三秀舎ブックスラボ}.
+\newblock
+  \url{http://www.kksanshusha.jp/booklab/archives/1184#footnote_0_1184}.
+
 \bibitem{美文書本}
 {奥村晴彦}.
 \newblock {\LaTeX 美文書作成入門}.
