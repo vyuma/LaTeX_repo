@@ -25,7 +25,7 @@
 }
 \renewcommand{\lstlistingname}{ソースコード}
 %ここまでソースコードの表示に関する設定
-
+\pagestyle{headings}
 
 \usepackage{url}
 \usepackage{bxtexlogo} % platex, lualatexのロゴを使うために必要
@@ -1023,12 +1023,62 @@ cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しな�
 \subsubsection*{cloud LaTeX との連携をするための設定}
 導入の設定は、md形式のファイルに添付されているものをsetting.jsonに入れればよい。cloud LaTeX 参照
 \section{cloudlatex}
+\subsection{cloudlatexとは何か？}
+cloudlatexとは、株式会社アカリクが運営している\LaTeX のコンパイルをリモート環境で行うサービスのことである。このcloudlatexを用いるとローカル環境に\LaTeX がインストールされていなくとも\LaTeX 文章を書くことができる。
+\subsection{cloudlatexのVS Codeでの拡張機能}
+\subsubsection{設定方法}
+\LaTeX のコードを自前の環境で書き、コンパイルをリモート環境で行うことができる。
+まずVSCode 上の拡張機能からcloudlatex の拡張機能をインストールする。次に自分のcloudlatexのマイページから右上のユーザー名をクリックしてプルダウンを開き「プラグイン連携」をクリックする。次にそこで生成されるトークンを二つコピーする。
+「client」「access-token」の2つがわかっていればOKである。
+次にVSCode上でCLと書いたアイコンが生成されるためにそこをクリックして「Set account」をクリックする。
+「メールアドレス」「client」「access-token」を順番に入力する。「Your account has been validated!」という通知が出れば連携の設定は完了する。
+\subsubsection{使い方}
+使い方はCloud Latexで作成したプロジェクトをVisual Studio Codeで編集することができる。ここでまず初めにProject IDを取得する必要がある。URLを確認する
+
+「https://cloudlatex.io/projects/XXXXXX/edit」となっている6桁の数字「XXXXXX」がProject IDである。次に自分のローカル環境にそのcloudlatex連携をするためのディレクトリを作る。
+
+エクスプローラーからそのディレクトリを開き、
+次にVSCode上で「Project Setting」をクリックすると「設定」のファイルが開く。ここでワークスペース設定から「Cloudlatex: Enabled」にチェックを入れ、「Cloudlatex: Project ID」に先ほど確認した数字を入力する。
+「Project files have been synchronized!」という通知が出てくれば成功である。これでローカル環境に構築することなくリモート環境で\LaTeX のコンパイルができる。\footnote{しかしここで多くの場合エラーが発生することが多い。アカリクのcloudlatexのサーバーの問題かわからないが容量の大きいファイル等になるとサーバーと接続できないことが多い。この場合は時間をおくか又は新しくProject ID を入れなおすとよい。}\LaTeX のコンパイルは初期設定では、Ctrl+S を押して保存する。又はVSCodeのautosaveされたときにコンパイルされる設定になってる。またこの機能のみを使うlatexworkshop設定は\cite{cloudlatexの設定}を参照するとよい。
+\footnote{また同時にCloud 上でも保存することができる。この場合だと保存したときに常にコンパイルするためにサーバーに負荷がかかりやすくよく接続が切れてしまう。接続が切れたときに\LaTeX のコンパイルエラーが出てしまう。この場合\LaTeX のエエラーなのか接続の問題なのかという見分けがつきにくくなる。またlatexworkshop標準搭載のエラーメッセージを吐くことはないため慣れないうちはリモート環境での執筆をオススメする。}
+
+この機能によってVSCodeの強力な編集機能をフルに使うことができる。
 
 
-\section{Ultra Math Previewの設定}
+\section{Ultra Math Preview}
+\subsection{Ultra Math Previewとは何か}
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
 パッケージで定義されたコマンドもPreview することができる。
-さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。
+さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
+\subsection{Ultra Math Previewの設定}
+setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応していないパッケージの数式のレタリングをすることができる。
+\begin{lstlisting}[caption={Ultra Math Preview}]
+  "umath.preview.renderer": "mathjax",
+"umath.preview.macros": [
+		"\\require{physics}",
+		"\\require{HTML}",
+		"\\require{mathtools}",
+		"\\require{mhchem}",
+		"\\require{empheq}",
+		"\\def\\l{\\left}",
+		"\\def\\r{\\right}",
+		"\\newcommand{\\drac}[2]{\\mathchoice{\\displaystyle\\frac{\\, #1\\, }{\\, #2 \\,}}{\\displaystyle\\frac{\\, #1\\, }{\\, #2 \\, }}{\\scriptstyle\\frac{#1}{#2}}{\\scriptscriptstyle\\frac{#1}{#2}}}",
+		"\\newcommand{\\tdv}[3][]{\\drac{\\Delta^{#1} {#2}}{\\Delta {#3}^{#1}}}",
+		"\\newcommand{\\bm}[1]{\\boldsymbol{#1}}",
+		"\\newcommand{\\divisionsymbol}{÷}",
+		"\\def\\div{\\vnabla\\vdot}",
+		"\\newcommand{\\divi}{\\divisionsymbol}",
+		"\\newcommand{\\si}[1]{\\mathrm{#1}}",
+		"\\newcommand{\\e}{e}",
+        "\\scriptsize{}",
+	],
+	"umath.preview.position": "top",
+	"umath.preview.customCSS": [
+		"background-color: rgba(0, 0, 0, 0.5);",
+	],
+\end{lstlisting}
+\section{}
+\url{https://www.tablesgenerator.com/}
 
 
 \section{テキスト校正くん}
@@ -1101,6 +1151,7 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
     Crl+Alt+Enter       & 置換の全置換             \\
     Ctrl+/              & 行のコメントアウト機能（全言語共通）  \\
     Ctrl+@              & VS Codeのターミナルの起動\\
+    Ctrl+Shift+X        & 拡張機能タブを開く      \\
     Shift+Alt+F         & latexindentを実行する    \\
     Ctrl+Space          & コード補完を再表示       \\
     Ctrl+Shift+M        & \LaTeX のエラーメッセージを表示する   \\
