@@ -869,34 +869,6 @@ VS Codeの設定は、setting.jsonというすべてに適応される設定と�
 wordwrapとは、このエディターの中で入力している中でpdfview等にしているときに文章が見えている間で改行を自動で行ってくれる設定である。この設定は最初、自動改行しない設定になっている。この時には、書いている行が右にシフトしてしまい、マウス又は、エンドキー等で次の行にしなければならない。また見るときも水平スクロールをしなければならない。しかしこの機能を有効にすることで、自動で改行し、文章の視認性が高くなる。
 % プログラミングするときも、onにしておくことをおすすめしたい。
 
-\subsection{SyncTexを使う}
-\subsubsection*{SyncTex とは何か？\index{SyncTex}}
-TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと。
-これを使えば、pdf上の表示がどのソースに関係しているかということが
-すぐにわかる。
-
-\subsubsection*{SyncTeXの設定}
-SyncTeXは、ビルドするときに形成されるファイル
-\verb'*.synctex.gz'を使って動作する。
-今の設定では、このファイルは消去されるようになっているため、
-SyncTeXを使いたい場合にはこの設定を無効化する必要がある。
-具体的には、setting.jsonの
-\begin{verbatim}
-  "latex-workshop.latex.clean.fileTypes":
-\end{verbatim}
-の記述の中から、
-\begin{verbatim}
-  "*.synctex.gz"、
-\end{verbatim}
-の記述を消去すればよい。これにより、VS Codeのpdfvierにおいて、
-SyncTeXが利用できるようになる。
-
-\subsubsection*{SyncTeXの具体的な利用の仕方}
-pdfviewer上でCtrl キーを押しながらマウスでコードをみたい場所におき、
-左クリックすることでそのコードの位置に飛ぶことができる。
-逆にコードからpdfに飛びたいときは、選択範囲をマウスで示して、または
-カーソルをおいて、 Ctrl+Alt+J で飛ぶことができる。
-（コマンドパレットからSyncTeXと入れてコマンドを実行させてもよい。）
 
 \subsection{スニペット導入}
 \subsubsection*{スニペットとは\index{スニペット}}
@@ -1038,6 +1010,36 @@ reportのひな形が出てくるようになる。
 % 禅モードに関する解説。
 \part{VS Code 外部ツール}
 \section{LaTeX workshop の設定}
+
+\subsection{SyncTexを使う}
+\subsubsection*{SyncTex とは何か？\index{SyncTex}}
+TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと。
+これを使えば、pdf上の表示がどのソースに関係しているかということが
+すぐにわかる。
+
+\subsubsection*{SyncTeXの設定}
+SyncTeXは、ビルドするときに形成されるファイル
+\verb'*.synctex.gz'を使って動作する。
+今の設定では、このファイルは消去されるようになっているため、
+SyncTeXを使いたい場合にはこの設定を無効化する必要がある。
+具体的には、setting.jsonの
+\begin{verbatim}
+  "latex-workshop.latex.clean.fileTypes":
+\end{verbatim}
+の記述の中から、
+\begin{verbatim}
+  "*.synctex.gz"、
+\end{verbatim}
+の記述を消去すればよい。これにより、VS Codeのpdfvierにおいて、
+SyncTeXが利用できるようになる。
+
+\subsubsection*{SyncTeXの具体的な利用の仕方}
+pdfviewer上でCtrl キーを押しながらマウスでコードをみたい場所におき、
+左クリックすることでそのコードの位置に飛ぶことができる。
+逆にコードからpdfに飛びたいときは、選択範囲をマウスで示して、または
+カーソルをおいて、 Ctrl+Alt+J で飛ぶことができる。
+（コマンドパレットからSyncTeXと入れてコマンドを実行させてもよい。）
+
 \subsection{シンタックスハイライト\index{シンタックスハイライト}}
 シンタックスハイライトとは、\LaTeX の文章などを編集するためのコマンドに色を
 つけることでその対応やコードの可読性を高めることができるVS Codeの機能である。
