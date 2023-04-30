@@ -1018,7 +1018,53 @@ reportのひな形が出てくるようになる。
 \subsection{snippet View\index{snippet View}}
 LaTeX Workshop から提供されているスニペットには一覧パネルがある。この一覧パネルはよく使う数学記号についてのスニペットに対応している。アクティビティバーのTeXのパネルから使うことがあるのである。これはGUIで使うことができるのでLaTeXでWhat you see is what you get \index{What you see is what you get}が可能になる。
 このバーはドラッグすることでコントロールパネルや、Secondary Side Barに移動することができる。
-
+\subsection{文字数カウント}
+文字数をカウントするにはいくつかの方法がある。
+\begin{description}
+  \item[方法１]Ctrl+A を用いてすべて選択して下のステータスバーを見ると 何個選択という表示が現れる。
+  \begin{description}
+    \item[利点]
+    \begin{itemize}
+      \item 拡張機能無しで文字数を数えることができる
+      \item どの拡張子でも使える。
+    \end{itemize}
+    \item[欠点]
+        \begin{itemize}
+          \item ステータスバーに常に表示されていないこと。
+          \item 文字数とは関係のないところもカウントされること。例えばプリアンブルなど
+        \end{itemize}  
+   
+  \end{description}
+   \item[方法２]latexworkshopの設定を用いる。コマンドパネルを開いて、 ``latex-workshop.texcount''のコマンドを用いる。
+   \begin{description}
+    \item[欠点]
+        \begin{itemize}
+          \item ステータスバーに常に表示されていないこと。
+          \item 毎回打つのは面倒くさい
+        \end{itemize}  
+  \end{description}
+    \item[方法３]  設定に書き込む方法
+\end{description}
+setting.jsonに次を\verb|{}|のなかに書き込む
+\begin{lstlisting}[caption={wordCount}]
+  // LaTeX-workshopの設定で文字数をカウントする。
+  "latex-workshop.texcount.autorun": "onSave",
+  // LaTeX-Workshopの設定で文字数をカウントのタイミングを調整する。
+  "latex-workshop.texcount.interval": 1000,
+\end{lstlisting}
+この方法の利点と欠点
+\begin{description}
+  \item[利点]
+        \begin{itemize}
+          \item ステータスバーに表示され楽
+          \item 毎回打つ手間がない
+        \end{itemize}
+  \item[欠点]
+      \begin{itemize}
+        \item tex以外の拡張子では使えない。
+      \end{itemize}  
+\end{description}
+ことが挙げられる。
 \subsection{SyncTexを使う}
 \subsubsection*{SyncTex とは何か？\index{SyncTex}}
 TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと。
