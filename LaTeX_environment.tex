@@ -42,7 +42,7 @@
 \subsection{編集方針}
 
 曖昧さを排除したできるだけ再現性の高い\LaTeX \index{\LaTeX}
-\footnote{日本では「ラテフ」と読むことが多い。たまに「レイテック」「ラテック」派がいる。また\LaTeX に関しては「テックス」とよんでもよいと言われている。ただし\TeX は確実に「テフ」と読むこと。これは「テックス」ではない\TeX のXは英語のXではなく\(\chi\)のように発音する為である。これは参考文献\cite{TeXの発音について}を参照。}
+\footnote{日本では「ラテフ」と読むことが多い。たまに「レイテック」「ラテック」派がいる。\LaTeX の読み方については、参考文献\cite{文書システムLaTeX}\cite{LaTeXの読み方}を参照すること。ただし\TeX は確実に「テフ」と読むこと。これは「テックス」ではない\TeX のXは英語のXではなく\(\chi\)の発音に由来する。これは参考文献\cite{TeXの発音について}を参照。}\footnote{\LaTeX はLeslie Lamport\index{Leslie Lamport}によって開発された組版システムのことである。\TeX よりもより簡単に記述できるようになっている。}
 環境構築に対する処方箋を書きたいという思いでこの資料を書いた。
 しかし環境構築後にも難関が待ち受けている。
 そのために環境構築後の設定の変更等にも配慮して資料を工夫した。
@@ -75,7 +75,7 @@
 しかし、この資料にも至らぬ点が山ほどあると思われる。
 自分もすべてを理解しているわけではない。
 この資料の記述は自分がおこなってできたことだけを記述している。
-それ以外のことを知りたい場合は、付録の参考文献やLaTeX workshopのreadmeを
+それ以外のことを知りたい場合は、付録の参考文献やLaTeX workshopのreadme\cite{LaTeXworkshop_README}を
 読むとよい。
 
 \subsubsection{設定用コード等について}
@@ -132,7 +132,7 @@ VS Codeは、
 \begin{itemize}
   \item 無料で頒布されている
   \item 動作が軽い
-  \item クロスプラットフォーム\index{クロスプラットフォーム}である（さまざまなOSに対応している）
+  \item クロスプラットフォームである（さまざまなOSに対応している）
   \item 最新トレンド全部入り
   \item 拡張がしやすく、さまざまな機能がある
 \end{itemize}
@@ -178,7 +178,7 @@ OverleafはGitHubと連携することができるために論文執筆の際に
    
   \item[リモート\index{リモート}] ~\\
     (ネットワークを介して接続できる)離れたところにある 
-    ローカルの対義語はオンラインではなくリモートになる
+    % ローカルの対義語はオンラインではなくリモートになる
   \item [ユーザー\index{ユーザー}] ~\\
     自分が設定した名前 自分のこと
     ユーザーの名前のフォルダーが最上位にあると考えておけばよい。
@@ -295,16 +295,16 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 \end{enumerate}
 ファイル名の後ろに.txt等のファイルの種類を示す文字列が表示されるようになり、今まで見えなかったファイルが見えるようになる。
 
-\begin{description}
-  \item[windows 10] ~\\ 
-    エクスプローラーを開いて上にある表示タブ
-    を開いて表示タブにする。表示タブから隠しファイルを開いて、
-    チェックマークをつける。
-  \item[windows 11] ~\\
-    エクスプローラーの上部にある三点リーダーのアイコン(…)をクリックする。
-    オプションを選択してフォルダーオプションを開く。
-    タブから表示を選択して、「隠しファイルと隠しフォルダー、および隠しドライブを表示する」を選択する。OKを押す。
-\end{description}
+% \begin{description}
+%   \item[windows 10] ~\\ 
+%     エクスプローラーを開いて上にある表示タブ
+%     を開いて表示タブにする。表示タブから隠しファイルを開いて、
+%     チェックマークをつける。
+%   \item[windows 11] ~\\
+%     エクスプローラーの上部にある三点リーダーのアイコン(…)をクリックする。
+%     オプションを選択してフォルダーオプションを開く。
+%     タブから表示を選択して、「隠しファイルと隠しフォルダー、および隠しドライブを表示する」を選択する。OKを押す。
+% \end{description}
 % win10での動作確認ができないためwin11の説明としました。
 \section{TeX Live導入}
 
@@ -674,7 +674,7 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 \section{ローカル環境でビルドする}
 ここまでの内容が行えていれば、十分に高機能な環境構築ができているはずである。
 ローカル環境でビルドできることを確認してみよう。
-ソースコード\ref{code:helloWorld}の内容の.texファイルを作成し、VScode上でビルドする。このコードはモダン\LaTeX である\LuaLaTeX でコンパイルされる。
+ソースコード\ref{code:helloWorld}の内容の.texファイルを作成し、VScode上でビルドする。
 % jvlistingでコードを貼り付ける
 \begin{lstlisting}[caption={\LuaLaTeX のソースコード},label=code:helloWorld]
 \documentclass{ltjsarticle}
@@ -1156,7 +1156,7 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
 パッケージで定義されたコマンドもPreview することができる。
 さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
 \subsection{Ultra Math Previewの設定}
-setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応していないパッケージの数式のレタリングをすることができる。
+setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応していないパッケージの数式のレンダリングをすることができる。
 \begin{lstlisting}[caption={Ultra Math Preview}]
   "umath.preview.renderer": "mathjax",
 "umath.preview.macros": [
