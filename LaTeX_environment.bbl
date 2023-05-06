@@ -15,6 +15,10 @@
 \newblock {1週間でLaTexの基礎が学べる本 }.
 \newblock {impress}, {2022}.
 
+\bibitem{VSCodeの文字コード}
+{JavaDrive}.
+\newblock \url{https://www.javadrive.jp/vscode/setting/index4.html}.
+
 \bibitem{cloudlatexの設定}
 {onigiri}.
 \newblock {CloudLaTeXとVScode連携によって最強のTex環境を手に入れる}.

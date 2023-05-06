@@ -356,6 +356,9 @@ Japanese Language Pack for Visual Studio Code
   PC>ローカルディスク>ユーザー>ユーザー名、と辿れるディレクトリのこと
 }
 直下に\verb|.latexmkrc|というテキストファイルを作成し、テキストエディタで開く。
+ここでテキストエディタはVS Code を使うこと。VS Code でUTF-8\index{UTF-8}
+\footnote{UTF-8とはUnicode用の符号化方式の一つである。UTF-16もある。VS Codeではデフォルト設定としてUTF-8となっている。しかしほかのエディタ(例えばメモ帳等)ではデフォルトでUTF-8になっていない可能性がある。他エディタでlatexmkをつくり、VS Codeで開いた際にUTF-8以外のときにはステータスバーからUTF-8に直す必要がある。\cite{VSCodeの文字コード}}
+にしなければならない。
 markdownファイルに記載されたlatexmkの設定をコピーして貼り付け、保存する。
 同じ内容をソースコード\ref{code:latexmk}に示す。
 
@@ -1241,6 +1244,7 @@ setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応�
 
 \appendix
 \section{ショートカットキー一覧}
+ショートカットキーは一つのキーのみではなく複数キーの組む合わせも存在する。
 \begin{center}
   \begin{tabular}{ll} \hline
     コマンド            & 機能                     \\ 
