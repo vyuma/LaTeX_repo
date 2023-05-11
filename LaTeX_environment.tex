@@ -68,14 +68,14 @@
 \subsection{この資料の特徴}
 この資料は、\LaTeX の解説書ではない。VS Codeで\LaTeX 文書を編集するために必要なIT知識と
 設定の方法を述べる。そのあとVS Codeの基本機能について説明する。
-美文書書作成入門\cite{美文書本}は、\LaTeX の機能の解説については大変充実した良書ではあるものの、環境構築についてはあまり触れていない。またほかのサイトなどを探しても、IT知識が
+美文書書作成入門参考文献\cite{美文書本}は、\LaTeX の機能の解説については大変充実した良書ではあるものの、環境構築についてはあまり触れていない。またほかのサイトなどを探しても、IT知識が
 少しでもないとまったく分からない。そのためにシステムをいじりたくなくなるし、さらに取り返しのつかなくなることがまれにある。この状況を回避するために
 この資料を作った。
 
 しかし、この資料にも至らぬ点が山ほどあると思われる。
 自分もすべてを理解しているわけではない。
 この資料の記述は自分がおこなってできたことだけを記述している。
-それ以外のことを知りたい場合は、付録の参考文献やLaTeX workshopのreadme\cite{LaTeXworkshop_README}を
+それ以外のことを知りたい場合は、付録の参考文献やLaTeX workshopのreadme参考文献\cite{LaTeXworkshop_README}を
 読むとよい。
 
 \subsubsection{設定用コード等について}
@@ -1182,10 +1182,27 @@ setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応�
 		"background-color: rgba(0, 0, 0, 0.5);",
 	],
 \end{lstlisting}
-\section{Table Generator\index{Table Generator}}
-\LaTeX での表を書く際に非常に有用なサイトである。このサイトではwordとほとんど同等の環境のGUIを用いることで\LaTeX 記法での表に変換してくれるサイトである。
+\section{\LaTeX 表制作}
+\subsection{Table Generator\index{Table Generator}}
+Table Generator\index{Table Generator}
+は、\LaTeX での表を書く際に非常に有用なサイトである。このサイトではwordとほとんど同等の環境のGUIを用いることで\LaTeX 記法での表に変換してくれるサイトである。
 \url{https://www.tablesgenerator.com/}で書くことができる。さらにこれはhtml等にも対応しているなどさまざまなマークアップ言語に対応している。
 
+またCSVファイルの読み込みもすることができる。(参考文献\cite{tablesgeneratorabout}参照。)
+\subsection{csv2tabular\index{csv2tabular}}
+csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTeX 形式の表に変換してくれる外部ツールである。これは、レポートの制作の時などでも便利である。このサイトは、参考文献\cite{csv2tabular}
+\url{https://rra.yahansugi.com/scriptapplet/csv2tabular/}から見ることができる。またこの表は、tabular形式になるが環境名は表示されないので、次の環境を加える必要がある。
+\begin{lstlisting}
+  \begin{table}[h]
+    \caption{キャプション名を書く}
+    \label{ラベル名を書く}
+    \centering
+     \begin{tabular}{clll}% ここは中央ぞろえまたは左右ぞろえを決める。
+      % ここに変換したコードを載せる。
+    \end{tabular}
+  \end{table}
+\end{lstlisting}
+のように書く必要がある。(参考文献\cite{csv2tabularの使い方}参照)また、Table Generatorのように、セルの結合等には対応していないため、形式的にまとまっているデータに対しては有効であるが、複雑な表は処理が難しい、複雑な表を書く場合はTable Generatorを使う方がよい。
 
 \section{テキスト校正くん\index{テキスト校正くん}}
 テキスト校正くんは、texファイルやmdファイル等の日本語文章を校閲することができる。これはインストールするだけで利用できる。
@@ -1223,7 +1240,7 @@ setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応�
 ]
 \end{lstlisting}
 
-このように、\verb|"key"|には、キーバインドを打ち込み、\verb|"command"|には拡張機能または個のVS Codeのシステム自体に設定されている機能を記述する。
+このように、\verb|"key"|には、キーバインドを打ち込み、\verb|"command"|には拡張機能またはこのVS Codeのシステム自体に設定されている機能を記述する。
 
 次に\verb|"when"|はそのキーバインドがいつどのようなときにそのキーバインドを打ったときに其のコマンドを使用するのかということを決めることができる。
 
@@ -1296,6 +1313,8 @@ setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応�
 VS Codeではさまざまなショートカットが存在する。しかし、それをより活用し、ひいてはPC全体の効率的な活用を目指すことができる。例えば、マウスを使う場合と比べて時間効率では、年間120時間の時短が見込める等の報告がある。(参考文献\cite{キーボードショートカット時間効率}などを参照。)
 
 ここではWindowsの起動からVS Code,ブラウザでのショートカットについて記述する。
+
+
 
 \section{ショートカットキー一覧}
 ショートカットキーは一つのキーのみではなく複数キーの組む合わせも存在する。
