@@ -31,7 +31,10 @@
 
 \usepackage{url}
 \usepackage{bxtexlogo} % platex, lualatexのロゴを使うために必要
-\usepackage[hidelinks]{hyperref}
+% hyperref パッケージの上位版パッケージ
+\usepackage{bookmark}
+\usepackage{xurl}
+\hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
 \begin{document}
 
 \title{最強の\LaTeX 環境構築 Windows版}
@@ -1155,8 +1158,14 @@ cloudlatexとは、株式会社アカリクが運営している\LaTeX のビル
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
 パッケージで定義されたコマンドもPreview することができる。
 さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
+\begin{itemize}
+  \item 数式を打つと Hover が勝手に出てくる
+  \item   LaTeX と Markdown で同じマクロがプレビューに使える
+  \item   ホバーが透過できる
+  \item   ホバーの上からその下にある文字をクリックすることができる
+\end{itemize}
 \subsection{Ultra Math Previewの設定}
-setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応していないパッケージの数式のレンダリングをすることができる。
+setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応していないパッケージの数式のレンダリングをすることができる。参考文献\cite{UltraMathPreview}
 \begin{lstlisting}[caption={Ultra Math Preview}]
   "umath.preview.renderer": "mathjax",
 "umath.preview.macros": [
