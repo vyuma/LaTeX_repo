@@ -130,7 +130,7 @@ VS Codeで編集ができる環境を整える。
 
 \subsection{VS Code とは何か？}
 VS Codeとは、Visual Stadio Code の略でマイクロソフト社が提供する
-統合開発環境である。要は高性能なエディター\index{エディター}であり、後述する拡張機能の存在によって\LaTeX との親和性も高い。
+統合開発環境である。要は高性能なエディター\index{エディター}であり、後述する拡張機能の存在によって\LaTeX との親和性も高い。\footnote{テキストエディタはWindows標準搭載のメモ帳や、MicrosoftのWord等が有名である。またTeX専用のテキストエディタとしてはTeXliveにあるTeXworks等が有名である。この資料では今後のトレンドを考えてVSCodeへの導入を推奨する。}
 VS Codeは、
 \begin{itemize}
   \item 無料で頒布されている
@@ -326,7 +326,11 @@ TeX Live \index{TeX Live}は、次のページからダウンロードすると�
 そしてNextを押し続けてinstallを押す。これで、\LaTeX packageのほとんどすべてを
 ダウンロードすることが可能。
 
-\subsubsection*{インストールが正常に行われたことを確認する}
+\section{環境構築を最短で終わらせる方法}
+環境構築を早く行いたい場合や、PCにメモリがない場合には環境構築の容量を大きく制限する必要がある。
+
+
+\subsection{インストールが正常に行われたことを確認する}
 インストール完了後、コマンドプロンプトを起動して、\verb|latex -v|と打ち込む。
 この時に、$3.141592653$のようなversion情報が出てこれば正常に完了している。
 \footnote{
@@ -702,6 +706,23 @@ Hello world!
 \end{lstlisting}
 
 \part{\LaTeX 解説}
+\section{TeX live}
+\subsection{TeX live とは？}
+TeX liveとは、TeX の国際的なディストリビューションである。
+\LaTeX や\TeX のパッケージを入手することができる。
+
+そして、\LaTeX のパッケージを一括で管理することができる機能がTeXliveに標準で実装されているTeXlive Managerである。
+\subsection{TeX live Manager の使い方}
+TeX Live Managerの開き方はスタートメニューからTeX live Managerを検索するとよい。
+
+TeX live Managerを開くと現在TeX liveにあるパッケージが読み込まれる。そして、ここから検索欄に自分の必要なパッケージを読み込むと今必要なパッケージをダウンロードすることができる。
+
+状態を「未インストール」に変更すると、自分がローカルに入れていないパッケージがインストールすることができる。
+
+\LaTeX 導入の段階で「高度な設定」を用いてインストールした場合には必要最小限のパッケージしか入っていないのでここから入れる必要がある。
+
+texworksなどもここから入手することができる。
+
 \section{\LaTeX の基本機能の設定}
 \LaTeX の特徴の一つに文書の論理的構造と視覚的なレイアウトを分けて考えることができることがある。
 例えば、「はじめに」という名前の節があれば文書に\verb|\section{はじめに}|と書いておく。
