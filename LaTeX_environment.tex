@@ -35,6 +35,11 @@
 \usepackage{bookmark}
 \usepackage{xurl}
 \hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
+% pdfにメタデータを載せる。
+\hypersetup{
+  pdftitle={最強の\LaTeX 環境構築 Windows版},
+  pdfauthor={裕磨, リュカ}
+}
 \begin{document}
 
 \title{最強の\LaTeX 環境構築 Windows版}
@@ -70,7 +75,7 @@
 
 \subsection{この資料の特徴}
 この資料は、\LaTeX の解説書ではない。VS Codeで\LaTeX 文書を編集するために必要なIT知識と
-設定の方法を述べる。そのあとVS Codeの基本機能について説明する。
+設定の方法を述べる。そのあとVS Codeの基本機能そしてLaTeXを便利に書くためのツールをできるだけ紹介する。
 美文書書作成入門参考文献\cite{美文書本}は、\LaTeX の機能の解説については大変充実した良書ではあるものの、環境構築についてはあまり触れていない。またほかのサイトなどを探しても、IT知識が
 少しでもないとまったく分からない。そのためにシステムをいじりたくなくなるし、さらに取り返しのつかなくなることがまれにある。この状況を回避するために
 この資料を作った。
@@ -78,7 +83,8 @@
 しかし、この資料にも至らぬ点が山ほどあると思われる。
 自分もすべてを理解しているわけではない。
 この資料の記述は自分がおこなってできたことだけを記述している。
-それ以外のことを知りたい場合は、付録の参考文献やLaTeX workshopのreadme参考文献\cite{LaTeXworkshop_README}を
+それ以外のことを知りたい場合は、付録の参考文献\footnote{参考文献\cite{完全導入ガイド},\cite{最高の環境latex},\cite{platex}等を参考にするとよい。このサイトから多くのことを学んだ。しかし最低限すぎるし何より必要十分な解説はなされていない。}
+やLaTeX workshopのreadme参考文献\cite{LaTeXworkshop_README}を
 読むとよい。
 
 \subsubsection{設定用コード等について}
@@ -262,8 +268,15 @@ OverleafはGitHubと連携することができるために論文執筆の際に
       のでその指定する窓にCmd と打ち Enterを打つことで、
       コマンドプロンプトを実行できる。
       \item[開き方3]~\\
-      エクスプローラーのパスの入力欄に"cmd"と入力してEnterを押すことでもコマンドプロンプトを開くことができる。
-    \end{description}
+      エクスプローラーのパスの入力欄に"cmd"と入力してEnterを押すことでもコマンドプロンプトを開くことができる。 \end{description}
+    \item[GUI\index{GUI}]~\\
+      GUIとは``Graphical User Interface（グラフィカルユーザーインターフェース）''の略であり、ユーザーの使いやすさを重視し、アイコンやボタンなどを用いて直感的にわかりやすくコンピューターに指令を出せるようにしたユーザーインターフェース\index{ユーザーインターフェース}。ユーザーインターフェースとは、ユーザーとコンピューター間での情報のやり取りの方法、仲立ちするものである。GUIではキーボードに加えてマウスなどのポインティングデバイスやタッチパネルによって視覚的に操作できる。WordやPowerPointなどがこれに当たる。
+    \item[CUI\index{CUI}]~\\
+      CUIとは``Character User Interface（キャラクターユーザーインターフェース）''の略である。あらかじめ決まっている文字や命令を コマンドといい、コマンドを入力してコンピュータとやり取りをするユーザーインターフェース。CUIでは主にキーボードによるコマンドの文字情報のみで操作する。
+      コマンドプロンプトがこれに当たる。
+    \item[ディストリビューション\index{ディストリビューション}]~\\
+    同じ機能をもつが、パッケージの仕方・配布形態の異なるソフトウェアパッケージのことであり、TeXliveは世界で最も使われているディストリビューションである。
+   
     % エクスプローラーのパスの入力欄に"cmd"と入力してEnterを押すことでもコマンドプロンプトを開くことができます。
     % このようにして開いた場合、カレントディレクトリは"cmd"の入力前にエクスプローラーのパスの入力欄に表示されていたディレクトリになります。
     % そのためカレントディレクトリを移動する手間が減ります
@@ -387,7 +400,10 @@ TeX Live Managerをスタート画面から検索して開く。TeX Live Manager
   \item latexmk.win32
 \end{itemize}
 の二つが出てくるので、これらをチェックボックスをクリックして選択項目をインストール を選択し latexmk を選択してインストールする。これでlatexmkのインストールが完了する。
-\footnote{トラブルシューティング:ここで、\lualatex を用いる時にはlualatex-mathというパッケージをダウンロードする必要がある。もし\lualatex でうまくコンパイルされない場合にはこのパッケージをダウンロードするとうまくコンパイルされるかもしれない。参考文献\cite{TeXliveトラブルシューティングlualatex}参照}
+\footnote{トラブルシューティング:ここで、\LuaLaTeX 
+を用いる時にはlualatex-mathというパッケージをダウンロードする必要がある。もし\LuaLaTeX 
+でうまくコンパイルされない場合にはこのパッケージをダウンロードするとうまくコンパイルされるかもしれない。
+参考文献\cite{TeXliveトラブルシューティングlualatex}参照}
 
 \subsection{latexmkの設定}
 ホームディレクトリ
@@ -738,7 +754,7 @@ Hello world!
 TeX liveとは、TeX の国際的なディストリビューションである。
 \LaTeX や\TeX のパッケージを入手することができる。
 
-そして、\LaTeX のパッケージを一括で管理することができる機能がTeXliveに標準で実装されているTeXlive Managerである。
+そして、\LaTeX のパッケージを一括で管理することができる機能がTeXliveに標準で実装されているTeXlive Manager\index{TeXlive Manager}である。
 \subsection{TeX live Manager の使い方}
 TeX Live Managerの開き方はスタートメニューからTeX live Managerを検索するとよい。
 
@@ -819,7 +835,7 @@ Ctrl+Shift+M のショートカットキーで表示される。
 すると、同じフォルダー内に.sty ファイルが生成される。
 この.styファイルの保存場所は、次セクション参照。
 
-\subsection{TeX Directory Structure とは何か？}
+\subsection{TeX Directory Structure\index{TeX Directory Structure} とは何か？}
 \LaTeX のパッケージなどは、TDS（TeX Directory Structure）\index{TDS（TeX Directory Structure）}にしたがって各
 ディレクトリに配置されている。
 今回はTeX Liveなので、エクスプローラーからwindowsフォルダーの中の
@@ -877,12 +893,16 @@ packageは最小構成でおこなうべきである。
 \part{VS Code 解説}
 \section{VS Codeの基本機能}
 デフォルトで使えるVS Codeの基本機能を解説する。
-\subsection{、。を, . にする<置換機能>}\index{ちかんきのう@置換機能}
+
+\subsection{検索/置換機能}\index{ちかんきのう@置換機能}
 VS Codeの基本機能として、置換機能がついている。このためマクロを組まずとも
 、を, に変えることができる。
 コマンドは、Ctrl+Hキーを押すと検索と置換が出てきて、Enter キーを押すと
 ひとつづつ置換、Crl+Alt+Enter キーを押すとすべてが置換される。
 また置換を閉じるのはEsc キーである。
+
+またctrl+shift+Fを押すことで検索サイドバーを開くことができる。
+
 
 \subsection{コメントアウト機能}\index{コメントアウト機能}
 \LaTeX は\verb|%|から行末までをコメントと認識する。しかしこれをいちいち書くのは面倒くさい。
@@ -912,6 +932,15 @@ VS Codeの基本機能として、置換機能がついている。このため�
 ただし、ショートカットキーによってビルドした場合は、
 Build LaTeX projectの最初に記述されているコマンドをビルドコマンドとして呼び出す。
 これらのショートカットキーはデフォルトで設定されているもので、好きなキーに変更することもできる。
+
+\subsection{pdf viewerについて}
+VSCodeにはpdfvewerが入っている。この機能について解説する。
+\LaTeX で生成した文章は外部のviewer（例えばedgeやchromeなど）でも見ることができる。しかし、VSCodeではSynicTeXや検索機能等が使うことができる。
+
+\begin{description}
+  \item[検索機能]  文書内の文字列を検索することができる。Ctrl+F を押すことで文章内の検索をかけることができる。
+  \item[PDFの目次を見る] PDFの目次を見ることができる。この目次はbookmarkパッケージを用いたときまたはそのpdfがそもそもブックマークがついていた時に限るが目次から簡単に飛ぶことができる。これは、pdfviewerの上のタスクバーの一番左のアイコンをクリックすることで見ることができる。
+\end{description}
 
 \section{VS Codeの設定について}
 \subsection{VS Code の設定について}
@@ -1063,6 +1092,8 @@ reportのひな形が出てくるようになる。
 \verb|$0|を入れておけば、入力終了後に
 次の行からすぐに書き始めることができる。
 
+ユーザースニペットに関して必要な注意また他の言語への応用等は参考文献\cite{スニペット1}\cite{スニペット2}\cite{スニペット完全解説}参照するとよい。
+
 \subsection{禅モード\index{ぜんもーど@禅モード}} 
 禅モードはCtrl+K Z  を用いると使うことができるモードでこのモードでは下のステータスバー等がなくなりコーディング作業に集中できるモードになっている。この禅モードから抜け出すためにはEscキーを押すことで抜け出すことができる。この間にはGUIによる操作はできないがCUIによる操作のみ可能なためにショートカットキーを覚えていれば困ることはほとんどない為コーディング作業をするときには必要である。
 
@@ -1116,7 +1147,20 @@ LaTeX Workshop から提供されているスニペットには一覧パネル�
       \item tex以外の拡張子では使えない。
     \end{itemize}  
   \end{description}
-  ことが挙げられる。
+  \item[WordCounterを用いる方法]
+    \begin{description}
+      \item[利点] ~
+      \begin{itemize}
+        \item どの拡張子でも使える。
+        \item 読了時間などのカスタムができる。
+      \end{itemize}
+      \item[欠点]~
+      \begin{itemize}
+        \item TeXのコマンドまで認識してしまう。
+        \item ステータスバーが窮屈になる。
+      \end{itemize}
+    \end{description}  
+    ことが挙げられる。
 \end{description}
 
 \subsection{SyncTexを使う}
