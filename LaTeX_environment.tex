@@ -7,6 +7,7 @@
 \usepackage{xcolor}
 \usepackage{listings,jvlisting} %日本語のコメントアウトをする場合jvlisting（もしくはjlisting）が必要
 %ここからソースコードの表示に関する設定
+% \usepackage{lua-visual-debug}
 \lstset{
 	stringstyle={\ttfamily},
 	commentstyle={\ttfamily},
@@ -338,14 +339,17 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 
 \subsection{TeX Live インストール}
 TeX Live \index{TeX Live}は、次のページからダウンロードすると良い。
-
 \footnote{
   \LaTeX はたくさんのソフトウェアからなるシステムであるため、
   配布用に必要なソフトウェア群をパッケージしたディストリビューションの形でインストールする。
   今回インストールするのはTeX Liveというディストリビューションである。
 }
-\\
-\url{https://www.tug.org/texlive/acquire-netinstall.html}\\
+
+\begin{quote}
+  \centering
+	\url{https://www.tug.org/texlive/acquire-netinstall.html}
+
+\end{quote}
 をクリックして、ページ上のリンク install-tl-windows.exeをクリックする。この時、
 警告が出るが無視して大丈夫。
 そしてNextを押し続けてinstallを押す。これで、\LaTeX packageのほとんどすべてを
@@ -380,8 +384,10 @@ TeX Live インストーラーをインストールすることがまず始め�
 
 \section{Visual Stadio Code の導入}
 \subsection{Visual Stadio Code のインストール}
-Visual Studio Code は次のページからダウンロードするとよい。\\
-\url{https://code.visualstudio.com/download}\\
+Visual Studio Code は次のページからダウンロードするとよい。
+\begin{quote}
+	\url{https://code.visualstudio.com/download}
+\end{quote}
 をクリックしてそのあとの画面の中から今回の場合は、
 自分の環境に合わせて (Windows か Mac の) ファイルをダウンロードする。
 ファイルを開き、追加タスクの変更は触らないようにしてNextを押し続ければ
@@ -773,7 +779,7 @@ TeX live Managerを開くと現在TeX liveにあるパッケージが読み込�
 
 texworksなどもここから入手することができる。
 
-\section{\LaTeX の基本機能の設定}
+\section{\LaTeX の基本機能}
 \LaTeX の特徴の一つに文書の論理的構造と視覚的なレイアウトを分けて考えることができることがある。
 例えば、「はじめに」という名前の節があれば文書に\verb|\section{はじめに}|と書いておく。
 この文書をコンパイルするに際し、
@@ -796,6 +802,16 @@ texworksなどもここから入手することができる。
 で出力される。このために、\pLaTeX などを使いたい場合は、
 左のタブからおこなう必要がある。
 
+\subsection{\LaTeX のマニュアルの出し方}
+\LaTeX はソースコードで打つが自分が所望する書き方をするときにどのようにマニュアルを探すべきかという問題がある。この文章の最後にある参考文献等はかなり参考になることが書いて在ることが多い。しかしながら\LaTeX 中級者上級者を目指すためには、ブログの記事だけでなく必要ならば\LaTeX のパッケージのマニュアルを読むべきである。
+
+\LaTeX にはその機能がある。例えば、 luatexjaというパッケージの名前であるマニュアルを読みたい場合にはターミナルで
+\begin{lstlisting}[caption={ターミナル}]
+  texdoc luatexja
+\end{lstlisting}
+と入れると、ドキュメントが出てくる。\LaTeX のドキュメントは大体英語である。しかし、必要な場合には英語のマニュアルを読むことでたいていの者が扱えるようになる。
+
+しかし本当に困ったら\cite{TeXwiki-home}や\cite{StackOverflow}のサイトなどにアクセスして過去に同じような質問がなされていないか確認するとよい。また\LaTeX 関連の質問は英語の方が多い。
 % \section{\LaTeX のモダンな書き方}
 % \LuaLaTeX におけるモダンな書き方を書きたい。例えば使用すべきpackageや他のものの注意等
 
@@ -895,8 +911,8 @@ ls-Rというファイルが存在していてこれが、TeXが必要なパッ�
 packageは最小構成でおこなうべきである。
 なぜなら、\LuaLaTeX はかなり最近のものであり、packageが\LuaLaTeX に
 対応していないということもかなりの可能性としてある。
-そのため、参考になるのは参考文献のサイト
-
+そのため、参考になるのは参考文献のサイト参考文献\cite{TDS}
+になる。
 % \section{TeX Live の更新について}
 % tlmgr についてできたら追記
 
@@ -1233,6 +1249,10 @@ cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しな�
 
 \subsubsection*{cloud LaTeX との連携をするための設定}
 導入の設定は、md形式のファイルに添付されているものをsetting.jsonに入れればよい。cloud LaTeX 参照
+\subsection{LaTeXWorkshopの設定に困ったら}
+LaTeXworkshopの設定に困った場合には、参考文献\cite{latexworkshopwiki}又は、公式ドキュメントである参考文献\cite{LaTeXworkshop_README}を読むとよい。しかしながらこれらは英語であるのでこれがいやな場合は、参考文献\cite{LaTeXworkshop1}\cite{LaTeXWorkshop2}\cite{LaTeXWorkshop3}\cite{LaTeXWorkshop4}\cite{数式プレビュー}
+が公式ドキュメントを日本語に訳したような書き方をしているためにこれを読むとよい。参考文献\cite{LaTeX+VSCodewiki}等はVS Codeとlatexについて解説している数少ないwikiのページである。参考文献\cite{エラーをしながら1}\cite{エラーをしながら2}\cite{エラーをしながら3}は変わった方法で\LaTeX をVSCodeに導入している。またVSCodeの解説については、参考文献\cite{VSCodeの公式ドキュメント}\cite{VSCode完全入門}\cite{SyncTeXVSCode}等を参考にすると良い。
+
 \section{cloudlatex}
 \subsection{cloudlatexとは何か？}
 cloudlatexとは、株式会社アカリクが運営している\LaTeX のビルドをリモート環境で行うサービスのことである。このcloudlatexを用いるとローカル環境に\LaTeX がインストールされていなくとも\LaTeX 文章を書くことができる。
