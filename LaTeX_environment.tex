@@ -1,10 +1,13 @@
-\documentclass{ltjsarticle}
+\documentclass[titlepage]{ltjsarticle}
 % ltjsarticle: lualatex 用の 日本語 documentclass
 % 他のタイプセットエンジンを使ってビルドする場合は、
 %  \documentclass[dvipdfmx]{jsarticle} などとする。
+\usepackage{makeidx}
+\makeindex
 \usepackage{xcolor}
 \usepackage{listings,jvlisting} %日本語のコメントアウトをする場合jvlisting（もしくはjlisting）が必要
 %ここからソースコードの表示に関する設定
+% \usepackage{lua-visual-debug}
 \lstset{
 	stringstyle={\ttfamily},
 	commentstyle={\ttfamily},
@@ -25,11 +28,19 @@
 }
 \renewcommand{\lstlistingname}{ソースコード}
 %ここまでソースコードの表示に関する設定
+\pagestyle{headings}
 
-
-\usepackage{url}
 \usepackage{bxtexlogo} % platex, lualatexのロゴを使うために必要
-\usepackage[hidelinks]{hyperref}
+% hyperref パッケージの上位版パッケージ
+\usepackage{bookmark}
+% xurlパッケージはurlパッケージを含む.\url{}のみでurlをうまく処理する.
+\usepackage{xurl}
+\hypersetup{unicode,bookmarksnumbered=true,hidelinks,final}
+% pdfにメタデータを載せる。
+\hypersetup{
+  pdftitle={最強の\LaTeX 環境構築 Windows版},
+  pdfauthor={裕磨, リュカ}
+}
 \begin{document}
 
 \title{最強の\LaTeX 環境構築 Windows版}
@@ -39,8 +50,8 @@
 \section{序文}
 \subsection{編集方針}
 
-曖昧さを排除したできるだけ再現性の高い\LaTeX 
-\footnote{日本では「ラテフ」と読むことが多い。たまに「レイテック」「ラテック」派がいる。}
+曖昧さを排除したできるだけ再現性の高い\LaTeX \index{\LaTeX}
+\footnote{日本では「ラテフ」と読むことが多い。たまに「レイテック」「ラテック」派がいる。\LaTeX の読み方については、参考文献\cite{文書システムLaTeX}\cite{LaTeXの読み方}を参照すること。ただし\TeX は確実に「テフ」と読むこと。これは「テックス」ではない\TeX のXは英語のXではなく\(\chi\)の発音に由来する。これは参考文献\cite{TeXの発音について}を参照。}\footnote{\LaTeX はLeslie Lamport\index{Leslie Lamport}によって開発された組版システムのことである。\TeX よりもより簡単に記述できるようになっている。}
 環境構築に対する処方箋を書きたいという思いでこの資料を書いた。
 しかし環境構築後にも難関が待ち受けている。
 そのために環境構築後の設定の変更等にも配慮して資料を工夫した。
@@ -53,27 +64,36 @@
 \end{itemize}
 そこで初心者に\LaTeX を使えるように、さらには自分好みにカスタマイズできるようになってもらうための資料とすることを編集の基本方針としたい。
 
-この文章は、\LaTeX をVisual Stadio Code (以下VS Code)での環境構築のために自分が
+この文章は、\LaTeX をVisual Stadio Code\index{Visual Stadio Code} (以下VS Code)での環境構築のために自分が
 したことのすべてを書いている。技術的解説もできるだけするように努めた。
 実は\LaTeX の環境構築方法を完全に技術的側面にも触れてしっかりVS Code上
 に入れるための方法を体系的にまとめた資料はネットには
-存在しない可能性がある。もちろん分かりやすくまとめたサイトはたくさんあるが
+存在しない可能性がある。
+
+例えば、`LaTeX 環境 構築 filetype:pdf'\footnote{filetype:pdf はpdfをブラウザで検索することができる便利な検索方法であるので覚えておくとよい。}などで検索を書けると
+pdfファイルが出てくるのだがそれのどれもが非常に昔に書かれたものが多く\LaTeX のモダンな書き方をどれも推奨はしていない。
+したがってここでは\LaTeX のモダンな書き方とその方法について書いてみたい。
+
+もちろん分かりやすくまとめたサイトはたくさんあるが
 玉石混交である。そのために、VS Code 設定と、\LaTeX 設定の両面のアプローチ
 から環境構築設定を解説したいと思った。
 可能な限り初心者に分かりやすくそして自分が忘れないように書いたつもりである。
 この資料が\LaTeX に入門する一助となれば筆者としても幸甚の極みである。
 
 \subsection{この資料の特徴}
-この資料は、\LaTeX の解説書ではない。VS Codeで\LaTeX 文書を編集するために必要なIT知識と
-設定の方法を述べる。そのあとVS Codeの基本機能について説明する。
-美文書書作成入門\cite{美文書本}は、\LaTeX の機能の解説については大変充実した良書ではあるものの、環境構築についてはあまり触れていない。またほかのサイトなどを探しても、IT知識が
+この資料は、\LaTeX の解説書ではない。
+VS Codeで\LaTeX 文書を編集するために必要なIT知識と
+設定の方法を述べる。
+そのあとVS Codeの基本機能そしてLaTeXを便利に書くためのツールをできるだけ紹介する。
+美文書書作成入門参考文献\cite{美文書本}は、\LaTeX の機能の解説については大変充実した良書ではあるものの、環境構築についてはあまり触れていない。またほかのサイトなどを探しても、IT知識が
 少しでもないとまったく分からない。そのためにシステムをいじりたくなくなるし、さらに取り返しのつかなくなることがまれにある。この状況を回避するために
 この資料を作った。
 
 しかし、この資料にも至らぬ点が山ほどあると思われる。
 自分もすべてを理解しているわけではない。
 この資料の記述は自分がおこなってできたことだけを記述している。
-それ以外のことを知りたい場合は、付録の参考文献やLaTeX workshopのreadmeを
+それ以外のことを知りたい場合は、付録の参考文献\footnote{参考文献\cite{完全導入ガイド},\cite{最高の環境latex},\cite{platex}等を参考にするとよい。このサイトから多くのことを学んだ。しかし最低限すぎるし何より必要十分な解説はなされていない。}
+やLaTeX workshopのreadme参考文献\cite{LaTeXworkshop_README}を
 読むとよい。
 
 \subsubsection{設定用コード等について}
@@ -83,10 +103,25 @@
 \subsection{この資料の読み方}
 この資料は、細かな説明などは意図せずに省かれている可能性があるため、製作者のもとでこの資料を使う形式を想定している。したがってそれ以外の場合での利用は自分で参考文献等を読まれることを強くオススメする。資料制作者の立ち合いのもとでの教授のあと使用するという形式でも十分使える資料になっている。
 
-\subsection{免責事項}
-この資料を使ったことによる損害等は、製作者は一切の責任を負いません。
-この資料に関する質問などは学術サーバー内でおこなっています。
+\LaTeX の導入の後はこの資料がリファレンスとしても外部ツールや設定の一覧としても使えるように構成をしている。
 
+注意として\LaTeX 構文についての記述は必要最小限度にとどめている。
+したがって、より詳しい\LaTeX の構文やマクロの詳しい組み方より発展的な扱い方等は参考文献\cite{美文書本}\cite{一週間基礎}等を参照する必要がある。
+
+\subsection{免責事項}
+
+この資料を使ったことによる損害等は、製作者は一切の責任を負いません。
+
+\subsection{質問対応等について}
+
+この資料の範囲の質問は学術サーバー内のLaTeXサークルで行っています。チャンネルLaTeXサークルで質問をする際はフォーラム形式にて行ってください。
+
+またこの資料の最新版は学術サーバー内LaTeXサークル内またはGit Hub上で随時更新予定です。
+
+また\LaTeX に関する有用な知識やテクニック、有用なプリアンブル、外部ツールなどは是非LaTeXサークル内でのプリアンブル投稿フォーラムに寄せてください。皆さんの協力によって大学内に\LaTeX をより簡単により使えるようにそして広く普及させましょう。
+
+この資料よりも発展的・高度な質問に関しては、\cite{TeXwiki-home}などを参照する必要がある。
+\clearpage
 \tableofcontents
 \clearpage
 
@@ -99,7 +134,7 @@
   \item 数式がきれいに書ける
   \begin{itemize}
     \item Wordで書こうとするととんでもない数のクリックと精密なエイム力を要求される
-    \footnote{これは決してWordを貶しているわけではない。そのようにWordを使うことが間違っているのである。Wordも\LaTeX も同じ文書執筆ツールではあるが、それぞれに長所短所があり使うべき場所というものがある。}
+    \footnote{これは決してWordを貶しているわけではない。そのようにWordを使うことが間違っているのである。Wordも\LaTeX も同じ文書執筆ツールではあるが、それぞれに長所短所があり使うべき場所というものがある。一言Wordを擁護しておくと数式は\LaTeX のコマンドで書くことができる。参考文献\cite{WordでLaTeX}参照。しかしWordでLaTeXコマンドで書くなら最初から\LaTeX で書いた方が断然良い。Wordn等では使えない数式等もある為である。}
   \end{itemize}
   \item 見た目と論理構造を分離できる
   \item 修正、再利用が容易
@@ -115,7 +150,7 @@ VS Codeの機能を使ってテンプレートを作っておけば簡単に体�
 数式交じりのレポートを作成するときなど、大学生1年生でも恩恵を受ける場面は多いはずである。
 
 \LaTeX と関わりの深い言葉として\TeX があるが、この2つはまったく違うものであることを注意しておこう。
-\footnote{\TeX はプログラム言語であり、\LaTeX は\TeX を用いて記述されたソフトウェアの集合体である。\LaTeX は数多くのソフトウェアが組み合わさって一つの文書を出力する。}
+\footnote{\TeX \index{\TeX}はプログラム言語であり、\LaTeX は\TeX を用いて記述されたソフトウェアの集合体である。\LaTeX は数多くのソフトウェアが組み合わさって一つの文書を出力する。}
 たまに口頭でテフということもあるが、ユーザーが見える範囲で\TeX があらわれることはほとんどなく、大方\LaTeX のことを指していると考えてよい。
 このあたりの話は美文書書作成入門\cite{美文書本}に詳しい。
 
@@ -125,7 +160,7 @@ VS Codeで編集ができる環境を整える。
 
 \subsection{VS Code とは何か？}
 VS Codeとは、Visual Stadio Code の略でマイクロソフト社が提供する
-統合開発環境である。要は高性能なエディターであり、後述する拡張機能の存在によって\LaTeX との親和性も高い。
+統合開発環境である。要は高性能なエディター\index{エディター}であり、後述する拡張機能の存在によって\LaTeX との親和性も高い。\footnote{テキストエディタはWindows標準搭載のメモ帳や、MicrosoftのWord等が有名である。またTeX専用のテキストエディタとしてはTeXliveにあるTeXworks等が有名である。この資料では今後のトレンドを考えてVSCodeへの導入を推奨する。}
 VS Codeは、
 \begin{itemize}
   \item 無料で頒布されている
@@ -149,7 +184,7 @@ cloud LaTeX は、オンライン上で\LaTeX を扱うことができる。
 \LaTeX の記法に慣れるという面では、有用である。したがってこの章では、cloud LaTeX の
 使い方について簡単に説明して\LaTeX に慣れてもらいたい。
 初めに
-\url{https://cloudlatex.io/ja}
+\url{https://cloudlatex.io/ja}参考文献\cite{cloudlatexログインページ}
 のサイトに行きユーザー名やメールアドレスと任意のパスワードを設定する。
 すると設定したメールアドレスにメールが来るので、メールアドレスの受信確認
 をクリックする。アカウント登録が完了する。
@@ -165,29 +200,32 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 \subsection{\LaTeX 環境設定用IT用語の理解}
 
 \begin{description}
-  \item [環境] ~\\
+  \item [環境\index{かんきょう@環境}] ~\\
     \LaTeX が機能するための設定やハードソフト等の存在や設定などを
     合わせて環境という。
-  \item [ローカル] ~\\
+  \item [ローカル\index{ローカル}] ~\\
     オンライン上ではなくパソコンのこと。ローカル環境とは
     自分のパソコンの環境のこと。
     % ローカル：手元にある(ネットワークを介していない)
-    % リモート：(ネットワークを介して接続できる)離れたところにある
-    % ローカルの対義語はオンラインではなくリモートになります
-  \item [ユーザー] ~\\
+    
+   
+  \item[リモート\index{リモート}] ~\\
+    (ネットワークを介して接続できる)離れたところにある 
+    % ローカルの対義語はオンラインではなくリモートになる
+  \item [ユーザー\index{ユーザー}] ~\\
     自分が設定した名前 自分のこと
     ユーザーの名前のフォルダーが最上位にあると考えておけばよい。
-    % Windowsはユーザーアカウントを用いて、PCを使用するユーザー(利用者)を識別しています。また、ユーザーごとにホームディレクトリが割り当てられているため、ユーザーごとの設定に利用されることがあります。
+    \footnote{Windowsはユーザーアカウントを用いて、PCを使用するユーザー(利用者)を識別しています。また、ユーザーごとにホームディレクトリが割り当てられているため、ユーザーごとの設定に利用されることがあります。}
 
     %  ホームディレクトリは C:/Users/ユーザー名/
     %  ルートディレクトリは C:/
     %  のことを指し、最上位にあるのはルートディレクトリです。
 
-  \item [デフォルト] ~\\
+  \item [デフォルト\index{デフォルト}] ~\\
     初期設定のこと。
-  \item[拡張子] ~\\
+  \item[拡張子\index{かくちょうし@拡張子}] ~\\
     ファイルの種別を示す。
-  \item [隠しファイル] ~\\
+  \item [隠しファイル\index{かくしふぁいる@隠しファイル}] ~\\
     エクスプローラー（よくファイルを使う場所）
     からは見えないファイル。たとえば、.latexrc 等の.の前に
     何もついていないファイルのこと。
@@ -201,11 +239,11 @@ OverleafはGitHubと連携することができるために論文執筆の際に
     % .から始まる名前のファイルのことをいう。
     % .から始めるものはlinuxだとオプションを明示しない限り表示されない(ユーザーが関与しないファイルをおく)
 
-  \item [ディレクトリ] ~\\
+  \item [ディレクトリ\index{ディレクトリ}] ~\\
     ファイルが入っている階層を指し示す言葉。
     階層のことであり、
     日本語の意味では住所録の意味。ドライブ直下に置くとは、
-    最上部のフォルダーの中に入れることを意味する。
+    最上部のフォルダー\index{フォルダー}の中に入れることを意味する。
     ファイルの現在位置を指し示す言葉で、ルートディレクトリとは、
     フォルダーの階層の最上位のフォルダーを意味する。
     % ディレクトリとフォルダはほぼ同じ意味です。
@@ -219,25 +257,25 @@ OverleafはGitHubと連携することができるために論文執筆の際に
     エラーを出す。このため、すべてのファイル名や、
     パソコンでの設定した名前は、かならず半角英数字にすること
     を覚えておく必要がある。
-    % 全角文字だけでなく半角スペースもエラーの原因となりうることを注意しておきましょう
+    全角文字だけでなく半角スペースもエラーの原因となりうることを注意しておく。
     % ただ、LaTeXでもパスに全角文字を含むだけであれば、オプションを適切に設定すれば正常にコンパイルすることができます。
     % とはいえエラーを避けるためにも、半角英数字でファイル名、ディレクトリ名をつけることをおすすめします。
-    % 英語表記する、スペースはアンダースコア(_)あるいはハイフン(-)に置き換える、などの方法があります。
+    代替案として英語表記する、スペースを表現する方法として、スペースはアンダースコア(\verb|_|)あるいはハイフン(-)に置き換える、などの方法がある。
 
-  \item [パス] ~\\
+  \item [パス\index{パス}] ~\\
     ディレクトリでそのファイルの住所位置を
     指定するもの。
-  \item [プロジェクトルート] ~\\
+  \item [プロジェクトルート\index{プロジェクトルート}] ~\\
     ディレクトリの一番初めに存在する
     それより上のファイルが存在しない領域
     % プロジェクトルートは、アプリケーションによって様々な意味で使われます。
     % ディレクトリの一番初めは、ルートディレクトリという呼び方が一般的です
-  \item [グローバル] ~\\
+  \item [グローバル\index{グローバル}] ~\\
     すべてのユーザーやそのアプリケーション内ですべてに設定
     されるような設定のこと。
     % グローバルとは、全体的な、すべての、という意味です。
     % 説明の内容がユーザー設定などと対比したときのグローバル設定の説明になっているので、「グローバル」の説明としては不適切かと思います。
-  \item [コマンドプロンプト] ~\\
+  \item [コマンドプロンプト\index{コマンドプロンプト}] ~\\
     Windowsの操作をコマンドでおこなうためのシステム。
     \begin{description}
       \item[開き方1] ~\\
@@ -248,12 +286,20 @@ OverleafはGitHubと連携することができるために論文執筆の際に
       Windowsキー+R で「ファイル名を指定して実行」という窓が出てくる
       のでその指定する窓にCmd と打ち Enterを打つことで、
       コマンドプロンプトを実行できる。
-    \end{description}
+      \item[開き方3]~\\
+      エクスプローラーのパスの入力欄に"cmd"と入力してEnterを押すことでもコマンドプロンプトを開くことができる。 \end{description}
+    \item[GUI\index{GUI}]~\\
+      GUIとは``Graphical User Interface（グラフィカルユーザーインターフェース）''の略であり、ユーザーの使いやすさを重視し、アイコンやボタンなどを用いて直感的にわかりやすくコンピューターに指令を出せるようにしたユーザーインターフェース\index{ユーザーインターフェース}。ユーザーインターフェースとは、ユーザーとコンピューター間での情報のやり取りの方法、仲立ちするものである。GUIではキーボードに加えてマウスなどのポインティングデバイスやタッチパネルによって視覚的に操作できる。WordやPowerPointなどがこれに当たる。
+    \item[CUI\index{CUI}]~\\
+      CUIとは``Character User Interface（キャラクターユーザーインターフェース）''の略である。あらかじめ決まっている文字や命令を コマンドといい、コマンドを入力してコンピュータに指示をだすユーザーインターフェース。CUIでは主にキーボードによるコマンドの文字情報のみで操作する。Windowsではコマンドプロンプトがこれに当たる。
+    \item[ディストリビューション\index{ディストリビューション}]~\\
+    同じ機能をもつが、パッケージの仕方・配布形態の異なるソフトウェアパッケージのことであり、TeXliveは世界で最も使われているディストリビューションである。
+   
     % エクスプローラーのパスの入力欄に"cmd"と入力してEnterを押すことでもコマンドプロンプトを開くことができます。
     % このようにして開いた場合、カレントディレクトリは"cmd"の入力前にエクスプローラーのパスの入力欄に表示されていたディレクトリになります。
     % そのためカレントディレクトリを移動する手間が減ります
 
-  \item [リポジトリ] ~\\
+  \item [リポジトリ\index{リポジトリ}] ~\\
     プロジェクトを構成するプログラムのソースコードやドキュメント、
     関連する各種のデータやファイルなどを一元的に管理する格納場所のこと
     % ほぼgitでしか使わない用語なので、gitの説明に移動したほうがよいかと思います。
@@ -262,7 +308,7 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 
 \subsection{\LaTeX 用語の理解}
 \begin{description}
-  \item [ビルド] ~\\
+  \item [ビルド\index{ビルド}] ~\\
     \LaTeX では、記述したソースコードに問題がない
     かどうかの解析を行い、問題がなければ実行可能なファイルに変換すること。
     % LaTeXはあらかじめソースコードの解析を行っているわけではなく、
@@ -270,16 +316,16 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 
     % またビルドという言葉は一般には(C言語などの文脈では)実行可能なファイルに変換することという意味で使われますが、LaTeXはLaTeXソースコードから文書ファイルを出力すること、という若干特殊な意味で使われます。
     % pdfファイルは実行可能なファイルではありません。
-  \item [コンパイラ] ~\\
+  \item [コンパイラ\index{コンパイラ}] ~\\
     コンパイラとは機械が読み取れる言語に移すことのできるソフトウェア等のこと。
-  \item [コンパイル] ~\\
+  \item [コンパイル\index{コンパイル}] ~\\
     ソースコードを機械が翻訳できる言語に移すことで、ビルドの中の一連の作業に入っている。
     % コンパイラ、コンパイルもC言語などとLaTeXでは意味が異なります。
     % この説明はC言語などで使われる意味の説明になっているため、LaTeX用語の説明としては不適切かと思います。
-  \item [プリアンブル] ~\\
+  \item [プリアンブル\index{プリアンブル}] ~\\
     \verb|\documentclass|から\verb|\begin{document}|までの中にある設定のこと。
 \end{description}
-\section{エクスプローラーの設定}
+\section{エクスプローラーの設定\index{エクスプローラー}}
 拡張子と隠しファイルを表示するように設定する。
 \begin{enumerate}
   \item エクスプローラーを起動する。
@@ -302,45 +348,85 @@ OverleafはGitHubと連携することができるために論文執筆の際に
 \section{TeX Live導入}
 
 \subsection{TeX Live インストール}
-TeX Live は、次のページからダウンロードすると良い。
-% 最小構成インストールのやり方
+TeX Live \index{TeX Live}は、次のページからダウンロードすると良い。
 \footnote{
   \LaTeX はたくさんのソフトウェアからなるシステムであるため、
   配布用に必要なソフトウェア群をパッケージしたディストリビューションの形でインストールする。
   今回インストールするのはTeX Liveというディストリビューションである。
 }
-\\
-\url{https://www.tug.org/texlive/acquire-netinstall.html}\\
+
+\begin{quote}
+  \centering
+	\url{https://www.tug.org/texlive/acquire-netinstall.html}
+
+\end{quote}
 をクリックして、ページ上のリンク install-tl-windows.exeをクリックする。この時、
 警告が出るが無視して大丈夫。
 そしてNextを押し続けてinstallを押す。これで、\LaTeX packageのほとんどすべてを
 ダウンロードすることが可能。
+フルパッケージをダウンロードすると3時間程度かかる。
+% 最小構成インストールのやり方
+\subsection{インストールを最短で終わらせる方法（最小構成でのインストール）}
+環境構築を早く行いたい場合や、PCにメモリがない場合には環境構築の容量を大きく制限する必要がある。インターネット回線が非常に遅い場合でもインストールを最短で終わらせる方法について記述する。
+\subsubsection{TeX Live インストーラーのインストール}
+TeX Live インストーラーをインストールすることがまず始めにある。次に、TeX Live インストーラーで\textbf{高度な設定}をクリックする。
 
-\subsubsection*{インストールが正常に行われたことを確認する}
+次にTeX Live インストーラーで\textbf{高度な設定}をクリックする。ここで最小のパッケージでインストールするために次のことに気を付ける。
+\begin{itemize}
+  \item 「ディレクトリ」は無変更
+  \item 「選択したもの」欄で変更２つ行う。
+  \begin{itemize}
+    \item スキーム(インストールするパッケージの種類を大まかに決める)を変更する。basic スキームを選択。
+    \item 下のカスタマイズに入り、言語欄から日本語と英語を追加。右の他のコレクション欄から `LaTeX 推奨パッケージ' を追加。
+  \end{itemize}
+\end{itemize}
+これが終われば右下のインストールをクリックする。
+
+これをすれると一時間から一時間半程度でインストールすることができる。\footnote{これらのインストール時間は目安であり通常は回線の速さによって変化する。}
+
+\subsection{インストールが正常に行われたことを確認する}
 インストール完了後、コマンドプロンプトを起動して、\verb|latex -v|と打ち込む。
 この時に、$3.141592653$のようなversion情報が出てこれば正常に完了している。
 \footnote{
-  これは、\TeX 製作者Donald E.Knuth教授の意向で
+  これは、\TeX 製作者Donald E.Knuth教授\index{Donald E.Knuth}の意向で
   version up ごとに円周率$\pi$へ近づいて行く。
 }
 
 \section{Visual Stadio Code の導入}
 \subsection{Visual Stadio Code のインストール}
-Visual Studio Code は次のページからダウンロードするとよい。\\
-\url{https://code.visualstudio.com/download}\\
+Visual Studio Code は次のページからダウンロードするとよい。
+\begin{quote}
+	\url{https://code.visualstudio.com/download}
+\end{quote}
 をクリックしてそのあとの画面の中から今回の場合は、
 自分の環境に合わせて (Windows か Mac の) ファイルをダウンロードする。
 ファイルを開き、追加タスクの変更は触らないようにしてNextを押し続ければ
 インストールできる。
 \subsection{VS codeの日本語化}
-VS Codeをショートカットから開いて、積み木のようなアイコンExtentions（拡張機能）
+VS Codeをショートカットから開いて、積み木のようなアイコンExtentions（拡張機能）\index{Extentions（拡張機能）}
 をクリック。検索窓にJapaneseと打って、
 Japanese Language Pack for Visual Studio Code
 を選択してインストールする。これで日本語化が完了する。
+このように拡張機能を入れることでVS Codeの機能をより使いやすいものにすることができる。
 
-\section{latexmkの導入} 
+\section{latexmk\index{latexmk}の導入} 
 \subsection{latexmkとは}
 \LaTeX 文書を手動でコンパイルしようとすると複数種類のコマンドを適切な順番で複数回実行しなければならない。latexmkとは、各種\LaTeX のビルドコマンドを自動で一括で実行してくれるツールである。
+
+\subsection{latexmkのインストール}
+
+TeXの導入で最小構成を選択した人は最初からlatexmkは入っていないのでTeX Live Managerからダウンロードする必要がある。
+
+TeX Live Managerをスタート画面から検索して開く。TeX Live Managerを起動して待機中になったら、検索欄から`latexmk'と検索する。すると、しばし待機した後に二つの`latexmk'が出てくる。
+\begin{itemize}
+  \item latexmk
+  \item latexmk.win32
+\end{itemize}
+の二つが出てくるので、これらをチェックボックスをクリックして選択項目をインストール を選択し latexmk を選択してインストールする。これでlatexmkのインストールが完了する。
+\footnote{トラブルシューティング:ここで、\LuaLaTeX 
+を用いる時にはlualatex-mathというパッケージをダウンロードする必要がある。もし\LuaLaTeX 
+でうまくコンパイルされない場合にはこのパッケージをダウンロードするとうまくコンパイルされるかもしれない。
+参考文献\cite{TeXliveトラブルシューティングlualatex}参照}
 
 \subsection{latexmkの設定}
 ホームディレクトリ
@@ -348,6 +434,9 @@ Japanese Language Pack for Visual Studio Code
   PC>ローカルディスク>ユーザー>ユーザー名、と辿れるディレクトリのこと
 }
 直下に\verb|.latexmkrc|というテキストファイルを作成し、テキストエディタで開く。
+ここでテキストエディタはVS Code を使うこと。VS Code でUTF-8\index{UTF-8}
+\footnote{UTF-8とはUnicode用の符号化方式の一つである。UTF-16もある。VS Codeではデフォルト設定としてUTF-8となっている。しかしほかのエディタ(例えばメモ帳等)ではデフォルトでUTF-8になっていない可能性がある。他エディタでlatexmkをつくり、VS Codeで開いた際にUTF-8以外のときにはステータスバーからUTF-8に直す必要がある。\cite{VSCodeの文字コード}}
+にしなければならない。
 markdownファイルに記載されたlatexmkの設定をコピーして貼り付け、保存する。
 同じ内容をソースコード\ref{code:latexmk}に示す。
 
@@ -392,11 +481,6 @@ markdownファイルに記載されたlatexmkの設定をコピーして貼り�
   ## SumatraPDF: https://www.sumatrapdfreader.org/free-pdf-reader.html
   ## $pdf_previewer = 'SumatraPDF -reuse-instance';
   \end{lstlisting}
-
-
-
-
-
 % jlistingsで設定ファイルを貼り付け
 % つまりルートフォルダーにこのファイルを保存するということ。
 % // ホームディレクトリは C:/Users/ユーザー名/
@@ -405,8 +489,8 @@ markdownファイルに記載されたlatexmkの設定をコピーして貼り�
 \subsection{latexmkの設定の解説}
 % wip
 
-\section{LaTeX workshopの設定}
-VS Codeの設定は、setting.json
+\section{LaTeX workshop\index{LaTeX workshop}の設定}
+VS Codeの設定は、setting.json\index{setting.json}
 \footnote{.jsonはジェイソンと読む}
 というファイルに記載されている。
 setting.json を開く方法はいくつかある。
@@ -646,7 +730,7 @@ setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載�
 
 % どこを指しているか分かりませんでした...
 
-\subsection{自動ビルド機能の設定}
+\subsection{自動ビルド機能の設定\index{じどうびるどきのう@自動ビルド機能}}
 \begin{verbatim}
 	"files.autoSave": "afterDelay", 
   "latex-workshop.latex.autoBuild.run": "never",
@@ -688,7 +772,24 @@ Hello world!
 \end{lstlisting}
 
 \part{\LaTeX 解説}
-\section{\LaTeX の基本機能の設定}
+\section{TeX live}
+\subsection{TeX live とは？}
+TeX liveとは、TeX の国際的なディストリビューションである。
+\LaTeX や\TeX のパッケージを入手することができる。
+
+そして、\LaTeX のパッケージを一括で管理することができる機能がTeXliveに標準で実装されているTeXlive Manager\index{TeXlive Manager}である。
+\subsection{TeX live Manager の使い方}
+TeX Live Managerの開き方はスタートメニューからTeX live Managerを検索するとよい。
+
+TeX live Managerを開くと現在TeX liveにあるパッケージが読み込まれる。そして、ここから検索欄に自分の必要なパッケージを読み込むと今必要なパッケージをダウンロードすることができる。
+
+状態を「未インストール」に変更すると、自分がローカルに入れていないパッケージがインストールすることができる。
+
+\LaTeX 導入の段階で「高度な設定」を用いてインストールした場合には必要最小限のパッケージしか入っていないのでここから入れる必要がある。
+
+texworksなどもここから入手することができる。
+
+\section{\LaTeX の基本機能}
 \LaTeX の特徴の一つに文書の論理的構造と視覚的なレイアウトを分けて考えることができることがある。
 例えば、「はじめに」という名前の節があれば文書に\verb|\section{はじめに}|と書いておく。
 この文書をコンパイルするに際し、
@@ -711,18 +812,32 @@ Hello world!
 で出力される。このために、\pLaTeX などを使いたい場合は、
 左のタブからおこなう必要がある。
 
-\section{エラーメッセージを読む}
+\subsection{\LaTeX のマニュアルの出し方}
+\LaTeX はソースコードで打つが自分が所望する書き方をするときにどのようにマニュアルを探すべきかという問題がある。この文章の最後にある参考文献等はかなり参考になることが書いて在ることが多い。しかしながら\LaTeX 中級者上級者を目指すためには、ブログの記事だけでなく必要ならば\LaTeX のパッケージのマニュアルを読むべきである。
+
+\LaTeX にはその機能がある。例えば、 luatexjaというパッケージの名前であるマニュアルを読みたい場合にはターミナルで
+\begin{lstlisting}[caption={ターミナル}]
+  texdoc luatexja
+\end{lstlisting}
+と入れると、ドキュメントが出てくる。\LaTeX のドキュメントは大体英語である。しかし、必要な場合には英語のマニュアルを読むことでたいていの者が扱えるようになる。
+
+しかし本当に困ったら\cite{TeXwiki-home}や\cite{StackOverflow}のサイトなどにアクセスして過去に同じような質問がなされていないか確認するとよい。また\LaTeX 関連の質問は英語の方が多い。
+% \section{\LaTeX のモダンな書き方}
+% \LuaLaTeX におけるモダンな書き方を書きたい。例えば使用すべきpackageや他のものの注意等
+
+
+\section{エラーメッセージ\index{エラーメッセージ}を読む}
 LaTeX workshop ではエラーがメッセージで表示されるがそれを
 初心者はなかなかうまく使いこなせない。
 そこでエラーの読み方と対応策を考える。
 
-\subsection{Recipe terminated with error}
+\subsection{Recipe terminated with error\index{Recipe terminated with error}}
 おそらくLaTeX Workshop を使ってはじめて見るだろうエラー。
 このエラーは、\LaTeX 側のエラーではない。\LaTeX のエラーは、
 Ctrl+Shift+M のショートカットキーで表示される。
 これは、注意が出ている時にも使うことができる。
 
-\subsection{Recipe terminated with error. Retry building the project.}
+\subsection{Recipe terminated with error. Retry building the project.\index{Recipe terminated with error. Retry building the project.}}
 このエラーというよりかは警告なのだがこれも本質的に意味がない。
 
 \subsection{意味のあるエラーメッセージ}
@@ -738,8 +853,8 @@ Ctrl+Shift+M のショートカットキーで表示される。
 % みたいな感じの部分を探し、エラーメッセージの部分(この場合"Undefined control sequence.")をググると、大体は偉大な先人が残してくれた解決策が見つかる。
 
 \section{新規packageの導入}
-新規パッケージつまり、インターネット上や、
-自分で作ったスタイルファイル等を使いたいときに、めんどくさいことになる。
+新規パッケージ\index{パッケージ}つまり、インターネット上や、
+自分で作ったスタイルファイル\index{スタイルファイル}等を使いたいときに、めんどくさいことになる。
 パッケージファイルの拡張子は``.sty''であり、
 このパッケージを適切な場所に配置しなければならない。
 しかし、``.sty''が入っていない場合がある。これに対処するためには次セクション
@@ -757,8 +872,8 @@ Ctrl+Shift+M のショートカットキーで表示される。
 すると、同じフォルダー内に.sty ファイルが生成される。
 この.styファイルの保存場所は、次セクション参照。
 
-\subsection{TeX Directory Structure とは何か？}
-\LaTeX のパッケージなどは、TDS（TeX Directory Structure）にしたがって各
+\subsection{TeX Directory Structure\index{TeX Directory Structure} とは何か？}
+\LaTeX のパッケージなどは、TDS（TeX Directory Structure）\index{TDS（TeX Directory Structure）}にしたがって各
 ディレクトリに配置されている。
 今回はTeX Liveなので、エクスプローラーからwindowsフォルダーの中の
 texlive フォルダーの中の2022年フォルダーの中のtexmf-distの中のtexの中の
@@ -799,14 +914,15 @@ ls-Rというファイルが存在していてこれが、TeXが必要なパッ�
 \begin{verbatim}
   mktexlsr
 \end{verbatim}
+\index{mktexlsr}
 と入力することで一覧表を更新することができる。
 
 \subsection{使用するべきpackage}
 packageは最小構成でおこなうべきである。
 なぜなら、\LuaLaTeX はかなり最近のものであり、packageが\LuaLaTeX に
 対応していないということもかなりの可能性としてある。
-そのため、参考になるのは参考文献のサイト
-
+そのため、参考になるのは参考文献のサイト参考文献\cite{TDS}
+になる。
 % \section{TeX Live の更新について}
 % tlmgr についてできたら追記
 
@@ -814,14 +930,18 @@ packageは最小構成でおこなうべきである。
 \part{VS Code 解説}
 \section{VS Codeの基本機能}
 デフォルトで使えるVS Codeの基本機能を解説する。
-\subsection{、。を, . にする<置換機能>}
+
+\subsection{検索/置換機能}\index{ちかんきのう@置換機能}
 VS Codeの基本機能として、置換機能がついている。このためマクロを組まずとも
 、を, に変えることができる。
 コマンドは、Ctrl+Hキーを押すと検索と置換が出てきて、Enter キーを押すと
 ひとつづつ置換、Crl+Alt+Enter キーを押すとすべてが置換される。
 また置換を閉じるのはEsc キーである。
 
-\subsection{コメントアウト}
+またctrl+shift+Fを押すことで検索サイドバーを開くことができる。
+
+
+\subsection{コメントアウト機能}\index{コメントアウト機能}
 \LaTeX は\verb|%|から行末までをコメントと認識する。しかしこれをいちいち書くのは面倒くさい。
 さらにプログラム言語によりコメント機能はまったく違う。この時に、Ctrl+/ を
 使うことで、その時に編集しているプログラム言語に応じて適切な構文でコメントアウトすることができる。
@@ -850,58 +970,83 @@ VS Codeの基本機能として、置換機能がついている。このため�
 Build LaTeX projectの最初に記述されているコマンドをビルドコマンドとして呼び出す。
 これらのショートカットキーはデフォルトで設定されているもので、好きなキーに変更することもできる。
 
+\subsection{pdf viewerについて}
+VSCodeにはpdfvewerが入っている。この機能について解説する。
+\LaTeX で生成した文章は外部のviewer（例えばedgeやchromeなど）でも見ることができる。しかし、VSCodeではSynicTeXや検索機能等が使うことができる。
+
+\begin{description}
+  \item[検索機能]  文書内の文字列を検索することができる。Ctrl+F を押すことで文章内の検索をかけることができる。
+  \item[PDFの目次を見る] PDFの目次を見ることができる。この目次はbookmarkパッケージを用いたときまたはそのpdfがそもそもブックマークがついていた時に限るが目次から簡単に飛ぶことができる。これは、pdfviewerの上のタスクバーの一番左のアイコンをクリックすることで見ることができる。
+\end{description}
+
+
+
 \section{VS Codeの設定について}
 \subsection{VS Code の設定について}
 VS Codeの設定は、setting.jsonというすべてに適応される設定と、workspace設定という、workspaceと呼ばれるファイルを何個か入れた空間について設定ができる。さらにファイルごとにも設定ができる。この優先順位は、setting.json 、work space 設定、ファイル設定の順に高い。これの設定のおかげで、さまざまな設定がおこなえるようになる。ワークスペースが1つのアプリケーションのように使うことができる。
 % ユーザー設定もワークスペース設定も(ディレクトリの異なる)setting.jsonに設定を記述するため、ユーザー設定をsetting.jsonと呼ぶのは誤解の恐れがあります。
-% ワークスペースの説明が必要
+% ワークスペースの説明が必要です。
 
-\subsection{wordwrap}
+\subsection{wordwrap\index{wordwrap}}
 wordwrapとは、このエディターの中で入力している中でpdfview等にしているときに文章が見えている間で改行を自動で行ってくれる設定である。この設定は最初、自動改行しない設定になっている。この時には、書いている行が右にシフトしてしまい、マウス又は、エンドキー等で次の行にしなければならない。また見るときも水平スクロールをしなければならない。しかしこの機能を有効にすることで、自動で改行し、文章の視認性が高くなる。
 % プログラミングするときも、onにしておくことをおすすめしたい。
 
-\subsection{SyncTexを使う}
-\subsubsection*{SyncTex とは何か？}
-TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと。
-これを使えば、pdf上の表示がどのソースに関係しているかということが
-すぐにわかる。
 
-\subsubsection*{SyncTeXの設定}
-SyncTeXは、ビルドするときに形成されるファイル
-\verb'*.synctex.gz'を使って動作する。
-今の設定では、このファイルは消去されるようになっているため、
-SyncTeXを使いたい場合にはこの設定を無効化する必要がある。
-具体的には、setting.jsonの
-\begin{verbatim}
-  "latex-workshop.latex.clean.fileTypes":
-\end{verbatim}
-の記述の中から、
-\begin{verbatim}
-  "*.synctex.gz"、
-\end{verbatim}
-の記述を消去すればよい。これにより、VS Codeのpdfvierにおいて、
-SyncTeXが利用できるようになる。
-
-\subsubsection*{SyncTeXの具体的な利用の仕方}
-pdfviewer上でCtrl キーを押しながらマウスでコードをみたい場所におき、
-左クリックすることでそのコードの位置に飛ぶことができる。
-逆にコードからpdfに飛びたいときは、選択範囲をマウスで示して、または
-カーソルをおいて、 Ctrl+Alt+J で飛ぶことができる。
-（コマンドパレットからSyncTeXと入れてコマンドを実行させてもよい。）
-
-\subsection{スニペット導入}
-\subsubsection*{スニペットとは}
-スニペットとは、コードの中で何回も使うだろうコードを少しの記述
+\subsection{スニペット}
+\subsubsection*{スニペットとインテリセンス}
+スニペット\index{スニペット}とは、コードの中で何回も使うだろうコードを少しの記述
 でそれを呼び出す一連の動作のことをいう。スニペットの語源は、
 短い単語のことである。
 
-\subsubsection*{スニペットの導入}
+インテリセンス\index{インテリセンス}とはVSCode の中で引数や入力を補完する自動補完システムのことであり各言語ごとに必要な引数リストを補完する機能がある。これは、VSCodeの基本的な機能の一つである。これは特に設定の必要はない。入力者はサジェスト\footnote{サジェスト\index{サジェスト}は``suggest''に由来し、予測変換の意味がある。}に表示された提案の中から、Tabキーやspaceキーで補完することができる。
+
+スニペットは非常に長いコードをも格納することができ非常に短いコードでそのコードを呼び出すことができる点で有用である。
+
+
+\subsubsection{自作スニペットの導入}
 まずスニペットを導入する。左下の歯車から「ユーザースニペットの構成」を
 選択する。検索窓が出てくるので、latexと入力して latex.json を開く。
 latex.json にも、\verb|{}|があるので、その中に次のコードをコピーする。
 スニペットの導入は、setting.jsonとは異なるため環境を破壊することはない。
 % 参照すべきコードが示されていません
+\begin{lstlisting}
+  {
+    "report":{
+        "prefix": "report",
+        "body": [
+            "\\documentclass[a4paper,11pt]{ltjsarticle}",
+            "",
+            "",
+            "% 数式",
+            "\\usepackage{amsmath,amsfonts}",
+            "\\usepackage{bm}",
+            "% 画像",
+            "\\usepackage{graphics}",
+            "\\usepackage{graphicx}",
+            "\\usepackage{here} %画像の表示位置調整用",
+            "\\usepackage{type1cm}",
 
+            "",
+            "%A4: 21.0 x 29.7cm",
+            "${4}",
+            "",
+            "\\begin{document}",
+            "",
+            "\\title{${5}}",
+            "\\author{${6}}",
+            "\\date{${7:\\today}}",
+            "\\maketitle",
+            "",
+            "",
+            "$0",
+            "",
+            "",
+            "\\end{document}"
+        ],
+        "description": "授業レポート用テンプレート"
+    }
+  }
+  \end{lstlisting}
 
 と書く。たとえば、report とlatexで打つと、
 reportのひな形が出てくるようになる。
@@ -977,7 +1122,7 @@ reportのひな形が出てくるようになる。
 このように書いたときに、カーソルが\verb|$1|を記述した後にTabキーを押すと
 \verb|$2|にカーソルが移動するように書くことができる。
 また、さらに、
-\verb |$1|
+\verb|$1|
 が2つあるが
 、これらは同じことを記述したい場合には
 たとえば参照をタイトルと同じにしたい場合、
@@ -986,22 +1131,116 @@ reportのひな形が出てくるようになる。
 \verb|$0|を入れておけば、入力終了後に
 次の行からすぐに書き始めることができる。
 
-\subsection{禅モード} 
-禅モードはCtrl+K Z  を用いると使うことができるモードでこのモードでは下のステータスバー等がなくなりコーディング作業に集中できるモードになっている。この禅モードから抜け出すためにはEscキーを押すことで抜け出すことができる。この間にはGUIによる操作はできないがCUIによる操作のみ可能なためにショートカットキーを覚えていれば困ることはほとんどない為コーディング作業をするときには必要である。
+ユーザースニペットに関して必要な注意また他の言語への応用等は参考文献\cite{スニペット1}\cite{スニペット2}\cite{スニペット完全解説}参照するとよい。
+
+\subsection{禅モード\index{ぜんもーど@禅モード}} 
+禅モードはCtrl+K Z  を用いると使うことができるモードでこのモードでは下のステータスバー等がなくなりコーディング作業に集中できるモードになっている。この禅モードから抜け出すためにはEscキーを押すことで抜け出すことができる。この間にはGUIによる操作はできないがCUIによる操作のみ可能なためにショートカットキーを覚えていれば困ることはほとんどない。そのためにコーディング作業をするときには必要である。
 
 % 禅モードに関する解説。
 \part{VS Code 外部ツール}
-\section{LaTeX workshop の設定}
-\subsection{シンタックスハイライト}
+\section{LaTeX workshop}
+\subsection{snippet View\index{snippet View}}
+LaTeX Workshop から提供されているスニペットには一覧パネルがある。この一覧パネルはよく使う数学記号についてのスニペットに対応している。アクティビティバーのTeXのパネルから使うことがあるのである。これはGUIで使うことができるのでLaTeXでWhat you see is what you get \index{What you see is what you get}が可能になる。
+このバーはドラッグすることでコントロールパネルや、Secondary Side Barに移動することができる。
+\subsection{文字数カウント}
+文字数をカウントするにはいくつかの方法がある。
+\begin{description}
+  \item[方法１]Ctrl+A を用いてすべて選択して下のステータスバーを見ると 何個選択という表示が現れる。
+  \begin{description}
+    \item[利点]~
+    \begin{itemize}
+      \item 拡張機能無しで文字数を数えることができる
+      \item どの拡張子でも使える。
+    \end{itemize}
+    \item[欠点]~
+    \begin{itemize}
+      \item ステータスバーに常に表示されていないこと。
+      \item 文字数とは関係のないところもカウントされること。例えばプリアンブルなど
+    \end{itemize}  
+  \end{description}
+
+  \item[方法２]ltexworkshopの設定を用いる。コマンドパネルを開いて、 ``latex-workshop.texcount''のコマンドを用いる。
+  \begin{description}
+    \item[欠点]~
+    \begin{itemize}
+      \item ステータスバーに常に表示されていないこと。
+      \item 毎回打つのは面倒くさい
+    \end{itemize}  
+  \end{description}
+  \item[方法３]  設定に書き込む方法
+  setting.jsonに次を\verb|{}|のなかに書き込む
+  \begin{lstlisting}[caption={wordCount}]
+    // LaTeX-workshopの設定で文字数をカウントする。
+    "latex-workshop.texcount.autorun": "onSave",
+    // LaTeX-Workshopの設定で文字数をカウントのタイミングを調整する。
+    "latex-workshop.texcount.interval": 1000,
+  \end{lstlisting}
+  \begin{description}
+    \item[利点]~
+    \begin{itemize}
+      \item ステータスバーに表示され楽
+      \item 毎回打つ手間がない
+    \end{itemize}
+    \item[欠点]~
+    \begin{itemize}
+      \item tex以外の拡張子では使えない。
+    \end{itemize}  
+  \end{description}
+  \item[WordCounterを用いる方法]
+    \begin{description}
+      \item[利点] ~
+      \begin{itemize}
+        \item どの拡張子でも使える。
+        \item 読了時間などのカスタムができる。
+      \end{itemize}
+      \item[欠点]~
+      \begin{itemize}
+        \item TeXのコマンドまで認識してしまう。
+        \item ステータスバーが窮屈になる。
+      \end{itemize}
+    \end{description}  
+    ことが挙げられる。
+\end{description}
+
+\subsection{SyncTexを使う}
+\subsubsection*{SyncTex とは何か？\index{SyncTex}}
+TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと。
+これを使えば、pdf上の表示がどのソースに関係しているかということが
+すぐにわかる。
+
+\subsubsection*{SyncTeXの設定}
+SyncTeXは、ビルドするときに形成されるファイル
+\verb'*.synctex.gz'を使って動作する。
+今の設定では、このファイルは消去されるようになっているため、
+SyncTeXを使いたい場合にはこの設定を無効化する必要がある。
+具体的には、setting.jsonの
+\begin{verbatim}
+  "latex-workshop.latex.clean.fileTypes":
+\end{verbatim}
+の記述の中から、
+\begin{verbatim}
+  "*.synctex.gz"、
+\end{verbatim}
+の記述を消去すればよい。これにより、VS Codeのpdfvierにおいて、
+SyncTeXが利用できるようになる。
+
+\subsubsection*{SyncTeXの具体的な利用の仕方}
+pdfviewer上でCtrl キーを押しながらマウスでコードをみたい場所におき、
+左クリックすることでそのコードの位置に飛ぶことができる。
+逆にコードからpdfに飛びたいときは、選択範囲をマウスで示して、または
+カーソルをおいて、 Ctrl+Alt+J で飛ぶことができる。
+（コマンドパレットからSyncTeXと入れてコマンドを実行させてもよい。）
+
+\subsection{シンタックスハイライト\index{シンタックスハイライト}}
 シンタックスハイライトとは、\LaTeX の文章などを編集するためのコマンドに色を
 つけることでその対応やコードの可読性を高めることができるVS Codeの機能である。
 しかしながら、LaTeX workshopはそれに対応しているのだが
-VS CodeのカラーテーマをVisual Studio Dark または Visual Studio Light
+VS CodeのカラーテーマをVisual Studio Dark\index{Visual Studio Dark} または Visual Studio Light\index{Visual Studio Light}
 にしているとうまく機能してくれない。したがってダークテーマで
 シンタックスハイライトを使いたい場合は、デフォルト設定の
-Dark+ を使用するとよい。又はほかのカラーテーマならば良い。
+Dark+ \index{Dark+}を使用するとよい。又はほかのカラーテーマならば良い。
 
-\subsection{cloud LaTeX との連携}
+\subsection{cloud LaTeX との連携\index{cloud LaTeX}}
 cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しなくとも
 \LaTeX を使うことができる。cloud  LaTeX は cloud LaTeX と同一のサーバー内とローカルのこのVS Codeと連携することが可能であり、それにより、ローカルとサーバーで同期ができるために非常に便利なものとなっている。
 
@@ -1022,20 +1261,154 @@ cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しな�
 
 \subsubsection*{cloud LaTeX との連携をするための設定}
 導入の設定は、md形式のファイルに添付されているものをsetting.jsonに入れればよい。cloud LaTeX 参照
+\subsection{LaTeXWorkshopの設定に困ったら}
+LaTeXworkshopの設定に困った場合には、参考文献\cite{latexworkshopwiki}又は、公式ドキュメントである参考文献\cite{LaTeXworkshop_README}を読むとよい。しかしながらこれらは英語であるのでこれがいやな場合は、参考文献\cite{LaTeXworkshop1}\cite{LaTeXWorkshop2}\cite{LaTeXWorkshop3}\cite{LaTeXWorkshop4}\cite{数式プレビュー}
+が公式ドキュメントを日本語に訳したような書き方をしているためにこれを読むとよい。参考文献\cite{LaTeX+VSCodewiki}等はVS Codeとlatexについて解説している数少ないwikiのページである。参考文献\cite{エラーをしながら1}\cite{エラーをしながら2}\cite{エラーをしながら3}は変わった方法で\LaTeX をVSCodeに導入している。またVSCodeの解説については、参考文献\cite{VSCodeの公式ドキュメント}\cite{VSCode完全入門}\cite{SyncTeXVSCode}等を参考にすると良い。
+
 \section{cloudlatex}
+\subsection{cloudlatexとは何か？}
+cloudlatexとは、株式会社アカリクが運営している\LaTeX のビルドをリモート環境で行うサービスのことである。このcloudlatexを用いるとローカル環境に\LaTeX がインストールされていなくとも\LaTeX 文章を書くことができる。
+\subsection{cloudlatexのVS Codeでの拡張機能}
+\subsubsection{設定方法}
+\LaTeX のコードを自前の環境で書き、コンパイルをリモート環境で行うことができる。
+まずVSCode 上の拡張機能からcloudlatex の拡張機能をインストールする。次に自分のcloudlatexのマイページから右上のユーザー名をクリックしてプルダウンを開き「プラグイン連携」をクリックする。プラグイン\index{プラグイン}とは、拡張機能のことである。次にそこで生成されるトークンを二つコピーする。
+「client」「access-token」の2つがわかっていればOKである。
+次にVSCode上でCLと書いたアイコンが生成されるためにそこをクリックして「Set account」をクリックする。
+「メールアドレス」「client」「access-token」を順番に入力する。「Your account has been validated!」という通知が出れば連携の設定は完了する。
+\subsubsection{使い方}
+使い方はCloud Latexで作成したプロジェクトをVisual Studio Codeで編集することができる。ここでまず初めにProject IDを取得する必要がある。URLを確認する
+
+「https://cloudlatex.io/projects/XXXXXX/edit」となっている6桁の数字「XXXXXX」がProject IDである。次に自分のローカル環境にそのcloudlatex連携をするためのディレクトリを作る。
+
+エクスプローラーからそのディレクトリを開き、
+次にVSCode上で「Project Setting」をクリックすると「設定」のファイルが開く。ここでワークスペース設定から「Cloudlatex: Enabled」にチェックを入れ、「Cloudlatex: Project ID」に先ほど確認した数字を入力する。
+「Project files have been synchronized!」という通知が出てくれば成功である。これでローカル環境に構築することなくリモート環境で\LaTeX のコンパイルができる。\footnote{しかしここで多くの場合エラーが発生することが多い。アカリクのcloudlatexのサーバーの問題かわからないが容量の大きいファイル等になるとサーバーと接続できないことが多い。この場合は時間をおくか又は新しくProject ID を入れなおすとよい。}\LaTeX のコンパイルは初期設定では、Ctrl+S を押して保存する。又はVSCodeのautosaveされたときにコンパイルされる設定になってる。またこの機能のみを使うlatexworkshop設定は\cite{cloudlatexの設定}を参照するとよい。
+\footnote{また同時にCloud 上でも保存することができる。この場合だと保存したときに常にコンパイルするためにサーバーに負荷がかかりやすくよく接続が切れてしまう。接続が切れたときに\LaTeX のコンパイルエラーが出てしまう。この場合\LaTeX のエエラーなのか接続の問題なのかという見分けがつきにくくなる。またlatexworkshop標準搭載のエラーメッセージを吐くことはないため慣れないうちはリモート環境での執筆をオススメする。}
+
+この機能によってVSCodeの強力な編集機能をフルに使うことができる。
 
 
-\section{Ultra Math Previewの設定}
+\section{Ultra Math Preview\index{Ultra Math Preview}}
+\subsection{Ultra Math Previewとは何か}
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
 パッケージで定義されたコマンドもPreview することができる。
-さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。
+さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
+\begin{itemize}
+  \item 数式を打つと Hover が勝手に出てくる
+  \item   LaTeX と Markdown で同じマクロがプレビューに使える
+  \item   ホバーが透過できる
+  \item   ホバーの上からその下にある文字をクリックすることができる
+\end{itemize}
+\subsection{Ultra Math Previewの設定}
+setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応していないパッケージの数式のレンダリングをすることができる。参考文献\cite{UltraMathPreview}
+\begin{lstlisting}[caption={Ultra Math Preview}]
+  "umath.preview.renderer": "mathjax",
+"umath.preview.macros": [
+		"\\require{physics}",
+		"\\require{HTML}",
+		"\\require{mathtools}",
+		"\\require{mhchem}",
+		"\\require{empheq}",
+		"\\def\\l{\\left}",
+		"\\def\\r{\\right}",
+		"\\newcommand{\\drac}[2]{\\mathchoice{\\displaystyle\\frac{\\, #1\\, }{\\, #2 \\,}}{\\displaystyle\\frac{\\, #1\\, }{\\, #2 \\, }}{\\scriptstyle\\frac{#1}{#2}}{\\scriptscriptstyle\\frac{#1}{#2}}}",
+		"\\newcommand{\\tdv}[3][]{\\drac{\\Delta^{#1} {#2}}{\\Delta {#3}^{#1}}}",
+		"\\newcommand{\\bm}[1]{\\boldsymbol{#1}}",
+		"\\newcommand{\\divisionsymbol}{÷}",
+		"\\def\\div{\\vnabla\\vdot}",
+		"\\newcommand{\\divi}{\\divisionsymbol}",
+		"\\newcommand{\\si}[1]{\\mathrm{#1}}",
+		"\\newcommand{\\e}{e}",
+        "\\scriptsize{}",
+	],
+	"umath.preview.position": "top",
+	"umath.preview.customCSS": [
+		"background-color: rgba(0, 0, 0, 0.5);",
+	],
+\end{lstlisting}
+\section{\LaTeX 表制作}
+\subsection{Table Generator\index{Table Generator}}
+Table Generator\index{Table Generator}
+は、\LaTeX での表を書く際に非常に有用なサイトである。このサイトではwordとほとんど同等の環境のGUIを用いることで\LaTeX 記法での表に変換してくれるサイトである。
+\url{https://www.tablesgenerator.com/}\cite{Tablegenerater}で書くことができる。さらにこれはhtml等にも対応しているなどさまざまなマークアップ言語に対応している。
+
+またCSVファイルの読み込みもすることができる。(参考文献\cite{tablesgeneratorabout}参照。)
+\subsection{csv2tabular\index{csv2tabular}}
+csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTeX 形式の表に変換してくれる外部ツールである。これは、レポートの制作の時などでも便利である。このサイトは、参考文献\cite{csv2tabular}
+\url{https://rra.yahansugi.com/scriptapplet/csv2tabular/}から見ることができる。またこの表は、tabular形式になるが環境名は表示されないので、次の環境を加える必要がある。
+\begin{lstlisting}
+  \begin{table}[h]
+    \caption{キャプション名を書く}
+    \label{ラベル名を書く}
+    \centering
+     \begin{tabular}{clll}% ここは中央ぞろえまたは左右ぞろえを決める。
+      % ここに変換したコードを載せる。
+    \end{tabular}
+  \end{table}
+\end{lstlisting}
+のように書く必要がある。(参考文献\cite{csv2tabularの使い方}参照)また、Table Generatorのように、セルの結合等には対応していないため、形式的にまとまっているデータに対しては有効であるが、複雑な表は処理が難しい、複雑な表を書く場合はTable Generatorを使う方がよい。
+
+\section{テキスト校正くん\index{テキスト校正くん}}
+テキスト校正くんは、texファイルやmdファイル等の日本語文章を校閲することができる。これはインストールするだけで利用できる。例えば「です・ます」調と「だ・である」調の混在等を教えてくれる。
+
+\section{\LaTeX 数式コマンドを手書きで打つ}
+\subsection{Myscript mathとは何か}
+\LaTeX コマンドを打つのが面倒だったり数式が非常に長く文字よりも手で書いた方が早く書けるときには
+\url{https://webdemo.myscript.com/views/math/index.html}のサイトを使うとよい。このサイトはMyscript(参考文献\cite{Myscript}参照)が運営しているサイトでありApple Pencilや手書きで書いた文字を認識し、\LaTeX 形式の数式コマンドに変換してくれるウエブ上のサービスである。無料で使うことができる。
+\subsection{Myscript Mathの使い方}
+このサイトではpple Pencilや手書きで書いた文字を認識し\LaTeX コマンドを生成できる。また簡単な数式の場合はグラフ描画することができる。
 
 
-\section{テキスト校正くん}
-テキスト校正くんは、texファイルやmdファイル等の日本語文章を校閲することができる。これはインストールするだけで利用できる。
+\section{キーボードショートカット}
+\subsection{キーボードショートカットとは何か？}
+キーボードショートカット\index{キーボードショートカット}とはWindows やアプリケーションの機能を選択するような操作を、マウスやタッチパッドではなくキーボードの複数のキーを組み合わせて行う操作のことである。この操作を覚えることでさまざまなPC上で行う操作をマウス無しで行うことができるようになり、より早くさまざまなタスクを遂行できるようになる。\footnote{マウスでの操作が早い場合も多々ある。例えばpowerpoint等のGUIであるソフトである。このようなグラフィック中心のソフトウェアはマウスでの操作の方がよい。逆にVS Codeはその気になればほとんどの操作をコマンドで遂行することができる。このようなマウスを使うべき操作と使う必要のないコマンド操作の区別をつけることはPCを扱ううえで早く作業できるかできないかの違いになる。}
 
-\section{キーボードショートカットの変更方法}
+ここではVS Codeのキーボードショートカットの設定の仕方について記述する。
+\subsection{キーボードショートカットの変更方法}
+\subsubsection{キーボードショートカットの開き方}
+キーボードショートカットの変更方法には３通りの開きかたがある。
+\begin{description}
+  \item[方法１] 左下の設定からキーボードショートカットを選択
+  \item[方法２] Ctrl+K Ctrl+Sを押す
+  \item[方法３] コマンドパレット Ctrl+shift+P からpreferences:Open keyboard Shortcutsまたは、preferences:Open keyboard Shortcuts(json)を選択する。 
+\end{description}
+これでキーボードショートカットの設定画面に移る。
+\subsection{キーボードショートカットの設定方法(規定の方法)}
+キーボードショートカットの設定画面(jsonでないほう)を表示すると、コマンドが設定されている場所とされていない操作がある。
 
+コマンドが定義されていないところを選択してエンターキー又はクリックをするとキーバインドの設定画面に移る。この際にショートカットにしたいキーを打つことでその操作のショートカットキーを定義することができる。\footnote{キーボードショートカットの設定はソースからデフォルトかユーザー定義かということがわかるようになっている。}
+
+この設定画面からキーボードショートカットをすぐに確認できるためにすぐに公式ドキュメントを検索するまでもないキーボードショートカットの検索にも使うことができる。
+\subsection{キーボードショートカットの設定方法(JSON) }
+キーボードショートカットの設定はJSONファイルからも行うことができる。この場合はネットから必要なキーバインドの定義を持ってくるとき等に有用なやり方になる。キーボードショートカットの記述方法は次のようになる。より詳細なキーボードショートカットの方法は以下のように行う。
+\begin{lstlisting}[caption={キーボードショートカットの変更方法(json)}]
+  // 既定値を上書きするには、このファイル内にキー バインドを挿入しますauto[]
+[
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
+  },
+]
+\end{lstlisting}
+
+このように、\verb|"key"|には、キーバインドを打ち込み、\verb|"command"|には拡張機能またはこのVS Codeのシステム自体に設定されている機能を記述する。
+
+次に\verb|"when"|はそのキーバインドがいつどのようなときにそのキーバインドを打ったときに其のコマンドを使用するのかということを決めることができる。
+
+またこの\verb|"when"|を設定する際には、VS Codeの公式ドキュメントである
+\url{https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts}で見つけるとよい。
+この中で\url{https://code.visualstudio.com/api/references/when-clause-contexts#conditional-operators  }
+が自分の状況にあったものが見つかると思う。(参考文献\cite{キーボードショートカット変更方法}\cite{キーボードショートカット変更方法json}等、または公式ドキュメント\cite{VSCodeの公式ドキュメント}参照)
+
+またキーバインドを簡単に表示する方法としてkeybindings.jsonファイルを開いているときにCtrl+K Ctrl+K のキーを押すと次のコマンドが表示される。残りはユーザーが\verb|"command","when"|を記述すればよい。
+\begin{lstlisting}[caption={keybindings.json}]
+  {
+  "key": "入力したキー",
+  "command": "commandId",
+  "when": "editorTextFocus"
+}
+\end{lstlisting}
 % \section{Git 連携}
 % VS Code はGitというバージョン管理システムと容易に連携させることができるようになっており、巨大な文書制作でのバージョン管理が行える。
 % そしてGit はVS Code上のボタン操作で直感的に操作することができる。
@@ -1084,10 +1457,18 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
 % などがある.Markdownはジョン・グルーバー（John Gruber）によって2004年に開発され、最初は \url{http://daringfireball.net/projects/markdown/} で公開された。その後、多くの開発者の手を経ながら発展した。
 % LaTeXのインストールとは無関係なので別ファイルに記述する
 
-\section{markdownとtexファイルの変換}
+% \section{markdownとtexファイルの変換}
 
 \appendix
+\section{Windowsショートカットキー}
+\subsection{ショートカットキーについて}
+VS Codeではさまざまなショートカットが存在する。しかし、それをより活用し、ひいてはPC全体の効率的な活用を目指すことができる。例えば、マウスを使う場合と比べて時間効率では、年間120時間の時短が見込める等の報告がある。(参考文献\cite{キーボードショートカット時間効率}などを参照。)
+
+ここではWindowsの起動からVS Code,ブラウザでのショートカットについて記述する。
+
+
 \section{ショートカットキー一覧}
+ショートカットキーは一つのキーのみではなく複数キーの組む合わせも存在する。
 \begin{center}
   \begin{tabular}{ll} \hline
     コマンド            & 機能                     \\ 
@@ -1101,6 +1482,7 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
     Crl+Alt+Enter       & 置換の全置換             \\
     Ctrl+/              & 行のコメントアウト機能（全言語共通）  \\
     Ctrl+@              & VS Codeのターミナルの起動\\
+    Ctrl+Shift+X        & 拡張機能タブを開く      \\
     Shift+Alt+F         & latexindentを実行する    \\
     Ctrl+Space          & コード補完を再表示       \\
     Ctrl+Shift+M        & \LaTeX のエラーメッセージを表示する   \\
@@ -1119,7 +1501,11 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
 この資料を読み通すことができたならば、
 きっとこれらのサイトも読むことができるだろう。
 さらに便利な使い方や、自分なりの設定をすることもできるだろう。
+
 良い\LaTeX ライフを
+
+happy \LaTeX ing
+\printindex
 \nocite{*}
 \bibliographystyle{junsrt}
 \bibliography{refernce}

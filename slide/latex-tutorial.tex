@@ -6,6 +6,27 @@
 \usepackage[ipaex]{luatexja-preset} % IPAexフォントしたい
 
 \setbeamertemplate{navigation symbols}{}      % ナビゲーションバー非表示
+\usepackage{listings,jvlisting} %日本語のコメントアウトをする場合jvlisting（もしくはjlisting）が必要
+%ここからソースコードの表示に関する設定
+% \usepackage{lua-visual-debug}
+\lstset{
+	stringstyle={\ttfamily},
+	commentstyle={\ttfamily},
+	basicstyle={\ttfamily},
+	columns=fixed,
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+	numbers=left,%行数を表示したければonにする
+	numberstyle={\scriptsize},
+  xrightmargin=0em,
+  xleftmargin=3em,
+  stepnumber=1,
+  numbersep=1em,
+	tabsize=2,
+  lineskip=-0.5ex,
+  backgroundcolor=\color{white}
+}
 
 % \setbeamertemplate{theorems}[numbered]
 % \addtobeamertemplate{theorem begin}{\normalfont}{}
@@ -43,18 +64,71 @@
 
 \begin{frame}
   \frametitle{\LaTeX のインストール}
-  \LaTeX のインストールは非常に時間がかかるため始めにやっておく
+  
   %リンクとQRコード
 \end{frame}
 
 \begin{frame}
   \frametitle{なぜ\LaTeX を使うのか}
   %wordとの比較を交えつつ論文執筆のデファクトスタンダードとなっていること、数式の組版処理が優れていること、修正、再利用が容易なことなどを話す
+  
 \end{frame}
 
 \begin{frame}
-  \frametitle{\LaTeX の記法}
+  \frametitle{TeXliveの導入}
+  TeXliveを次のページからダウンロードする。(Text:p.10)
+  \begin{quote}
+    \centering
+    \url{https://www.tug.org/texlive/acquire-netinstall.html}
+  
+  \end{quote}
+  をクリックして、ページ上のリンク install-tl-windows.exeをクリックする。
 
+
+\end{frame}
+\begin{frame}
+  \frametitle{危険なファイルの処理方法}
+
+  
+
+\end{frame}
+\begin{frame}
+  \frametitle{高度な設定}
+
+  \begin{itemize}
+    \item 「ディレクトリ」は無変更
+    \item 「選択したもの」欄で変更２つ行う。
+    \begin{itemize}
+      \item スキーム(インストールするパッケージの種類を大まかに決める)を変更する。basic スキームを選択。
+      \item 下のカスタマイズに入り、言語欄から日本語と英語を追加。右の他のコレクション欄から `LaTeX 推奨パッケージ' を追加。
+    \end{itemize}
+  \end{itemize}
+
+  設定が完了したら右下のインストールを押す。
+\end{frame}
+\begin{frame}
+  \frametitle{インストールの正常終了を確認する}
+  インストールの後に、コマンドプロンプロトを起動する。
+  コマンドプロンプトは、Windowsキーを押すと出てくるところから確認する。Mac の場合はターミナルから行う。ここに
+  \begin{quotation}
+    latex -v
+  \end{quotation}
+  と打ち込めばよい。
+
+  Macでは、
+
+\end{frame}
+\begin{frame}
+  \frametitle{VSCodeのインストール}
+
+  Visual Studio Code は次のページからダウンロードするとよい。
+\begin{quote}
+	\url{https://code.visualstudio.com/download}
+\end{quote}
+をクリックしてそのあとの画面の中から今回の場合は、
+自分の環境に合わせて (Windows か Mac の) ファイルをダウンロードする。
+ファイルを開き、追加タスクの変更は触らないようにしてNextを押し続ければ
+インストールできる。
 
 \end{frame}
 
