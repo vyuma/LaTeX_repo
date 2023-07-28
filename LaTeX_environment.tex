@@ -51,7 +51,7 @@
 \subsection{編集方針}
 
 曖昧さを排除したできるだけ再現性の高い\LaTeX \index{\LaTeX}
-\footnote{日本では「ラテフ」と読むことが多い。たまに「レイテック」「ラテック」派がいる。\LaTeX の読み方については、参考文献\cite{文書システムLaTeX}\cite{LaTeXの読み方}を参照すること。ただし\TeX は確実に「テフ」と読むこと。これは「テックス」ではない\TeX のXは英語のXではなく\(\chi\)の発音に由来する。これは参考文献\cite{TeXの発音について}を参照。}\footnote{\LaTeX はLeslie Lamport\index{Leslie Lamport}によって開発された組版システムのことである。\TeX よりもより簡単に記述できるようになっている。}
+\footnote{日本では「ラテフ」と読むことが多い。たまに「レイテック」「ラテック」派がいる。\LaTeX の読み方については、\cite{文書システムLaTeX}\cite{LaTeXの読み方}を参照すること。ただし\TeX は確実に「テフ」と読むこと。これは「テックス」ではない\TeX のXは英語のXではなく\(\chi\)の発音に由来する。これは\cite{TeXの発音について}を参照。}\footnote{\LaTeX はLeslie Lamport\index{Leslie Lamport}によって開発された組版システムのことである。\TeX よりもより簡単に記述できるようになっている。}
 環境構築に対する処方箋を書きたいという思いでこの資料を書いた。
 しかし環境構築後にも難関が待ち受けている。
 そのために環境構築後の設定の変更等にも配慮して資料を工夫した。
@@ -85,15 +85,15 @@ pdfファイルが出てくるのだがそれのどれもが非常に昔に書�
 VS Codeで\LaTeX 文書を編集するために必要なIT知識と
 設定の方法を述べる。
 そのあとVS Codeの基本機能そしてLaTeXを便利に書くためのツールをできるだけ紹介する。
-美文書書作成入門参考文献\cite{美文書本}は、\LaTeX の機能の解説については大変充実した良書ではあるものの、環境構築についてはあまり触れていない。またほかのサイトなどを探しても、IT知識が
+美文書書作成入門\cite{美文書本}は、\LaTeX の機能の解説については大変充実した良書ではあるものの、環境構築についてはあまり触れていない。またほかのサイトなどを探しても、IT知識が
 少しでもないとまったく分からない。そのためにシステムをいじりたくなくなるし、さらに取り返しのつかなくなることがまれにある。この状況を回避するために
 この資料を作った。
 
 しかし、この資料にも至らぬ点が山ほどあると思われる。
 自分もすべてを理解しているわけではない。
 この資料の記述は自分がおこなってできたことだけを記述している。
-それ以外のことを知りたい場合は、付録の参考文献\footnote{参考文献\cite{完全導入ガイド},\cite{最高の環境latex},\cite{platex}等を参考にするとよい。このサイトから多くのことを学んだ。しかし最低限すぎるし何より必要十分な解説はなされていない。}
-やLaTeX workshopのreadme参考文献\cite{LaTeXworkshop_README}を
+それ以外のことを知りたい場合は、付録の参考文献\footnote{\cite{完全導入ガイド},\cite{最高の環境latex},\cite{platex}等を参考にするとよい。このサイトから多くのことを学んだ。しかし最低限すぎるし何より必要十分な解説はなされていない。}
+やLaTeX workshopのreadme\cite{LaTeXworkshop_README}を
 読むとよい。
 
 \subsubsection{設定用コード等について}
@@ -106,7 +106,7 @@ VS Codeで\LaTeX 文書を編集するために必要なIT知識と
 \LaTeX の導入の後はこの資料がリファレンスとしても外部ツールや設定の一覧としても使えるように構成をしている。
 
 注意として\LaTeX 構文についての記述は必要最小限度にとどめている。
-したがって、より詳しい\LaTeX の構文やマクロの詳しい組み方より発展的な扱い方等は参考文献\cite{美文書本}\cite{一週間基礎}等を参照する必要がある。
+したがって、より詳しい\LaTeX の構文やマクロの詳しい組み方より発展的な扱い方等は\cite{美文書本}\cite{一週間基礎}等を参照する必要がある。
 
 \subsection{免責事項}
 
@@ -134,7 +134,7 @@ VS Codeで\LaTeX 文書を編集するために必要なIT知識と
   \item 数式がきれいに書ける
   \begin{itemize}
     \item Wordで書こうとするととんでもない数のクリックと精密なエイム力を要求される
-    \footnote{これは決してWordを貶しているわけではない。そのようにWordを使うことが間違っているのである。Wordも\LaTeX も同じ文書執筆ツールではあるが、それぞれに長所短所があり使うべき場所というものがある。一言Wordを擁護しておくと数式は\LaTeX のコマンドで書くことができる。参考文献\cite{WordでLaTeX}参照。しかしWordでLaTeXコマンドで書くなら最初から\LaTeX で書いた方が断然良い。Wordn等では使えない数式等もある為である。}
+    \footnote{これは決してWordを貶しているわけではない。そのようにWordを使うことが間違っているのである。Wordも\LaTeX も同じ文書執筆ツールではあるが、それぞれに長所短所があり使うべき場所というものがある。一言Wordを擁護しておくと数式は\LaTeX のコマンドで書くことができる。\cite{WordでLaTeX}参照。しかしWordでLaTeXコマンドで書くなら最初から\LaTeX で書いた方が断然良い。Wordn等では使えない数式等もある為である。}
   \end{itemize}
   \item 見た目と論理構造を分離できる
   \item 修正、再利用が容易
@@ -184,7 +184,7 @@ cloud LaTeX は、オンライン上で\LaTeX を扱うことができる。
 \LaTeX の記法に慣れるという面では、有用である。したがってこの章では、cloud LaTeX の
 使い方について簡単に説明して\LaTeX に慣れてもらいたい。
 初めに
-\url{https://cloudlatex.io/ja}参考文献\cite{cloudlatexログインページ}
+\url{https://cloudlatex.io/ja}\cite{cloudlatexログインページ}
 のサイトに行きユーザー名やメールアドレスと任意のパスワードを設定する。
 すると設定したメールアドレスにメールが来るので、メールアドレスの受信確認
 をクリックする。アカウント登録が完了する。
@@ -426,7 +426,7 @@ TeX Live Managerをスタート画面から検索して開く。TeX Live Manager
 \footnote{トラブルシューティング:ここで、\LuaLaTeX 
 を用いる時にはlualatex-mathというパッケージをダウンロードする必要がある。もし\LuaLaTeX 
 でうまくコンパイルされない場合にはこのパッケージをダウンロードするとうまくコンパイルされるかもしれない。
-参考文献\cite{TeXliveトラブルシューティングlualatex}参照}
+\cite{TeXliveトラブルシューティングlualatex}参照}
 
 \subsection{latexmkの設定}
 ホームディレクトリ
@@ -921,7 +921,7 @@ ls-Rというファイルが存在していてこれが、TeXが必要なパッ�
 packageは最小構成でおこなうべきである。
 なぜなら、\LuaLaTeX はかなり最近のものであり、packageが\LuaLaTeX に
 対応していないということもかなりの可能性としてある。
-そのため、参考になるのは参考文献のサイト参考文献\cite{TDS}
+そのため、参考になるのは参考文献のサイト\cite{TDS}
 になる。
 % \section{TeX Live の更新について}
 % tlmgr についてできたら追記
@@ -1131,7 +1131,7 @@ reportのひな形が出てくるようになる。
 \verb|$0|を入れておけば、入力終了後に
 次の行からすぐに書き始めることができる。
 
-ユーザースニペットに関して必要な注意また他の言語への応用等は参考文献\cite{スニペット1}\cite{スニペット2}\cite{スニペット完全解説}参照するとよい。
+ユーザースニペットに関して必要な注意また他の言語への応用等は\cite{スニペット1}\cite{スニペット2}\cite{スニペット完全解説}参照するとよい。
 
 \subsection{禅モード\index{ぜんもーど@禅モード}} 
 禅モードはCtrl+K Z  を用いると使うことができるモードでこのモードでは下のステータスバー等がなくなりコーディング作業に集中できるモードになっている。この禅モードから抜け出すためにはEscキーを押すことで抜け出すことができる。この間にはGUIによる操作はできないがCUIによる操作のみ可能なためにショートカットキーを覚えていれば困ることはほとんどない。そのためにコーディング作業をするときには必要である。
@@ -1262,8 +1262,8 @@ cloud LaTeX を使うことでパソコン内部に\LaTeX 環境を構築しな�
 \subsubsection*{cloud LaTeX との連携をするための設定}
 導入の設定は、md形式のファイルに添付されているものをsetting.jsonに入れればよい。cloud LaTeX 参照
 \subsection{LaTeXWorkshopの設定に困ったら}
-LaTeXworkshopの設定に困った場合には、参考文献\cite{latexworkshopwiki}又は、公式ドキュメントである参考文献\cite{LaTeXworkshop_README}を読むとよい。しかしながらこれらは英語であるのでこれがいやな場合は、参考文献\cite{LaTeXworkshop1}\cite{LaTeXWorkshop2}\cite{LaTeXWorkshop3}\cite{LaTeXWorkshop4}\cite{数式プレビュー}
-が公式ドキュメントを日本語に訳したような書き方をしているためにこれを読むとよい。参考文献\cite{LaTeX+VSCodewiki}等はVS Codeとlatexについて解説している数少ないwikiのページである。参考文献\cite{エラーをしながら1}\cite{エラーをしながら2}\cite{エラーをしながら3}は変わった方法で\LaTeX をVSCodeに導入している。またVSCodeの解説については、参考文献\cite{VSCodeの公式ドキュメント}\cite{VSCode完全入門}\cite{SyncTeXVSCode}等を参考にすると良い。
+LaTeXworkshopの設定に困った場合には、\cite{latexworkshopwiki}又は、公式ドキュメントである\cite{LaTeXworkshop_README}を読むとよい。しかしながらこれらは英語であるのでこれがいやな場合は、\cite{LaTeXworkshop1}\cite{LaTeXWorkshop2}\cite{LaTeXWorkshop3}\cite{LaTeXWorkshop4}\cite{数式プレビュー}
+が公式ドキュメントを日本語に訳したような書き方をしているためにこれを読むとよい。\cite{LaTeX+VSCodewiki}等はVS Codeとlatexについて解説している数少ないwikiのページである。\cite{エラーをしながら1}\cite{エラーをしながら2}\cite{エラーをしながら3}は変わった方法で\LaTeX をVSCodeに導入している。またVSCodeの解説については、\cite{VSCodeの公式ドキュメント}\cite{VSCode完全入門}\cite{SyncTeXVSCode}等を参考にすると良い。
 
 \section{cloudlatex}
 \subsection{cloudlatexとは何か？}
@@ -1300,7 +1300,7 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
   \item   ホバーの上からその下にある文字をクリックすることができる
 \end{itemize}
 \subsection{Ultra Math Previewの設定}
-setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応していないパッケージの数式のレンダリングをすることができる。参考文献\cite{UltraMathPreview}
+setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応していないパッケージの数式のレンダリングをすることができる。\cite{UltraMathPreview}
 \begin{lstlisting}[caption={Ultra Math Preview}]
   "umath.preview.renderer": "mathjax",
 "umath.preview.macros": [
@@ -1332,9 +1332,9 @@ Table Generator\index{Table Generator}
 は、\LaTeX での表を書く際に非常に有用なサイトである。このサイトではwordとほとんど同等の環境のGUIを用いることで\LaTeX 記法での表に変換してくれるサイトである。
 \url{https://www.tablesgenerator.com/}\cite{Tablegenerater}で書くことができる。さらにこれはhtml等にも対応しているなどさまざまなマークアップ言語に対応している。
 
-またCSVファイルの読み込みもすることができる。(参考文献\cite{tablesgeneratorabout}参照。)
+またCSVファイルの読み込みもすることができる。(\cite{tablesgeneratorabout}参照。)
 \subsection{csv2tabular\index{csv2tabular}}
-csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTeX 形式の表に変換してくれる外部ツールである。これは、レポートの制作の時などでも便利である。このサイトは、参考文献\cite{csv2tabular}
+csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTeX 形式の表に変換してくれる外部ツールである。これは、レポートの制作の時などでも便利である。このサイトは、\cite{csv2tabular}
 \url{https://rra.yahansugi.com/scriptapplet/csv2tabular/}から見ることができる。またこの表は、tabular形式になるが環境名は表示されないので、次の環境を加える必要がある。
 \begin{lstlisting}
   \begin{table}[h]
@@ -1346,7 +1346,7 @@ csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTe
     \end{tabular}
   \end{table}
 \end{lstlisting}
-のように書く必要がある。(参考文献\cite{csv2tabularの使い方}参照)また、Table Generatorのように、セルの結合等には対応していないため、形式的にまとまっているデータに対しては有効であるが、複雑な表は処理が難しい、複雑な表を書く場合はTable Generatorを使う方がよい。
+のように書く必要がある。(\cite{csv2tabularの使い方}参照)また、Table Generatorのように、セルの結合等には対応していないため、形式的にまとまっているデータに対しては有効であるが、複雑な表は処理が難しい、複雑な表を書く場合はTable Generatorを使う方がよい。
 
 \section{テキスト校正くん\index{テキスト校正くん}}
 テキスト校正くんは、texファイルやmdファイル等の日本語文章を校閲することができる。これはインストールするだけで利用できる。例えば「です・ます」調と「だ・である」調の混在等を教えてくれる。
@@ -1354,7 +1354,7 @@ csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTe
 \section{\LaTeX 数式コマンドを手書きで打つ}
 \subsection{Myscript mathとは何か}
 \LaTeX コマンドを打つのが面倒だったり数式が非常に長く文字よりも手で書いた方が早く書けるときには
-\url{https://webdemo.myscript.com/views/math/index.html}のサイトを使うとよい。このサイトはMyscript(参考文献\cite{Myscript}参照)が運営しているサイトでありApple Pencilや手書きで書いた文字を認識し、\LaTeX 形式の数式コマンドに変換してくれるウエブ上のサービスである。無料で使うことができる。
+\url{https://webdemo.myscript.com/views/math/index.html}のサイトを使うとよい。このサイトはMyscript(\cite{Myscript}参照)が運営しているサイトでありApple Pencilや手書きで書いた文字を認識し、\LaTeX 形式の数式コマンドに変換してくれるウエブ上のサービスである。無料で使うことができる。
 \subsection{Myscript Mathの使い方}
 このサイトではpple Pencilや手書きで書いた文字を認識し\LaTeX コマンドを生成できる。また簡単な数式の場合はグラフ描画することができる。
 
@@ -1399,7 +1399,7 @@ csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTe
 またこの\verb|"when"|を設定する際には、VS Codeの公式ドキュメントである
 \url{https://code.visualstudio.com/docs/getstarted/keybindings#_when-clause-contexts}で見つけるとよい。
 この中で\url{https://code.visualstudio.com/api/references/when-clause-contexts#conditional-operators  }
-が自分の状況にあったものが見つかると思う。(参考文献\cite{キーボードショートカット変更方法}\cite{キーボードショートカット変更方法json}等、または公式ドキュメント\cite{VSCodeの公式ドキュメント}参照)
+が自分の状況にあったものが見つかると思う。(\cite{キーボードショートカット変更方法}\cite{キーボードショートカット変更方法json}等、または公式ドキュメント\cite{VSCodeの公式ドキュメント}参照)
 
 またキーバインドを簡単に表示する方法としてkeybindings.jsonファイルを開いているときにCtrl+K Ctrl+K のキーを押すと次のコマンドが表示される。残りはユーザーが\verb|"command","when"|を記述すればよい。
 \begin{lstlisting}[caption={keybindings.json}]
@@ -1462,7 +1462,7 @@ csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTe
 \appendix
 \section{Windowsショートカットキー}
 \subsection{ショートカットキーについて}
-VS Codeではさまざまなショートカットが存在する。しかし、それをより活用し、ひいてはPC全体の効率的な活用を目指すことができる。例えば、マウスを使う場合と比べて時間効率では、年間120時間の時短が見込める等の報告がある。(参考文献\cite{キーボードショートカット時間効率}などを参照。)
+VS Codeではさまざまなショートカットが存在する。しかし、それをより活用し、ひいてはPC全体の効率的な活用を目指すことができる。例えば、マウスを使う場合と比べて時間効率では、年間120時間の時短が見込める等の報告がある。(\cite{キーボードショートカット時間効率}などを参照。)
 
 ここではWindowsの起動からVS Code,ブラウザでのショートカットについて記述する。
 
