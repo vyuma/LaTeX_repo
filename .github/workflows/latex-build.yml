@@ -1,0 +1,32 @@
+# 自動でビルドするスクリプト
+# 参考：https://zenn.dev/toga/articles/latex-github-actions
+
+name: LaTeX compilation
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Merge main branch
+        run: |
+          git config user.name fiveseven-lambda
+          git config user.email fiveseven.lambda@gmail.com
+          git checkout pdf
+          git merge main
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file:
+            documents/LaTeX_environment.tex
+      - name: Push PDF file
+        run: |
+          git add .
+          git commit -m "LaTeX compilation"
+          git push origin pdf
