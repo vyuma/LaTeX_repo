@@ -183,7 +183,7 @@
   // latex-workshop.latex.autoClean.run: ビルド失敗時に一時ファイルのクリーンアップを行うかどうか
   // 上記説明にもあったように、ビルド失敗時に生成された一時ファイルが悪影響を及ぼす事があるため、自動で
   // クリーンアップがかかるようにしておく。
-  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.autoClean.run": "onSucceeded", // "onBuilt",
   // latex-workshop.view.pdf.viewer: PDF ビューアの開き方
   // VSCode 自体には PDF ファイルを閲覧する機能が備わっていないが、
   // LaTeX Workshop にはその機能が備わっている。
