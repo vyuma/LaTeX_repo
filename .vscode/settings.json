@@ -1,28 +1,4 @@
 {
-  "files.autoSave": "afterDelay",
-  // Python の設定
-  "terminal.integrated.defaultProfile.windows": "Command Prompt",
-  "terminal.integrated.profiles.windows": {
-    "PowerShell": {
-      "source": "PowerShell",
-      "icon": "terminal-powershell"
-    },
-    "Command Prompt": {
-      "path": [
-        "${env:windir}\\Sysnative\\cmd.exe",
-        "${env:windir}\\System32\\cmd.exe"
-      ],
-      "args": [
-        "/k",
-        "chcp",
-        "65001"
-      ],
-      "icon": "terminal-cmd"
-    },
-    "Git Bash": {
-      "source": "Git Bash"
-    }
-  },
   //  LaTeXの設定
   "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
   // 設定: LaTeX Workshop
@@ -238,17 +214,4 @@
   // ---------- LaTeX Workshop ----------
   // 使用パッケージのコマンドや環境の補完を有効にする
   "latex-workshop.intellisense.package.enabled": true,
-  "window.zoomLevel": 1,
-  "catex.greek-completion": {
-    "name": "CaTeX Greek Completion",
-    "languages": [
-      "latex"
-    ],
-    "triggers": [
-      ":"
-    ],
-    "dictionary": "$GIM/defaults/greeks.json",
-    "renderMode": "latex"
-  },
-  // 、を,に変えることができる設定latexindent.yamlを用いて設定。
 }
