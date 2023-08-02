@@ -1,2 +1,4 @@
 *.code-workspace
-*.synctex.gzs
+
+# LaTeXの中間ファイル
+*.synctex.gz
