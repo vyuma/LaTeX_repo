@@ -2,32 +2,43 @@
 \headcommand {\beamer@framepages {1}{1}}
 \headcommand {\beamer@sectionpages {1}{1}}
 \headcommand {\beamer@subsectionpages {1}{1}}
-\headcommand {\sectionentry {1}{\LaTeX とは}{2}{\LaTeX とは}{0}}
+\headcommand {\sectionentry {1}{TeXliveのインストール}{2}{TeXliveのインストール}{0}}
 \headcommand {\beamer@subsectionpages {2}{1}}
-\headcommand {\slideentry {1}{1}{1}{2/2}{}{0}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{2}{TeXlive インストール}}
+\headcommand {\slideentry {1}{1}{1}{2/2}{TeXlive インストール}{0}}
 \headcommand {\beamer@framepages {2}{2}}
-\headcommand {\slideentry {1}{1}{2}{3/3}{}{0}}
+\headcommand {\slideentry {1}{1}{2}{3/3}{TeXlive インストール}{0}}
 \headcommand {\beamer@framepages {3}{3}}
-\headcommand {\slideentry {1}{1}{3}{4/4}{}{0}}
+\headcommand {\slideentry {1}{1}{3}{4/4}{TeXlive インストール}{0}}
 \headcommand {\beamer@framepages {4}{4}}
-\headcommand {\slideentry {1}{1}{4}{5/5}{}{0}}
+\headcommand {\beamer@subsectionpages {2}{4}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{5}{インストール完了の確認}}
+\headcommand {\slideentry {1}{2}{1}{5/5}{インストール完了の確認}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\slideentry {1}{1}{5}{6/6}{}{0}}
+\headcommand {\beamer@sectionpages {2}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\sectionentry {2}{\LaTeX とは}{6}{\LaTeX とは}{0}}
+\headcommand {\beamer@subsectionpages {6}{5}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{6}{\LaTeX をなぜ使うのか？}}
+\headcommand {\slideentry {2}{1}{1}{6/6}{\LaTeX をなぜ使うのか？}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\slideentry {1}{1}{6}{7/7}{}{0}}
-\headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {1}{1}{7}{8/8}{}{0}}
+\headcommand {\beamer@sectionpages {6}{7}}
+\headcommand {\beamer@subsectionpages {6}{7}}
+\headcommand {\sectionentry {3}{\LaTeX 環境構築}{8}{\LaTeX 環境構築}{0}}
+\headcommand {\beamer@subsectionpages {8}{7}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{8}{TeXliveの設定}}
+\headcommand {\slideentry {3}{1}{1}{8/8}{TeXliveの設定}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {1}{1}{8}{9/9}{}{0}}
+\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{9}{VSCodeのインストール}}
+\headcommand {\slideentry {3}{2}{1}{9/9}{VSCodeのインストール}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {1}{1}{9}{10/10}{}{0}}
+\headcommand {\beamer@subsectionpages {9}{9}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{10}{VSCodeの設定}}
+\headcommand {\slideentry {3}{3}{1}{10/10}{VSCodeの設定}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\slideentry {1}{1}{10}{11/11}{}{0}}
-\headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {1}{1}{11}{12/12}{}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\beamer@partpages {1}{12}}
-\headcommand {\beamer@subsectionpages {2}{12}}
-\headcommand {\beamer@sectionpages {2}{12}}
-\headcommand {\beamer@documentpages {12}}
-\headcommand {\gdef \inserttotalframenumber {12}}
+\headcommand {\beamer@partpages {1}{10}}
+\headcommand {\beamer@subsectionpages {11}{10}}
+\headcommand {\beamer@sectionpages {11}{10}}
+\headcommand {\beamer@documentpages {10}}
+\headcommand {\gdef \inserttotalframenumber {10}}

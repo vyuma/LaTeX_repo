@@ -29,6 +29,8 @@
 }
 
 \usepackage{bxtexlogo} % platex, lualatexのロゴを使うために必要
+% urlを表示する。
+\usepackage{xurl}
 
 % \setbeamertemplate{theorems}[numbered]
 % \addtobeamertemplate{theorem begin}{\normalfont}{}
@@ -61,11 +63,11 @@
   \titlepage
 \end{frame}
 
-\section{\LaTeX とは}
-\subsection{}
+\section{TeXliveのインストール}
+\subsection{TeXlive インストール}
 
 \begin{frame}
-  \frametitle{TeXliveの導入}
+  \frametitle{TeXliveのインストール}
   \begin{enumerate}
 	\item TeXliveのインストーラーを次のページからダウンロードする。
   \begin{quote}
@@ -76,18 +78,16 @@
   \item ページ上のリンク install-tl-windows.exeをクリックする。
   \item ダウンロードを終えたら実行する。
 \end{enumerate}
-\end{frame}
-\begin{frame}
-    \frametitle{危険なファイルの処理方法}
+
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{TeXliveの導入}
+  \frametitle{TeXliveのインストール}
   \begin{enumerate}
     \item 「Install」を選択する。
     \item  「Next」を押して進み
-    \item 「特定のミラーを選択」では日本のミラーサイトのどれでもよいので選ぶとよい
+    \item 「特定のミラーを選択」では日本のミラーサイトのどれでもよいので選ぶとよい.\footnote{ミラーサイトとは、TeXliveのディストリビューションを保有するサーバーを選択することである。}
     \item インストール先は気にしなくてよい。
   \end{enumerate}
   
@@ -108,6 +108,8 @@
 
   設定が完了したら右下のインストールを押す。
 \end{frame}
+
+\subsection{インストール完了の確認}
 \begin{frame}
   \frametitle{インストールの正常終了を確認する}
   インストールの後に、コマンドプロンプロトを起動する。
@@ -121,8 +123,9 @@
 
 \end{frame}
 
-
-\begin{frame}
+\section{\LaTeX とは}
+\subsection{\LaTeX をなぜ使うのか？}
+i\begin{frame}
   \frametitle{なぜ\LaTeX を使うのか}
   %wordとの比較を交えつつ論文執筆のデファクトスタンダードとなっていること、数式の組版処理が優れていること、修正、再利用が容易なことなどを話す
   \LaTeX とは、文書執筆ツールとして使われる、組版処理系の一つである。
@@ -146,6 +149,8 @@
   
 \end{frame}
 
+\section{\LaTeX 環境構築}
+\subsection{TeXliveの設定}
 \begin{frame}
   \frametitle{TeXlive Managerからパッケージのダウンロード}
   \begin{enumerate}
@@ -163,6 +168,7 @@
 また今回は、\LuaLaTeX を用いるので、lualatex-mathというパッケージをダウンロードする。
 \end{frame}
 
+\subsection{VSCodeのインストール}
 \begin{frame}
   \frametitle{VSCodeのインストール}
 
@@ -175,16 +181,50 @@
 ファイルを開き、追加タスクの変更は触らないようにしてNextを押し続ければ
 インストールできる。
 
+
+\end{frame}
+
+\subsection{VSCodeの設定}
+
+\begin{frame}
+  \frametitle{VS codeを日本語化する}
+  VS Codeをショートカットから開いて、積み木のようなアイコンExtentions（拡張機能）
+  をクリック。検索窓にJapaneseと打って、
+  Japanese Language Pack for Visual Studio Code
+  を選択してインストールする。これで日本語化が完了する。
+  このように拡張機能を入れることでVS Codeの機能をより使いやすいものにすることができる。
+  
+  日本語化されない場合には、VSCodeを再起動すると良い。または、コマンドパレットを出現させる。これはCtrl+Shift+Pを押すと出現する。ここで、language うって表示言語を日本語(Japanese)にすることでも日本語化することができる。
+
 \end{frame}
 
 \begin{frame}
-  \frametitle{latexmkの設定}
-  次のコードをホームディレクトリ直下に入れる。
+  \frametitle{\LaTeX を打つ}
+
+  適当なファイルを生成する。そこに.tex ファイルを作成する。そこに下のコードを入れる。
+
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{\LaTeX のコンパイルの仕方}
+
+  コンパイルをするときにはコマンドプロンプトを用いる。
   
 \end{frame}
 
 \begin{frame}
+  \frametitle{latexmkとは何か？}
+  
+  以上のようにコマンドを毎回打たなければならない。そこでlatexmkとは、各種\LaTeX のビルドコマンドを自動で一括で実行してくれるツールである
+  
+
+\end{frame}
+
+
+\begin{frame}
   \frametitle{LaTeX workshopの設定}
+
 
 
 \end{frame}
