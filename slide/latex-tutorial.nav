@@ -37,8 +37,24 @@
 \headcommand {\beamer@subsectionentry {0}{3}{3}{10}{VSCodeの設定}}
 \headcommand {\slideentry {3}{3}{1}{10/10}{VSCodeの設定}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@partpages {1}{10}}
-\headcommand {\beamer@subsectionpages {11}{10}}
-\headcommand {\beamer@sectionpages {11}{10}}
-\headcommand {\beamer@documentpages {10}}
-\headcommand {\gdef \inserttotalframenumber {10}}
+\headcommand {\slideentry {3}{3}{2}{11/11}{VSCodeの設定}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\slideentry {3}{3}{3}{12/12}{VSCodeの設定}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {3}{3}{4}{13/13}{VSCodeの設定}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\slideentry {3}{3}{5}{14/14}{VSCodeの設定}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\slideentry {3}{3}{6}{15/15}{VSCodeの設定}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\slideentry {3}{3}{7}{16/16}{VSCodeの設定}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\slideentry {3}{3}{8}{17/17}{VSCodeの設定}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {3}{3}{9}{18/18}{VSCodeの設定}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\beamer@partpages {1}{18}}
+\headcommand {\beamer@subsectionpages {10}{18}}
+\headcommand {\beamer@sectionpages {8}{18}}
+\headcommand {\beamer@documentpages {18}}
+\headcommand {\gdef \inserttotalframenumber {17}}

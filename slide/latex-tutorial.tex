@@ -221,16 +221,62 @@ i\begin{frame}
 
 \end{frame}
 
-
 \begin{frame}
-  \frametitle{LaTeX workshopの設定}
+  \frametitle{latexmkの設定}
 
-
+  \begin{enumerate}
+    \item ホームディレクトリ
+    \footnote{
+      PC>ローカルディスク>ユーザー>ユーザー名、と辿れるディレクトリのこと}
+    直下に.latexmkというテキストファイルを作成する。VSCodeで開く。
+    \item 次のコードを入力する。
+  \end{enumerate}
 
 \end{frame}
 
 \begin{frame}
-  \frametitle{Ultra Math Previewのインストール}
+  \frametitle{LaTeX workshopのインストール}
+
+  LaTeXworkshopとは、VSCode の拡張である。VSCode上で\LaTeX を使ううえで必須の拡張である。
+
+  \begin{enumerate}
+    \item 左の拡張機能アイコンをクリックする。
+    \item 拡張機能の検索欄からlatexworkshopと入力する。
+    \item latexworkshopを選び拡張機能をダウンロードする。
+  \end{enumerate}
+  latexworkshopの設定は、setting.json に記述する。
+  VS Codeの設定は、setting.json
+  というファイルに記載されている。
+
+\end{frame}
+\begin{frame}
+  \frametitle{setting.jsonについて}
+  setting.json を開く方法はいくつかある。
+  \begin{description}
+    \item[1つ目] ~\\
+      VS Code左下の設定マーク（歯車マーク）をクリックして、「設定」を選択する。
+      右上端にあるファイルに矢印がついたアイコンをクリックする。
+    \item[2つ目] ~\\
+      キーボードのショートカットキーを用いて、ctrl+shift+P と入力することで、
+      コマンドパレットを出現させてそこにPreferences:Open User Setting
+      と打ち込む。
+    \item[3つ目]~\\
+      Ctrl+ , で設定画面を開く。さらに右上端にあるファイルに矢印がついたアイコンをクリックする。
+  \end{description}
+
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{setting.jsonの記述}
+  setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
+  同じ内容を下のソースコードに示す。
+  もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
+  
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ultra Math Previewのインストールと設定}
   
 
 \end{frame}
