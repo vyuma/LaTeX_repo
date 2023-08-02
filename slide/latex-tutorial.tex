@@ -28,6 +28,8 @@
   backgroundcolor=\color{white}
 }
 
+\usepackage{bxtexlogo} % platex, lualatexのロゴを使うために必要
+
 % \setbeamertemplate{theorems}[numbered]
 % \addtobeamertemplate{theorem begin}{\normalfont}{}
 % \uselanguage{japanese}
@@ -63,35 +65,35 @@
 \subsection{}
 
 \begin{frame}
-  \frametitle{\LaTeX のインストール}
-  
-  %リンクとQRコード
-\end{frame}
-
-\begin{frame}
-  \frametitle{なぜ\LaTeX を使うのか}
-  %wordとの比較を交えつつ論文執筆のデファクトスタンダードとなっていること、数式の組版処理が優れていること、修正、再利用が容易なことなどを話す
-  
-\end{frame}
-
-\begin{frame}
   \frametitle{TeXliveの導入}
-  TeXliveを次のページからダウンロードする。(Text:p.10)
+  \begin{enumerate}
+	\item TeXliveのインストーラーを次のページからダウンロードする。
   \begin{quote}
     \centering
     \url{https://www.tug.org/texlive/acquire-netinstall.html}
-  
   \end{quote}
-  をクリックして、ページ上のリンク install-tl-windows.exeをクリックする。
-
-
+  をクリックする。
+  \item ページ上のリンク install-tl-windows.exeをクリックする。
+  \item ダウンロードを終えたら実行する。
+\end{enumerate}
 \end{frame}
 \begin{frame}
-  \frametitle{危険なファイルの処理方法}
+    \frametitle{危険なファイルの処理方法}
+\end{frame}
 
+
+\begin{frame}
+  \frametitle{TeXliveの導入}
+  \begin{enumerate}
+    \item 「Install」を選択する。
+    \item  「Next」を押して進み
+    \item 「特定のミラーを選択」では日本のミラーサイトのどれでもよいので選ぶとよい
+    \item インストール先は気にしなくてよい。
+  \end{enumerate}
   
 
 \end{frame}
+
 \begin{frame}
   \frametitle{高度な設定}
 
@@ -118,6 +120,49 @@
   Macでは、
 
 \end{frame}
+
+
+\begin{frame}
+  \frametitle{なぜ\LaTeX を使うのか}
+  %wordとの比較を交えつつ論文執筆のデファクトスタンダードとなっていること、数式の組版処理が優れていること、修正、再利用が容易なことなどを話す
+  \LaTeX とは、文書執筆ツールとして使われる、組版処理系の一つである。
+\LaTeX を使う利点をいくつか挙げる。
+\begin{itemize}
+  \item 数式がきれいに書ける
+  \begin{itemize}
+    \item Wordで書こうとするととんでもない数のクリックと精密なエイム力を要求される
+    \footnote{これは決してWordを貶しているわけではない。そのようにWordを使うことが間違っているのである。Wordも\LaTeX も同じ文書執筆ツールではあるが、それぞれに長所短所があり使うべき場所というものがある。}
+  \end{itemize}
+  \item 見た目と論理構造を分離できる
+  \item 修正、再利用が容易
+  \item gitでバージョン管理できる
+  \begin{itemize}
+    \item 共同編集が可能
+  \end{itemize}
+  \item 数学系、物理系では論文執筆のデファクトスタンダード
+  \item 貧弱なスペックのパソコンでも編集作業がやりやすい
+  \item 無料
+\end{itemize}
+  
+\end{frame}
+
+\begin{frame}
+  \frametitle{TeXlive Managerからパッケージのダウンロード}
+  \begin{enumerate}
+    \item WindowsのスタートメニューからTeXliveManagerを実行する。
+    \item TeX live Managerを開くと現在TeX liveにあるパッケージが読み込まれる。
+    \item そして、ここから検索欄に自分の必要なパッケージを読み込むと今必要なパッケージをダウンロードすることができる。
+  \end{enumerate}
+ 検索欄から`latexmk'と検索する。すると、しばし待機した後に二つの`latexmk'が出てくる。
+\begin{itemize}
+  \item latexmk
+  \item latexmk.win32
+\end{itemize}
+の二つが出てくるので、これらをチェックボックスをクリックして選択項目をインストール を選択し latexmk を選択してインストールする。これでlatexmkのインストールが完了する。
+
+また今回は、\LuaLaTeX を用いるので、lualatex-mathというパッケージをダウンロードする。
+\end{frame}
+
 \begin{frame}
   \frametitle{VSCodeのインストール}
 
@@ -134,8 +179,8 @@
 
 \begin{frame}
   \frametitle{latexmkの設定}
-
-
+  次のコードをホームディレクトリ直下に入れる。
+  
 \end{frame}
 
 \begin{frame}
