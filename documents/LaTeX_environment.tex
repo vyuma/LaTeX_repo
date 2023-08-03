@@ -1215,9 +1215,30 @@ TeX のソースファイルと PDF でカーソルの位置を同期する機�
 \subsubsection*{SyncTeXの設定}
 SyncTeXは、ビルドするときに形成されるファイル
 \verb'*.synctex.gz'を使って動作する。
-今の設定では、このファイルは消去されるようになっているため、
-SyncTeXを使いたい場合にはこの設定を無効化する必要がある。
-具体的には、setting.jsonの
+
+コマンドラインでSyncTeXを使う場合にはコマンドで
+\begin{lstlisting}[caption=synctex,label=synctex]
+  -synctex
+\end{lstlisting}
+をつけることで.synctexのファイルを生成することができる。
+
+また、
+\begin{lstlisting}[caption=synctex=1,label=synctex=1]
+  -synctex=1
+\end{lstlisting}
+のオプションをつけた場合には、.synctex.gzという形式の圧縮ファイルが生成される。
+\begin{lstlisting}[caption=synctex=-1,label=synctex=-1]
+  -synctex=-1
+\end{lstlisting} 
+の場合には、.synctexという形式のファイルが生成される。
+
+LaTeXworkshopでのコンパイルの際には、
+\begin{lstlisting}[caption=SyncTeX,label=SyncTeX]
+  "args": ["-synctex=1", ]
+\end{lstlisting}
+のように追記することで、SyncTeXファイルを生成することができる。
+
+また、このファイルを消さないためには、
 \begin{verbatim}
   "latex-workshop.latex.clean.fileTypes":
 \end{verbatim}
@@ -1225,7 +1246,9 @@ SyncTeXを使いたい場合にはこの設定を無効化する必要がある�
 \begin{verbatim}
   "*.synctex.gz"、
 \end{verbatim}
-の記述を消去すればよい。これにより、VS Codeのpdfvierにおいて、
+の記述を消去すればよい。
+最初から無ければ問題ない。
+これにより、VS Codeのpdfvierにおいて、
 SyncTeXが利用できるようになる。
 
 \subsubsection*{SyncTeXの具体的な利用の仕方}
