@@ -427,10 +427,11 @@ TeX Live Managerをスタート画面から検索して開く。TeX Live Manager
   \item latexmk.win32
 \end{itemize}
 の二つが出てくるので、これらをチェックボックスをクリックして選択項目をインストール を選択し latexmk を選択してインストールする。これでlatexmkのインストールが完了する。
-\footnote{トラブルシューティング:ここで、\LuaLaTeX
-  を用いる時にはlualatex-mathというパッケージをダウンロードする必要がある。もし\LuaLaTeX
-  でうまくコンパイルされない場合にはこのパッケージをダウンロードするとうまくコンパイルされるかもしれない。
-  \cite{TeXliveトラブルシューティングlualatex}参照}
+
+今回の環境構築では\LuaLaTeX
+を用いるのでlualatex-mathというパッケージをダウンロードする必要がある。
+フルパッケージでTeXliveをインストールした場合には入っている。また、TeXliveManagerですでに入っていると表示される場合は問題ない。
+  \cite{TeXliveトラブルシューティングlualatex}参照
 
 \subsection{latexmkの設定}
 ホームディレクトリ
