@@ -163,7 +163,7 @@ VS Codeで編集ができる環境を整える。
 
 \subsection{VS Code とは何か？}
 VS Codeとは、Visual Stadio Code の略でマイクロソフト社が提供する
-統合開発環境である。要は高性能なエディター\index{エディター}であり、後述する拡張機能の存在によって\LaTeX との親和性も高い。\footnote{テキストエディタはWindows標準搭載のメモ帳などが有名である。またTeX専用のテキストエディタとしてはTeXliveにあるTeXworks等が有名である。この資料では今後のトレンドを考えてVSCodeへの導入を推奨する。}
+統合開発環境である。要は高性能なエディター\index{エディター}であり、後述する拡張機能の存在によって\LaTeX との親和性も高い。\footnote{テキストエディタはWindows標準搭載のメモ帳などが有名である。またTeX専用のテキストエディタとしてはTeX LiveにあるTeXworks等が有名である。この資料では今後のトレンドを考えてVSCodeへの導入を推奨する。}
 VS Codeは、
 \begin{itemize}
   \item 無料で頒布されている
@@ -297,7 +297,7 @@ OverleafはGitHubと連携することができるために論文執筆の際に
         \item[CUI\index{CUI}]~\\
         CUIとは``Character User Interface（キャラクターユーザーインターフェース）''の略である。あらかじめ決まっている文字や命令を コマンドといい、コマンドを入力してコンピュータに指示をだすユーザーインターフェース。CUIでは主にキーボードによるコマンドの文字情報のみで操作する。
         \item[ディストリビューション\index{ディストリビューション}]~\\
-        パッケージの仕方・配布形態の異なるソフトウェアパッケージのことであり、TeXliveは日本で最も使われているLaTeXディストリビューションである。
+        パッケージの仕方・配布形態の異なるソフトウェアパッケージのことであり、TeX Liveは日本で最も使われているLaTeXディストリビューションである。
 
         % エクスプローラーのパスの入力欄に"cmd"と入力してEnterを押すことでもコマンドプロンプトを開くことができます。
         % このようにして開いた場合、カレントディレクトリは"cmd"の入力前にエクスプローラーのパスの入力欄に表示されていたディレクトリになります。
@@ -427,10 +427,11 @@ TeX Live Managerをスタート画面から検索して開く。TeX Live Manager
   \item latexmk.win32
 \end{itemize}
 の二つが出てくるので、これらをチェックボックスをクリックして選択項目をインストール を選択し latexmk を選択してインストールする。これでlatexmkのインストールが完了する。
-\footnote{トラブルシューティング:ここで、\LuaLaTeX
-  を用いる時にはlualatex-mathというパッケージをダウンロードする必要がある。もし\LuaLaTeX
-  でうまくコンパイルされない場合にはこのパッケージをダウンロードするとうまくコンパイルされるかもしれない。
-  \cite{TeXliveトラブルシューティングlualatex}参照}
+
+今回の環境構築では\LuaLaTeX
+を用いるのでlualatex-mathというパッケージをダウンロードする必要がある。
+フルパッケージでTeX Liveをインストールした場合には入っている。また、TeX Live Managerですでに入っていると表示される場合は問題ない。
+  \cite{TeXLiveトラブルシューティングlualatex}参照
 
 \subsection{latexmkの設定}
 ホームディレクトリ
@@ -781,7 +782,7 @@ Hello world!
 TeX liveとは、TeX の国際的なディストリビューションである。
 \LaTeX や\TeX のパッケージを入手することができる。
 
-そして、\LaTeX のパッケージを一括で管理することができる機能がTeXliveに標準で実装されているTeXlive Manager\index{TeXlive Manager}である。
+そして、\LaTeX のパッケージを一括で管理することができる機能がTeX Liveに標準で実装されているTeX Live Manager\index{TeX Live Manager}である。
 \subsection{TeX live Manager の使い方}
 TeX Live Managerの開き方はスタートメニューからTeX live Managerを検索するとよい。
 
@@ -911,7 +912,7 @@ latexフォルダーの中に各パッケージのフォルダーがあり、
 \url{https://texwiki.texjp.org/?TeX%20%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E6%A7%8B%E6%88%90}
 
 \subsection{パッケージを使うための一覧表の更新}
-texlive環境では、上のように.styファイルを保存しても動かない。これは、
+TeX Live環境では、上のように.styファイルを保存しても動かない。これは、
 ls-Rというファイルが存在していてこれが、TeXが必要なパッケージを探すための
 パスを与えている。そのために、この一覧表を更新しなければならない。
 このためには、コマンドプロンプトを開き、次のように命令するだけでいい。
