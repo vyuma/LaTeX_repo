@@ -90,6 +90,7 @@
     \item 「特定のミラーを選択」では日本のミラーサイトのどれでもよいので選ぶとよい.\footnote{ミラーサイトとは、TeXliveのディストリビューションを保有するサーバーを選択することである。}
     \item インストール先は気にしなくてよい。
   \end{enumerate}
+
   
 
 \end{frame}
@@ -198,10 +199,24 @@
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{\LaTeX を打つ}
 
   適当なファイルを生成する。そこに.tex ファイルを作成する。そこに下のコードを入れる。
+  \begin{lstlisting}[caption=HelloWorld,label=HelloWorld]
+  \documentclass{ltjsarticle}
+  \begin{document}
+
+  \title{はじめての\LaTeX }
+  \author{Meidai}
+  \maketitle
+    \section{はじめての\LaTeX Lua\LaTeX }
+      \subsection{小見出し！}
+      Hello world!
+      今日は\LaTeX を覚えていってください。
+      \LaTeX + VSCode は最強の組み合わせ。
+  \end{document} 
+  \end{lstlisting}
 
 \end{frame}
 
@@ -221,7 +236,7 @@
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{latexmkの設定}
 
   \begin{enumerate}
@@ -231,6 +246,17 @@
     直下に.latexmkというテキストファイルを作成する。VSCodeで開く。
     \item 次のコードを入力する。
   \end{enumerate}
+  \begin{lstlisting}[caption=latexmkの設定,label=code:latexmk]
+    # LuaLaTeX のビルドコマンド
+    $lualatex = 'lualatex %O -synctex=1 -interaction=nonstopmode %S';
+    # Biber, BibTeX のビルドコマンド
+    $biber = 'biber %O --bblencoding=utf8 -u -U --output_safechars %B';
+    $bibtex = 'pbibtex %O %B';
+    # makeindex のビルドコマンド
+    $makeindex = 'upmendex %O -o %D %S';
+    
+    $pdf_mode = 4;
+    \end{lstlisting}
 
 \end{frame}
 
@@ -271,7 +297,7 @@
   setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
   同じ内容を下のソースコードに示す。
   もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
-  
+
 
 \end{frame}
 
