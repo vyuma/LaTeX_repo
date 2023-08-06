@@ -120,8 +120,6 @@
   \end{quotation}
   と打ち込めばよい。
 
-  Macでは、
-
 \end{frame}
 
 \section{\LaTeX とは}
@@ -195,8 +193,9 @@
   を選択してインストールする。これで日本語化が完了する。
   このように拡張機能を入れることでVS Codeの機能をより使いやすいものにすることができる。
   
-  日本語化されない場合には、VSCodeを再起動すると良い。または、コマンドパレットを出現させる。これはCtrl+Shift+Pを押すと出現する。ここで、language うって表示言語を日本語(Japanese)にすることでも日本語化することができる。
+  日本語化されない場合には、VSCodeを再起動すると良い。または、コマンドパレットを出現させる。これはCtrl+Shift+Pを押すと出現する。ここで、languageと検索して表示言語を日本語(Japanese)にすることでも日本語化することができる。
 
+  これでVSCodeの日本語化は終了である。
 \end{frame}
 
 \begin{frame}[fragile]
@@ -234,11 +233,7 @@
   lualatex ファイル名
   \end{lstlisting}
   これを打つとlatexの中間ファイルを生成し、pdfを生成する。
-  また、SyncTeX をする場合には、
-  \begin{lstlisting}[caption=Synctex,label=Synctex]
-  lualatex -synctex ファイル名
-  \end{lstlisting}
-  というように打つとSyncTeXを使える。
+
 \end{frame}
 
 \begin{frame}
@@ -307,10 +302,21 @@
 
 \begin{frame}[containsverbatim]
   \frametitle{setting.jsonの記述}
-  setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
-  同じ内容をGitHubからダウンロードする。
+  setting.json を開いたら、\verb|{}|の中にGit Hubの配布資料に記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
+
   もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
 
+\end{frame}
+
+\begin{frame}
+  \frametitle{SyncTeXとは何か？}
+
+  SyncTeX とは、
+  TeX のソースファイルと PDF でカーソルの位置を同期する機能のこと。
+  これを使うことで、PDFの部分がTeXのソースコードのどの位置を指し示しているかとTeXのソースコードがPDFのどの部分を構成しているのかということがわかるものである。
+
+  この資料についているコードはすでにSyncTeXに対応している。
+  そのため、PDFの部分でCtrlキー+クリックをすると、TeXのソースコードにジャンプする。逆にTeXの資料では、Ctrl+Alt+Jを押すとPDF資料に対応する場所が選択される。
 
 \end{frame}
 
