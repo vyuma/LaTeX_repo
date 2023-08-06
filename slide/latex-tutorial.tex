@@ -221,11 +221,24 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[containsverbatim]
   \frametitle{\LaTeX のコンパイルの仕方}
 
-  コンパイルをするときにはコマンドプロンプトを用いる。
-  
+  \LaTeX のコンパイルをコマンドラインで行う。
+  \begin{enumerate}
+    \item VSCodeで.texファイルを開く。
+    \item Ctrl+\verb|@|を押してコマンドラインを開く
+    \item コマンドラインに次のコマンドを打つ。
+  \end{enumerate}
+  \begin{lstlisting}[caption=latexコンパイル,label=latexコンパイル]
+  lualatex ファイル名
+  \end{lstlisting}
+  これを打つとlatexの中間ファイルを生成し、pdfを生成する。
+  また、SyncTeX をする場合には、
+  \begin{lstlisting}[caption=Synctex,label=Synctex]
+  lualatex -synctex ファイル名
+  \end{lstlisting}
+  というように打つとSyncTeXを使える。
 \end{frame}
 
 \begin{frame}
@@ -295,7 +308,7 @@
 \begin{frame}[containsverbatim]
   \frametitle{setting.jsonの記述}
   setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
-  同じ内容を下のソースコードに示す。
+  同じ内容をGitHubからダウンロードする。
   もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
 
 
@@ -311,6 +324,7 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
   \item LaTeX と Markdown で同じマクロがプレビューに使える
   \item プレビューが透過できる
   \item プレビューの上からその下にある文字をクリックすることができる
+  \item 拡張性が高い
 \end{itemize}
 
 拡張機能Ultra Math Previewは、Ctrl+Shift+Xで出てくる拡張機能の検索欄にUltra Math Preveiwとうち選択してインストールを押すことでインストールできる。
@@ -320,7 +334,8 @@ Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューが
 \begin{frame}
   \frametitle{Ultra Math Previewの設定}
 
-  設定方法は、以下の設定を入れれば設定される。
+  設定方法は、配布資料に記載のソースコードを入れると設定できる。
+  設定を参考にして\LaTeX のマクロを記述することでたいていのパッケージのコマンドをプレビューすることができる。
 
 \end{frame}
 
