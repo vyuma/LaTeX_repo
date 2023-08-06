@@ -820,62 +820,62 @@ TeX live Managerを開くと現在TeX liveのパッケージのうちでロー�
 \section{エラーの解決方法}
 \LaTeX で文書を執筆する上で、数々のエラーに遭遇することになるだろう。
 赤い文字に怒られたように感じるかもしれないが、それは勘違いである。
-エラーメッセージは修正するヒントを与えてくれているのである。
+エラーメッセージは、修正するヒントを与えてくれている心強い味方であることを忘れてはならない。
 
 エラーが起きた時の典型的な解決手順を順番に解説する。
 \subsection{エラーメッセージの表示方法}
-VSCodeでのビルド時にエラーが起きた場合、VScode はビルドを再試行する。この際右下に
-Recipe terminated with error. Retry building the project.\index{Recipe terminated with error. Retry building the project.}
+VSCodeでのビルド時にエラーが起きた場合、一度VScode はビルドを再試行する。この際右下に
+Recipe terminated with error. Retry building the project.
 というポップアップが表示される。
 2回目のビルドでもエラーが起きた場合、
-Recipe terminated with error.\index{Recipe terminated with error}
+Recipe terminated with error.
 というポップアップが表示される。
-まずはOpen compiler logボタンをクリックしてエラーメッセージを表示する。
+まずはOpen compiler logボタンをクリックしてエラーメッセージを表示しよう。
 
 \subsection{原因の切り分け}
 エラーメッセージが出ていることを確認したら、エラーが出ていそうな部分をコメントアウトしてからビルドするなどして、
 エラーが出ていない部分を確定させる。
-こうすることで、見当違いの場所に修正を施して複雑化するなどの事態を避けることができる。
-ここまでは大丈夫という確認のためにも、少し書き上げたらその都度コンパイルしてみる。
+こうすることで、見当違いの場所に修正を施してしまうといった事態を避けることができる。
 
 \subsection{エラーメッセージの読み方}
 原因となる部分が分かったら、エラーメッセージを読む。
 エラーメッセージの中に
-LaTeX Error
-と書かれた部分があるはずだ。
+\begin{lstlisting}
+c:/<path>:xxx: Undefined control sequence.
+l.xxx ...<エラー直前のソース>
+                               <エラー位置のソース
+\end{lstlisting}
+というような内容が書かれた部分があるはずだ。
 そのうち一番最初に出てくるものの解決にとりかかろう。
-エラーメッセージはエラーが起こった個所を示してくれるが、そこが実際に修正を施すべき箇所であるとは限らない。
 
-\subsection{解決方法の探し方}
-まずはエラーメッセージをよく読もう。英語だからと読み飛ばしてはいけない。
-エラーメッセージには原因が書いてある。
+まずはエラーの種類をよく読もう。英語だからと読み飛ばしてはいけない。
+エラーメッセージにはエラーが起こった個所と原因が書いてある。
+この場合はxxx行目でUndefined control sequence, すなわち未定義のコマンドが使われたことが原因のようだ。
+原因となったコマンドをを適切なコマンドに置き換えることでエラーは解決するだろう。
+
 原因からすぐに解決方法が分かる場合は、その方法を実行しよう。
 そうでない場合はエラーメッセージをそのままコピーして検索すると、大体は偉大な先人が残してくれた解決策が見つかる。
-% \cite{TeXwiki-home}や\cite{StackOverflow}などの情報が助けになるだろう。
 
 \subsection{よくあるエラー}
-\subsubsection{Undefined control sequence.}
+\subsubsection*{Undefined control sequence.}
 コントロールシークエンス、つまりコマンドが定義されていないというエラーである。
-この場合はコマンドのスペルミス、あるいはコマンドの後のスペースの入れ忘れを疑うべきである。
+コマンドのスペルミス、あるいはコマンドの後のスペースの入れ忘れを疑うべきである。
 
-\subsection{align環境の空行}
+\subsubsection*{Paragraph ended before \textbackslash align was complete.}
 align環境は空行を入れるとエラーが起きる。
-\subsection{かっこの閉じ忘れ}
-このエラーは、エラーメッセージからは原因が推測しにくいという点で少し難しい。
 
+\subsubsection*{File ended while scanning use of \textbackslash @xdblarg.}
+\verb|\@xdblarg| の内容を読んでいる間にファイルが終わってしまったという趣旨のエラーである。
+解決方法の推測が難しいが、かっこの閉じ忘れでこのエラーが起きる。
 
-\subsubsection{それでも解決しなかったら}
+\subsection{それでも解決しなかったら}
 \LaTeX の基本的な機能を使っているうちは大抵は上の方法で解決する。
-もしインターネット上の情報を見ても解決しない場合は、マニュアルを参照しよう。
+もしそれでも解決しない場合は、マニュアルを参照することを検討しよう。
 
 特にパッケージの使い方に関してはマニュアルが一番信頼できる情報源である。
-\subsection{\LaTeX のマニュアル}
-texdoc はTeXLiveに含まれるドキュメントを検索できるコマンドである
-ターミナルで調べたい単語
-例えばtexdoc
-\begin{lstlisting}[caption={ターミナル}]
-  texdoc texdoc
-\end{lstlisting}
+\subsubsection{\LaTeX のマニュアル}
+\verb|texdoc| \index{texdoc} はTeXLiveに含まれるドキュメントを検索できるコマンドである。
+例えばtexdocについて調べたい場合は、ターミナルで\verb|texdoc texdoc|と実行するとtexdoc の使い方が書かれたpdfファイルが開く。
 
 %そもそもLaTeXは最近のソフトウェアのような洗練されたエラーメッセージを出力しないため、それを前提とした VS Code のエラーハンドリング機能との相性は良くない。
 % エラーポップアップやコンソールの問題タブなどを見るよりも、エラーメッセージ全文から探したほうが効率がよいと思われるため、個人的には出力タブをスクロールして確認することをおすすめしたい。
