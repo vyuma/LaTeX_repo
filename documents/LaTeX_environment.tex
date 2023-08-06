@@ -1295,8 +1295,9 @@ cloudlatexとは、株式会社アカリクが運営している\LaTeX のビル
 \section{Ultra Math Preview\index{Ultra Math Preview}}
 \subsection{Ultra Math Previewとは何か}
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
-パッケージで定義されたコマンドもPreview することができる。
-さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
+パッケージで定義されたコマンドもプレビューすることができる。
+さらにスタイルをカスタマイズすることができるため、LaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。
+このプレビューはMarkdownでも用いることができる。
 \begin{itemize}
   \item 数式を打つとプレビューが即座に出てくる
   \item LaTeX と Markdown で同じマクロがプレビューに使える
@@ -1323,12 +1324,12 @@ setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応�
 \subsection{Ultra Math Previewの設定の解説}
 設定の意味について記述する。
 \begin{description}
-  \item[umath.preview.toggleMathPreview] ホバーを出すか出さないかを制御することができる。
+  \item[umath.preview.toggleMathPreview] プレビューを出すか出さないかを制御することができる。
   \item[umath.preview.renderer] レンダリング（変換）に MathJax を使うか KaTeX を使うかを選択することができる。
   \item[umath.preview.macros] LaTeX のマクロを定義してレンダリングすることができる。
-  \item[umath.preview.position] ホバーを出す位置を変えることができる。
-  \item[umath.preview.customCSS]  ホバーの見た目を変えるCSS
-  \item[umath.preview.closeAllPreview]  表示されたホバーを非表示にすることができる。デフォルトではEScapeキーを押すことで非表示にすることができる。 
+  \item[umath.preview.position] プレビューを出す位置を変えることができる。
+  \item[umath.preview.customCSS]  プレビューの見た目を変えるCSS
+  \item[umath.preview.closeAllPreview]  表示されたプレビューを非表示にすることができる。デフォルトではEscapeキーを押すことで非表示にすることができる。 
 \end{description}
  
 \subsubsection{umath.preview.macros}
