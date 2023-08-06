@@ -1299,8 +1299,9 @@ cloudlatexとは、株式会社アカリクが運営している\LaTeX のビル
 \section{Ultra Math Preview\index{Ultra Math Preview}}
 \subsection{Ultra Math Previewとは何か}
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
-パッケージで定義されたコマンドもPreview することができる。
-さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
+パッケージで定義されたコマンドもプレビューすることができる。
+さらにスタイルをカスタマイズすることができるため、LaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。
+このプレビューはMarkdownでも用いることができる。
 \begin{itemize}
   \item 数式を打つとプレビューが即座に出てくる
   \item LaTeX と Markdown で同じマクロがプレビューに使える
@@ -1317,23 +1318,47 @@ setting.jsonの\verb|{}|の中に次を入れることでlatexworkshopが対応�
 		"\\require{mathtools}",
 		"\\require{mhchem}",
 		"\\require{empheq}",
-		"\\def\\l{\\left}",
-		"\\def\\r{\\right}",
-		"\\newcommand{\\drac}[2]{\\mathchoice{\\displaystyle\\frac{\\, #1\\, }{\\, #2 \\,}}{\\displaystyle\\frac{\\, #1\\, }{\\, #2 \\, }}{\\scriptstyle\\frac{#1}{#2}}{\\scriptscriptstyle\\frac{#1}{#2}}}",
-		"\\newcommand{\\tdv}[3][]{\\drac{\\Delta^{#1} {#2}}{\\Delta {#3}^{#1}}}",
-		"\\newcommand{\\bm}[1]{\\boldsymbol{#1}}",
-		"\\newcommand{\\divisionsymbol}{÷}",
-		"\\def\\div{\\vnabla\\vdot}",
-		"\\newcommand{\\divi}{\\divisionsymbol}",
-		"\\newcommand{\\si}[1]{\\mathrm{#1}}",
-		"\\newcommand{\\e}{e}",
-        "\\scriptsize{}",
-	],
+    "\\scriptsize{}",
+    "\\newcommand{\\bm}[1]{\\boldsymbol{#1}}"]
 	"umath.preview.position": "top",
 	"umath.preview.customCSS": [
-		"background-color: rgba(0, 0, 0, 0.5);",
+		"background-color: rgba(0, 0, 0, 1);" ,
 	],
 \end{lstlisting}
+\subsection{Ultra Math Previewの設定の解説}
+設定の意味について記述する。
+\begin{description}
+  \item[umath.preview.toggleMathPreview] プレビューを出すか出さないかを制御することができる。
+  \item[umath.preview.renderer] レンダリング（変換）に MathJax を使うか KaTeX を使うかを選択することができる。
+  \item[umath.preview.macros] LaTeX のマクロを定義してレンダリングすることができる。
+  \item[umath.preview.position] プレビューを出す位置を変えることができる。
+  \item[umath.preview.customCSS]  プレビューの見た目を変えるCSS
+  \item[umath.preview.closeAllPreview]  表示されたプレビューを非表示にすることができる。デフォルトではEscapeキーを押すことで非表示にすることができる。 
+\end{description}
+ 
+\subsubsection{umath.preview.macros}
+ LaTeXworkshopでも数式の表示は可能だが拡張性は低い。しかし、この拡張機能は、\verb|\newcommand|で記述することができるマクロを表示することができる。
+ \begin{description}
+  \item[require+extension名] このコマンドはMathJaxの固有のコマンドであり\LaTeX のパッケージのコマンドをレンダリングすることができるものである。
+  \item[scriptsize] このコマンドは、UltraMathPreviewの表示を小さくすることができるコマンドである。これを使うことで表示サイズがpdfと同レベルになり全体が見やすくなる。
+  \item[bmの定義] このコマンドは、bmパッケージの\verb|\bm|をレンダリングするために必要なものである。このコマンドは\verb|\bm|を\verb|\newcommand|で定義している。
+ \end{description}
+ UltraMathPreviewは定義をしてやればMathjaxに入っていないパッケージでもよく使うのものであればレンダリングすることができる。マクロの制作方法については\cite{美文書本}に詳しい。
+ \subsubsection{umath.preview.position}
+ ホバーの出す位置を変更することができる。ホバーの出す位置は
+ \verb|"top"|または\verb|"bottom"|である。
+
+ \subsubsection{umath.preview.customCSS}
+ この設定は、プレビューの背景の色を変更することができる。
+ \begin{lstlisting}[caption=color,label=color]
+  "umath.preview.customCSS": [
+		"background-color: rgba(0, 0, 0, 1);" ,
+	],
+ \end{lstlisting}
+について、\verb|rgba(0, 0, 0, 1)|の引数を変更することで色を変化させることができる。左から順にred,green,blueであり、最後の数が透過率である。
+この設定は黒色で透過なしになっている。ライトモードの人は\verb|rgba(255,255 ,255 , 1)|等にするとよい。
+
+
 \section{\LaTeX 表制作}
 \subsection{Table Generator\index{Table Generator}}
 Table Generator\index{Table Generator}
