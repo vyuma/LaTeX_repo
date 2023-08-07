@@ -221,18 +221,26 @@
 \end{frame}
 
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{\LaTeX のコンパイルの仕方}
-
-  コンパイルをするときにはコマンドプロンプトを用いる。
+今作成した.tex ファイルをコンパイルする。コンパイルとは、\LaTeX のソースコードを実際の文書に変換することである。
+\begin{enumerate}
+  \item コマンドプロンプトを起動する。
+  \item 作成した.tex ファイルがあるディレクトリに移動する。\\
+  \verb|cd <ディレクトリへの相対パス>|
+  \item 以下のコマンドを打ち込む。\\
+  \verb|lualatex helloworld.tex|
+\end{enumerate}
   
 \end{frame}
 
 \begin{frame}
   \frametitle{latexmkとは何か？}
   
-  以上のようにコマンドを毎回打たなければならない。そこでlatexmkとは、各種\LaTeX のビルドコマンドを自動で一括で実行してくれるツールである
+  今回は一度ですんだが、相互参照などをするときには、コンパイルを複数回行う必要がある。
+  手動でのコンパイルは手間がかかるため、latexmkを用いる。
   
+  latexmkは、各種\LaTeX のビルドコマンドを自動で一括で実行してくれるツールである。
 
 \end{frame}
 
