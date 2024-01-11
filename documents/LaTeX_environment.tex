@@ -2,6 +2,11 @@
 % ltjsarticle: lualatex 用の 日本語 documentclass
 % 他のタイプセットエンジンを使ってビルドする場合は、
 %  \documentclass[dvipdfmx]{jsarticle} などとする。
+
+% パッケージの読み込み
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+
 \usepackage{makeidx}
 \makeindex
 \usepackage{xcolor}
@@ -1521,7 +1526,14 @@ csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTe
   \subsection{Git Hub Copilotとは}
   Git Hub Copilotとは、Git Hub が提供する生成型AIをVSCodeに拡張した機能である。このGit Hub Copilotは、本来はプログラミングの補助として考えられたものであるが、\LaTeX にも使うことができる。\LaTeX に用いると、Copilotはユーザーの入力に対して次の文章の生成や、数式の計算等を行うことができる。
   \subsection{導入方法}
-  まずはGit Hubに登録しよう
+  まずはGit Hubに登録しよう。GitHubとは、文章管理ソフトのことである。このソフトについての詳細は\cite{GitHub2}を参照するとよい。このGit Hubに登録することでGit Hub Copilotを使うことができる。Git Hub Copilotは、\url{https://github.com}から登録することができる。このサイトは学生は無料でProプランを使うことができる。是の登録には数日かかる。登録が完了したら、VSCodeの拡張機能からGit Hub Copilotをインストールする。この時GitHubへのログインを求められるので、先ほど登録したアカウントでログインする。これでGit Hub Copilotの導入は完了する。
+
+  \subsection{使用方法}
+  使用方法としては、Copilotはユーザーの入力に対して文章の生成ができる。例えば、「数学の定義を書く」と入力すると、次のような文章を生成する。
+  \begin{quote}
+    数学とは、数とその構造、変化、空間、量、不確実性などの概念を扱う学問である。数学は、抽象化された概念を形式的に定義し、それらの間の関係を厳密に推論することによって、数学的な対象についての知識を得る。数学は、抽象化、論理的推論、算術、幾何学、統計学、計算科学、数論などの様々なトピックを扱う。数学は、数とその構造、変化、空間、量の研究である。数学は、数学的オブジェクトの研究を含む。数学は、自然科学、工学、医学、経済学などの他の分野で使用される数学的なモデルを開発するのに役立つ。
+  \end{quote}
+  のような文章を生成することができる。また計算などもすることができる。実際の使用例については、\cite{GithubCopilot2}を参照するとよい。
 
 % \section{Git 連携}
 % VS Code はGitというバージョン管理システムと容易に連携させることができるようになっており、巨大な文書制作でのバージョン管理が行える。
@@ -1617,8 +1629,7 @@ VS Codeではさまざまなショートカットが存在する。しかし、�
 きっとこれらのサイトも読むことができるだろう。
 さらに便利な使い方や、自分なりの設定をすることもできるだろう。
 
-良い\LaTeX ライフを
-
+良い\LaTeX ライフ
 happy \LaTeX ing
 \printindex
 \nocite{*}
