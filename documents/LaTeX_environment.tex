@@ -2,6 +2,11 @@
 % ltjsarticle: lualatex 用の 日本語 documentclass
 % 他のタイプセットエンジンを使ってビルドする場合は、
 %  \documentclass[dvipdfmx]{jsarticle} などとする。
+
+% パッケージの読み込み
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+
 \usepackage{makeidx}
 \makeindex
 \usepackage{xcolor}
@@ -77,16 +82,19 @@
 この資料が\LaTeX に入門する一助となれば筆者としても幸甚の極みである。
 
 \subsection{この資料の特徴}
-
-この資料では、\LuaLaTeX を用いて、VSCode上で編集そしてpdfの生成ができるような環境を設定することを目標とする。
+この資料の目標を以下に挙げる。
+\begin{enumerate}
+  \item \LuaLaTeX を用いて、VSCode上で編集そしてpdfの生成ができるような環境を設定すること。
+  \item さらにVSCodeで\LaTeX を高速にかつ便利に書くための環境を作ること。
+  \item \LaTeX に関わる外部ツールを用いてより強力に\LaTeX を編集できること。
+\end{enumerate}
 
 この資料は、\LaTeX の解説書ではない。
 VS Codeで\LaTeX 文書を編集するために必要なIT知識と
 設定の方法を述べる。
 そのあとVS Codeの基本機能そしてLaTeXを便利に書くためのツールをできるだけ紹介する。
 美文書書作成入門\cite{美文書本}は、\LaTeX の機能の解説については大変充実した良書ではあるものの、環境構築についてはあまり触れていない。またほかのサイトなどを探しても、IT知識が
-少しでもないとまったく分からない。そのためにシステムをいじりたくなくなるし、さらに取り返しのつかなくなることがまれにある。この状況を回避するために
-この資料を作った。
+少しでもないとまったく分からない。初心者だと取り返しのつかなくなることがあるのではないかと考えて行動できなくなる。この状況を回避するためにこの資料を作った。
 
 しかし、この資料にも至らぬ点が山ほどあると思われる。
 自分もすべてを理解しているわけではない。
@@ -109,7 +117,7 @@ VS Codeで\LaTeX 文書を編集するために必要なIT知識と
 
 \subsection{免責事項}
 
-この資料を使ったことによる損害等は、製作者は一切の責任を負いません。
+この資料を使ったことによる損害等は、著者は一切の責任を負いません。
 
 \subsection{質問対応等について}
 
@@ -119,7 +127,11 @@ VS Codeで\LaTeX 文書を編集するために必要なIT知識と
 
 また\LaTeX に関する有用な知識やテクニック、有用なプリアンブル、外部ツールなどは是非LaTeXサークル内でのプリアンブル投稿フォーラムに寄せてください。皆さんの協力によって大学内に\LaTeX をより簡単により使えるようにそして広く普及させましょう。
 
+
 この資料よりも発展的・高度な質問に関しては、\cite{TeXwiki-home}などを参照する必要がある。
+
+
+
 \clearpage
 \tableofcontents
 \clearpage
@@ -170,14 +182,14 @@ VS Codeは、
 \end{itemize}
 という特徴がある。
 
-\section{\LaTeX に慣れる}
+
+\section{cloud LaTeX の使い方}
 美文書作成入門\cite{美文書本}や一週間で\LaTeX の基礎が学べる本
 \cite{一週間基礎}等を用いて、\LaTeX にふれることで
 この後の流れが少し分かりやすくなるかもしれない。
 そこで、環境構築せずとも\LaTeX が使える環境としてcloud LaTeX
 について解説する。
 
-\subsection{cloud LaTeX の使い方}
 cloud LaTeX は、オンライン上で\LaTeX を扱うことができる。
 環境構築をすることなくすぐに\LaTeX 文章を書くことができるという点は、
 \LaTeX の記法に慣れるという面では、有用である。したがってこの章では、cloud LaTeX の
@@ -1513,6 +1525,29 @@ csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTe
   "when": "editorTextFocus"
 }
 \end{lstlisting}
+
+\section{Git Hub Copilot}
+  \subsection{Git Hub Copilotとは}
+  Git Hub Copilotとは、Git Hub が提供する生成型AIをVSCodeに拡張した機能である。このGit Hub Copilotは、本来はプログラミングの補助として考えられたものであるが、\LaTeX にも使うことができる。\LaTeX に用いると、Copilotはユーザーの入力に対して次の文章の生成や、数式の計算等を行うことができる。
+  \subsection{導入方法}
+  まずはGit Hubに登録しよう。GitHubとは、文章管理ソフトのことである。このソフトについての詳細は\cite{GitHub2}を参照するとよい。このGit Hubに登録することでGit Hub Copilotを使うことができる。Git Hub Copilotは、\url{https://github.com}から登録することができる。このサイトは学生は無料でProプランを使うことができる。是の登録には数日かかる。登録が完了したら、VSCodeの拡張機能からGit Hub Copilotをインストールする。この時GitHubへのログインを求められるので、先ほど登録したアカウントでログインする。これでGit Hub Copilotの導入は完了する。
+
+  \subsection{使用方法}
+  使用方法としては、Copilotはユーザーの入力に対して文章の生成ができる。例えば、「数学の定義を書く」と入力すると、次のような文章を生成する。
+  \begin{quote}
+    数学とは、数とその構造、変化、空間、量、不確実性などの概念を扱う学問である。数学は、抽象化された概念を形式的に定義し、それらの間の関係を厳密に推論することによって、数学的な対象についての知識を得る。数学は、抽象化、論理的推論、算術、幾何学、統計学、計算科学、数論などの様々なトピックを扱う。数学は、数とその構造、変化、空間、量の研究である。数学は、数学的オブジェクトの研究を含む。数学は、自然科学、工学、医学、経済学などの他の分野で使用される数学的なモデルを開発するのに役立つ。
+  \end{quote}
+  のような文章を生成することができる。また計算などもすることができる。実際の使用例については、\cite{GithubCopilot2}を参照するとよい。
+
+
+  \section{Mathcha}
+  \subsection{Mathchaとは何か}
+  Mathchaとは、\LaTeX でのtikzを簡単に直観的に書くことができるものである。
+  \subsection{Mathchaの使い方}
+  Mathchaの使い方は、\cite{Mathcha}を参照するとよい。
+
+
+
 % \section{Git 連携}
 % VS Code はGitというバージョン管理システムと容易に連携させることができるようになっており、巨大な文書制作でのバージョン管理が行える。
 % そしてGit はVS Code上のボタン操作で直感的に操作することができる。
@@ -1607,8 +1642,7 @@ VS Codeではさまざまなショートカットが存在する。しかし、�
 きっとこれらのサイトも読むことができるだろう。
 さらに便利な使い方や、自分なりの設定をすることもできるだろう。
 
-良い\LaTeX ライフを
-
+良い\LaTeX ライフ
 happy \LaTeX ing
 \printindex
 \nocite{*}
