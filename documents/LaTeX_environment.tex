@@ -1553,7 +1553,27 @@ csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTe
   このサイトは\url{https://hackathon-22spring-13.github.io/client/}から見ることができる。
 
   \subsection{I love TikZの使い方}
-  I love TikZの使い方はurl先のページにもあるように絵をかいて変換ボタンを押すだけである。それで変換することができる。非常に簡単。
+  I love TikZの使い方はurl先のページにもあるように絵やイラストをかいて変換ボタンを押すだけである。それで変換することができる。非常に簡単。
+
+  \subsection{Pythonで描画したグラフをTikzに変換する}
+  tikzplotlibはPyplotで書いたグラフを次のようにすることでTikzに変換することができる。
+  \begin{lstlisting}
+  import numpy as np
+  import matplotlib.pyplot as plt
+  import tikzplotlib
+
+  x = np.linspace(0, 2 * np.pi, 100)
+  y = np.sin(x)
+
+  plt.plot(x, y)
+  plt.xlabel("$x$")
+  plt.ylabel("$\sin(x)$")
+  plt.title("Plot of $\sin(x)$")
+
+  tikzplotlib.save("sinx_plot_tikz.tex")
+  \end{lstlisting}
+  このように書くとtexファイルが出力されるために、そのファイルを\LaTeX で読み込むことで図を表示することができる。この方法は、\cite{tikzplotlib}を参照するとよい。
+  このようにすることでTikZでの図を簡単に作成するかつ、編集することができる。
 
   \subsection{Draw.io}
   Draw.ioは、図を描くためのツールである。Draw.ioはフローチャート・レイアウト・組織図などの図を作ることができる。またアイコンなども簡単に作れる。
@@ -1567,6 +1587,7 @@ csv2tabularはexcel形式の表や、excelの表をコピペするだけで\LaTe
   ファイルの拡張子を.drawio や.dioにした場合は上のメニューバーからFileを選択してExport as から画像形式を選択することで画像として保存することができる。
 
 
+  
 
 
 % \section{Git 連携}
