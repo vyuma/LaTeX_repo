@@ -1,5 +1,7 @@
 *.code-workspace
 
+# ミーティング用ファイル
+/meeting
 # LaTeXの中間ファイル
 *.synctex.gz
 *.aux
