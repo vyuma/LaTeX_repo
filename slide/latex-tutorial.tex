@@ -104,15 +104,19 @@
 % \end{frame}
 
 \subsection{インストール完了の確認}
-\begin{frame}
-  \frametitle{インストールの正常終了を確認する}
-  インストールの後に、コマンドプロンプロトを起動する。
-  コマンドプロンプトは、Windowsキーを押すと出てくるところから確認する。Mac の場合はターミナルから行う。ここに
-  \begin{quotation}
-    latex -v
-  \end{quotation}
-  と打ち込めばよい。
-
+\begin{frame}[fragile]
+  \frametitle{正常にインストールされたことを確認する}
+  インストールが終わったら、コマンドプロンプロトを起動する。
+  スタートメニューの検索でcmdと打ち込むとコマンドプロンプトが出てくる。
+  \begin{verbatim}
+latex -v
+  \end{verbatim}
+  を実行して
+  \begin{verbatim}
+pdfTeX 3.14159265-2.6-1.40.21 (TeX Live ...)
+...
+  \end{verbatim}
+  といった表示が出れば正常にインストールされている。
 \end{frame}
 
 \section{\LaTeX とは}
