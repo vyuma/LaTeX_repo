@@ -263,12 +263,12 @@ pdfTeX 3.14159265-2.6-1.40.21 (TeX Live ...)
 \begin{frame}
   \frametitle{LaTeX workshopのインストール}
 
-  LaTeXworkshopとは、VSCode の拡張である。VSCode上で\LaTeX を使ううえで必須の拡張である。
+  LaTeX Workshopとは、VSCode の拡張機能である。VSCode上で\LaTeX を使ううえで必須の拡張機能である。
 
   \begin{enumerate}
     \item 左の拡張機能アイコンをクリックする。
     \item 拡張機能の検索欄からlatexworkshopと入力する。
-    \item latexworkshopを選び拡張機能をダウンロードする。
+    \item latexworkshopを選び拡張機能をインストールする。
   \end{enumerate}
   latexworkshopの設定は、setting.json に記述する。
   VS Codeの設定は、setting.json
@@ -276,8 +276,8 @@ pdfTeX 3.14159265-2.6-1.40.21 (TeX Live ...)
 
 \end{frame}
 \begin{frame}
-  \frametitle{setting.jsonについて}
-  setting.json を開く方法はいくつかある。
+  \frametitle{settings.jsonについて}
+  settings.json を開く方法はいくつかある。
   \begin{description}
     \item[1つ目] ~\\
       VS Code左下の設定マーク（歯車マーク）をクリックして、「設定」を選択する。
@@ -293,22 +293,20 @@ pdfTeX 3.14159265-2.6-1.40.21 (TeX Live ...)
 \end{frame}
 
 \begin{frame}[containsverbatim]
-  \frametitle{setting.jsonの記述}
+  \frametitle{settings.jsonの記述}
   setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
   同じ内容を下のソースコードに示す。
   もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
-
-
 \end{frame}
 
 \begin{frame}
   \frametitle{Ultra Math Previewのインストール}
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
-パッケージで定義されたコマンドもPreview することができる。
-さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
+パッケージで定義されたコマンドもプレビューすることができる。
+さらにユーザー定義のmathPreviewを導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
 \begin{itemize}
   \item 数式を打つとプレビューが即座に出てくる
-  \item LaTeX と Markdown で同じマクロがプレビューに使える
+  \item LaTeX と Markdown で同じ設定のプレビューが使える
   \item プレビューが透過できる
   \item プレビューの上からその下にある文字をクリックすることができる
 \end{itemize}
