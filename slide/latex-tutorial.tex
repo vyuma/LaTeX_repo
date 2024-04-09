@@ -193,9 +193,9 @@ pdfTeX 3.14159265-2.6-1.40.21 (TeX Live ...)
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{\LaTeX を打つ}
-
-  適当なファイルを生成する。そこに.tex ファイルを作成する。そこに下のコードを入れる。
+  \frametitle{\LaTeX を使う}
+  適当なフォルダを作成し、その中にファイルhelloworld.texを作成する。
+  helloworld.texに以下のコードを書き込む。
   \begin{lstlisting}[caption=HelloWorld,label=HelloWorld]
   \documentclass{ltjsarticle}
   \begin{document}
@@ -215,16 +215,16 @@ pdfTeX 3.14159265-2.6-1.40.21 (TeX Live ...)
 
 
 \begin{frame}[fragile]
-  \frametitle{\LaTeX のコンパイルの仕方}
-今作成した.tex ファイルをコンパイルする。コンパイルとは、\LaTeX のソースコードを実際の文書に変換することである。
-\begin{enumerate}
-  \item コマンドプロンプトを起動する。
-  \item 作成した.tex ファイルがあるディレクトリに移動する。\\
-  \verb|cd <ディレクトリへの相対パス>|
-  \item 以下のコマンドを打ち込む。\\
-  \verb|lualatex helloworld.tex|
-\end{enumerate}
-  
+  \frametitle{\LaTeX でのコンパイルの仕方}
+  helloworld.texをコンパイルする。
+  コンパイルとは、\LaTeX 形式のコードを実際の文書に変換することである。
+  \begin{enumerate}
+    \item コマンドプロンプトを起動する。
+    \item helloworld.texがあるディレクトリに移動する。\\
+    \verb|cd <ディレクトリへの相対パス>|
+    \item 以下のコマンドを実行する。\\
+    \verb|lualatex helloworld.tex|
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}
