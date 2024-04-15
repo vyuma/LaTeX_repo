@@ -29,8 +29,6 @@
 }
 
 \usepackage{bxtexlogo} % platex, lualatexのロゴを使うために必要
-% urlを表示する。
-\usepackage{xurl}
 
 % \setbeamertemplate{theorems}[numbered]
 % \addtobeamertemplate{theorem begin}{\normalfont}{}
@@ -63,63 +61,62 @@
   \titlepage
 \end{frame}
 
-\section{TeXliveのインストール}
-\subsection{TeXlive インストール}
+\section{TeX Liveのインストール}
+\subsection{TeX Live インストール}
 
 \begin{frame}
-  \frametitle{TeXliveのインストール}
+  \frametitle{TeX Liveのインストール}
   \begin{enumerate}
-	\item TeXliveのインストーラーを次のページからダウンロードする。
-  \begin{quote}
-    \centering
+    \item 次のページにアクセスする。
+
     \url{https://www.tug.org/texlive/acquire-netinstall.html}
-  \end{quote}
-  をクリックする。
-  \item ページ上のリンク install-tl-windows.exeをクリックする。
-  \item ダウンロードを終えたら実行する。
-\end{enumerate}
 
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{TeXliveのインストール}
-  \begin{enumerate}
-    \item 「Install」を選択する。
-    \item  「Next」を押して進み
-    \item 「特定のミラーを選択」では日本のミラーサイトのどれでもよいので選ぶとよい.\footnote{ミラーサイトとは、TeXliveのディストリビューションを保有するサーバーを選択することである。}
-    \item インストール先は気にしなくてよい。
+    \item ページ上のリンクinstall-tl-windows.exeをクリックし、TeX Liveのインストーラーをダウンロードする。
+    \item ダウンロードを終えたら実行する。
   \end{enumerate}
-
-  
-
 \end{frame}
+
 
 \begin{frame}
-  \frametitle{高度な設定}
-
-  \begin{itemize}
-    \item 「ディレクトリ」は無変更
-    \item 「選択したもの」欄で変更２つ行う。
-    \begin{itemize}
-      \item スキーム(インストールするパッケージの種類を大まかに決める)を変更する。basic スキームを選択。
-      \item 下のカスタマイズに入り、言語欄から日本語と英語を追加。右の他のコレクション欄から `LaTeX 推奨パッケージ' を追加。
-    \end{itemize}
-  \end{itemize}
-
-  設定が完了したら右下のインストールを押す。
+  \frametitle{TeX Liveのインストール}
+  \begin{enumerate}
+    \item 「Install」を選択し、「Next >」を押す。
+    \item 「Install」を押す。
+    \item 「TeX Live 2024インストーラ」と書かれたウィンドウが出てくるまで待つ。
+    \footnote{この際「特定のミラーを選択」で日本のサーバーを指定しておくとダウンロードが早く終わるかもしれない。}
+    \item 特に設定は変更せず「インストール」を押す。
+  \end{enumerate}
 \end{frame}
+
+% \begin{frame}
+%   \frametitle{高度な設定}
+
+%   \begin{itemize}
+%     \item 「ディレクトリ」は無変更
+%     \item 「選択したもの」欄で変更２つ行う。
+%     \begin{itemize}
+%       \item スキーム(インストールするパッケージの種類を大まかに決める)を変更する。basic スキームを選択。
+%       \item 下のカスタマイズに入り、言語欄から日本語と英語を追加。右の他のコレクション欄から `LaTeX 推奨パッケージ' を追加。
+%     \end{itemize}
+%   \end{itemize}
+
+%   設定が完了したら右下のインストールを押す。
+% \end{frame}
 
 \subsection{インストール完了の確認}
-\begin{frame}
-  \frametitle{インストールの正常終了を確認する}
-  インストールの後に、コマンドプロンプロトを起動する。
-  コマンドプロンプトは、Windowsキーを押すと出てくるところから確認する。Mac の場合はターミナルから行う。ここに
-  \begin{quotation}
-    latex -v
-  \end{quotation}
-  と打ち込めばよい。
-
+\begin{frame}[fragile]
+  \frametitle{正常にインストールされたことを確認する}
+  インストールが終わったら、コマンドプロンプロトを起動する。
+  スタートメニューの検索でcmdと打ち込むとコマンドプロンプトが出てくる。
+  \begin{verbatim}
+latex -v
+  \end{verbatim}
+  を実行して
+  \begin{verbatim}
+pdfTeX 3.14159265-2.6-1.40.21 (TeX Live ...)
+...
+  \end{verbatim}
+  といった表示が出れば正常にインストールされている。
 \end{frame}
 
 \section{\LaTeX とは}
@@ -149,38 +146,36 @@
 \end{frame}
 
 \section{\LaTeX 環境構築}
-\subsection{TeXliveの設定}
-\begin{frame}
-  \frametitle{TeXlive Managerからパッケージのダウンロード}
-  \begin{enumerate}
-    \item WindowsのスタートメニューからTeXliveManagerを実行する。
-    \item TeX live Managerを開くと現在TeX liveにあるパッケージが読み込まれる。
-    \item そして、ここから検索欄に自分の必要なパッケージを読み込むと今必要なパッケージをダウンロードすることができる。
-  \end{enumerate}
- 検索欄から`latexmk'と検索する。すると、しばし待機した後に二つの`latexmk'が出てくる。
-\begin{itemize}
-  \item latexmk
-  \item latexmk.win32
-\end{itemize}
-の二つが出てくるので、これらをチェックボックスをクリックして選択項目をインストール を選択し latexmk を選択してインストールする。これでlatexmkのインストールが完了する。
+% \subsection{TeX Liveの設定}
+% \begin{frame}
+%   \frametitle{TeX Live Managerからパッケージのダウンロード}
+%   \begin{enumerate}
+%     \item WindowsのスタートメニューからTeX LiveManagerを実行する。
+%     \item TeX Live Managerを開くと現在TeX Liveにあるパッケージが読み込まれる。
+%     \item そして、ここから検索欄に自分の必要なパッケージを読み込むと今必要なパッケージをダウンロードすることができる。
+%   \end{enumerate}
+%  検索欄から`latexmk'と検索する。すると、しばし待機した後に二つの`latexmk'が出てくる。
+% \begin{itemize}
+%   \item latexmk
+%   \item latexmk.win32
+% \end{itemize}
+% の二つが出てくるので、これらをチェックボックスをクリックして選択項目をインストール を選択し latexmk を選択してインストールする。これでlatexmkのインストールが完了する。
 
-また今回は、\LuaLaTeX を用いるので、lualatex-mathというパッケージをダウンロードする。
-\end{frame}
+% また今回は、\LuaLaTeX を用いるので、lualatex-mathというパッケージをダウンロードする。
+% \end{frame}
 
 \subsection{VSCodeのインストール}
 \begin{frame}
   \frametitle{VSCodeのインストール}
+  \begin{itemize}
+    \item 次のページにアクセスする。
+    
+    \url{https://code.visualstudio.com/download}
 
-  Visual Studio Code は次のページからダウンロードするとよい。
-\begin{quote}
-	\url{https://code.visualstudio.com/download}
-\end{quote}
-をクリックしてそのあとの画面の中から今回の場合は、
-自分の環境に合わせて (Windows か Mac の) ファイルをダウンロードする。
-ファイルを開き、追加タスクの変更は触らないようにしてNextを押し続ければ
-インストールできる。
-
-
+    \item 自分の環境に合わせたインストーラーをダウンロードする。
+    \item ダウンロードが終わったら、実行する。
+    \item 設定はデフォルトのまま画面に従って操作を進めればインストールが完了する。
+  \end{itemize}
 \end{frame}
 
 \subsection{VSCodeの設定}
@@ -198,9 +193,9 @@
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{\LaTeX を打つ}
-
-  適当なファイルを生成する。そこに.tex ファイルを作成する。そこに下のコードを入れる。
+  \frametitle{\LaTeX を使う}
+  適当なフォルダを作成し、その中にファイルhelloworld.texを作成する。
+  helloworld.texに以下のコードを書き込む。
   \begin{lstlisting}[caption=HelloWorld,label=HelloWorld]
   \documentclass{ltjsarticle}
   \begin{document}
@@ -220,16 +215,16 @@
 
 
 \begin{frame}[fragile]
-  \frametitle{\LaTeX のコンパイルの仕方}
-今作成した.tex ファイルをコンパイルする。コンパイルとは、\LaTeX のソースコードを実際の文書に変換することである。
-\begin{enumerate}
-  \item コマンドプロンプトを起動する。
-  \item 作成した.tex ファイルがあるディレクトリに移動する。\\
-  \verb|cd <ディレクトリへの相対パス>|
-  \item 以下のコマンドを打ち込む。\\
-  \verb|lualatex helloworld.tex|
-\end{enumerate}
-  
+  \frametitle{\LaTeX でのコンパイルの仕方}
+  helloworld.texをコンパイルする。
+  コンパイルとは、\LaTeX 形式のコードを実際の文書に変換することである。
+  \begin{enumerate}
+    \item コマンドプロンプトを起動する。
+    \item helloworld.texがあるディレクトリに移動する。\\
+    \verb|cd <ディレクトリへの相対パス>|
+    \item 以下のコマンドを実行する。\\
+    \verb|lualatex helloworld.tex|
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}
@@ -238,8 +233,7 @@
   今回は一度ですんだが、相互参照などをするときには、コンパイルを複数回行う必要がある。
   手動でのコンパイルは手間がかかるため、latexmkを用いる。
   
-  latexmkは、各種\LaTeX のビルドコマンドを自動で一括で実行してくれるツールである。
-
+  latexmkは、コンパイルに必要な\LaTeX のコマンドを自動で一括で実行してくれるツールである。
 \end{frame}
 
 \begin{frame}[fragile]
@@ -269,12 +263,12 @@
 \begin{frame}
   \frametitle{LaTeX workshopのインストール}
 
-  LaTeXworkshopとは、VSCode の拡張である。VSCode上で\LaTeX を使ううえで必須の拡張である。
+  LaTeX Workshopとは、VSCode の拡張機能である。VSCode上で\LaTeX を使ううえで必須の拡張機能である。
 
   \begin{enumerate}
     \item 左の拡張機能アイコンをクリックする。
     \item 拡張機能の検索欄からlatexworkshopと入力する。
-    \item latexworkshopを選び拡張機能をダウンロードする。
+    \item latexworkshopを選び拡張機能をインストールする。
   \end{enumerate}
   latexworkshopの設定は、setting.json に記述する。
   VS Codeの設定は、setting.json
@@ -282,8 +276,8 @@
 
 \end{frame}
 \begin{frame}
-  \frametitle{setting.jsonについて}
-  setting.json を開く方法はいくつかある。
+  \frametitle{settings.jsonについて}
+  settings.json を開く方法はいくつかある。
   \begin{description}
     \item[1つ目] ~\\
       VS Code左下の設定マーク（歯車マーク）をクリックして、「設定」を選択する。
@@ -299,22 +293,20 @@
 \end{frame}
 
 \begin{frame}[containsverbatim]
-  \frametitle{setting.jsonの記述}
+  \frametitle{settings.jsonの記述}
   setting.json を開いたら、\verb|{}|の中にmarkdownファイルに記載されたLaTeX workshopの設定をコピーして書き加え、保存する。
   同じ内容を下のソースコードに示す。
   もし開いた時点で\verb|{}|以外に何か書き込まれていた場合、\verb|{}|の最後の要素にコンマをつけて、設定をコピーして書き加え、保存する。
-
-
 \end{frame}
 
 \begin{frame}
   \frametitle{Ultra Math Previewのインストール}
 Ultra Math Previewは、LaTeX Workshopよりも強力な数式プレビューができる拡張機能である。
-パッケージで定義されたコマンドもPreview することができる。
-さらにユーザー定義のmathPreview を導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
+パッケージで定義されたコマンドもプレビューすることができる。
+さらにユーザー定義のmathPreviewを導入することができるためにLaTeX Workshop 標準のプレビューよりもより利便性が高いものになっている。このmathPreview はMarkdownでも用いることができる。
 \begin{itemize}
   \item 数式を打つとプレビューが即座に出てくる
-  \item LaTeX と Markdown で同じマクロがプレビューに使える
+  \item LaTeX と Markdown で同じ設定のプレビューが使える
   \item プレビューが透過できる
   \item プレビューの上からその下にある文字をクリックすることができる
 \end{itemize}
