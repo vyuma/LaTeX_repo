@@ -33,6 +33,16 @@
         ],
         "description": "授業レポート用テンプレート"
     },
+    "img1":{
+		"prefix": "image1",
+		"body": ["\\begin{figure}[h]",
+		"\\centering",
+		"${1}",
+		"\\caption{${2}}",
+		"\\label{fig:${2}}",
+	  "\\end{figure}"]
+		
+	},
 
     "img2":{
         "prefix": "img2",

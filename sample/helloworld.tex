@@ -1,4 +1,5 @@
 \documentclass{ltjsarticle}
+\usepackage{amsmath} % 数式用
 \begin{document}
 
 \title{はじめての\LaTeX }
@@ -9,4 +10,18 @@
     Hello world!
     今日は\LaTeX を覚えていってください。
     \LaTeX + VSCode は最強の組み合わせ。
+    
+    \(\int x \mathrm{d}x\)
+    \[
+
+    \]
+
+    \begin{align}
+      % マクスウェル方程式
+      \nabla \times \bm{E} &= -\frac{\partial \bm{B}}{\partial t}, \\
+      \nabla \cdot \bm{B} &= 0, \\
+      \nabla \times \bm{H} &= \bm{J} + \frac{\partial \bm{D}}{\partial t}, \\
+      \nabla \cdot \bm{D} &= \rho.
+    \end{align}
+
 \end{document} 
