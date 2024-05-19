@@ -34,7 +34,7 @@
         "description": "授業レポート用テンプレート"
     },
     "img1":{
-		"prefix": "image1",
+		"prefix": "img1",
 		"body": ["\\begin{figure}[h]",
 		"\\centering",
 		"${1}",
