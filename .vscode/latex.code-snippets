@@ -37,9 +37,9 @@
 		"prefix": "img1",
 		"body": ["\\begin{figure}[h]",
 		"\\centering",
-		"${1}",
-		"\\caption{${2}}",
-		"\\label{fig:${2}}",
+		"\\includegraphics[width=${1:10}cm]{${2}}",
+		"\\caption{${3}}",
+		"\\label{${4}}",
 	  "\\end{figure}"]
 		
 	},
